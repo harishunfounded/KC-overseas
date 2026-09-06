@@ -27,8 +27,8 @@ export default function StickyHeader() {
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-200">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 h-12 sm:h-14 flex items-center justify-between">
         
-        {/* Brand Logo & Branch Identification */}
-        <a href="#hero" className="flex items-center gap-2 group shrink-0" aria-label="KC Overseas Education Namakkal Home">
+        {/* Brand Logo & Identification */}
+        <a href="#hero" className="flex items-center gap-2 group shrink-0" aria-label="KC Overseas Education Home">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-kc-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
             <GraduationCap className="w-5 h-5" />
           </div>
@@ -37,7 +37,7 @@ export default function StickyHeader() {
               KC OVERSEAS
             </span>
             <span className="text-[10px] sm:text-xs font-semibold text-kc-primary tracking-wide uppercase">
-              Namakkal Branch
+              Education
             </span>
           </div>
         </a>

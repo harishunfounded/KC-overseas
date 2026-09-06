@@ -36,3 +36,5 @@ next-env.d.ts
 # leads storage fallback (exclude from public git repo)
 data/leads.json
 data/leads.csv
+
+.vercel

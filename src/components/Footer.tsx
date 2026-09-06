@@ -32,18 +32,18 @@ export default function Footer() {
                   KC OVERSEAS
                 </span>
                 <span className="text-[10px] text-sky-400 font-semibold uppercase">
-                  Namakkal Branch
+                  Tamil Nadu
                 </span>
               </div>
             </div>
             
             <p className="text-slate-400 leading-relaxed text-xs">
-              Pioneer in overseas education counselling in India with over 25+ years of industry experience, 1200+ partner universities, and 7,30,000+ success stories.
+              Pioneering overseas education consultancy with 25+ years of experience, 1,200+ partner universities, and 7,30,000+ students guided.
             </p>
 
             <div className="pt-1 flex items-center gap-2 text-[11px] text-slate-400">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Authorized Representative & Certified Trainers</span>
+              <span>Official British Council & IDP Test Partner</span>
             </div>
           </div>
 
@@ -87,10 +87,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Namakkal Office Contact */}
+          {/* Col 4: Local Office Contact */}
           <div>
             <h4 className="font-extrabold text-white text-sm uppercase tracking-wider mb-3.5">
-              Namakkal Branch
+              Local Office (Namakkal)
             </h4>
             <div className="space-y-3 text-slate-300">
               <div className="flex items-start gap-2.5">
@@ -136,7 +136,7 @@ export default function Footer() {
         {/* Compliance & Google Ads Policy Disclaimer */}
         <div className="border-t border-slate-800 pt-6 pb-4 text-[11px] text-slate-400 leading-relaxed space-y-2">
           <p>
-            <strong>Disclaimer:</strong> KC Overseas Education Namakkal is an independent overseas education consulting firm providing university admission assistance, standardized test preparation, and student visa guidance. We are not affiliated with or an agency of any government, embassy, or consulate. All university names, logos, and trademarks belong to their respective institutions. Visa grants are at the sole discretion of the respective country’s immigration authorities.
+            <strong>Disclaimer:</strong> KC Overseas Education is an independent overseas education consulting firm providing university admission assistance, standardized test preparation, and student visa guidance. We are not affiliated with or an agency of any government, embassy, or consulate. All university names, logos, and trademarks belong to their respective institutions. Visa grants are at the sole discretion of the respective country’s immigration authorities.
           </p>
           <p>
             <strong>Privacy Assurance:</strong> We respect your confidentiality. Information submitted via this website is used solely to facilitate your education counselling and will never be sold or shared with unauthorized third parties.
@@ -146,7 +146,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-slate-800/60 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-500 text-[11px]">
           <p>© {new Date().getFullYear()} KC Overseas Education. All rights reserved.</p>
-          <p>Namakkal Branch, Tamil Nadu, India - 637001</p>
+          <p>Tamil Nadu, India | Local Office: Namakkal - 637001</p>
         </div>
 
       </div>

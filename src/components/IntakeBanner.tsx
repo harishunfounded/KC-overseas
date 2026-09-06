@@ -28,7 +28,7 @@ export default function IntakeBanner() {
             {siteConfig.intakeLabel}
           </strong>
           <span className="hidden sm:inline opacity-95">
-            — Apply now for guaranteed scholarships & priority visas!
+            — Up to 100% scholarships & 99% visa success track record.
           </span>
           <a
             href="#enquiry"

@@ -11,28 +11,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'KC Overseas Education Namakkal | Top Study Abroad Consultants',
+  title: 'KC Overseas Education | Study Abroad Consultants in Tamil Nadu',
   description:
-    'Study abroad from Namakkal with KC Overseas Education. Free counselling, university selection across 47+ countries, IELTS/PTE coaching, education loans, and 99% visa success rate.',
+    'Study abroad with KC Overseas Education. Guiding students across Tamil Nadu to 1,200+ top universities in 47+ countries. Free profile evaluation, certified IELTS/PTE coaching, and 99% visa success rate.',
   keywords: [
-    'KC Overseas Namakkal',
-    'Study Abroad Consultants in Namakkal',
-    'Overseas Education Consultant Namakkal',
-    'IELTS coaching Namakkal',
-    'PTE training Namakkal',
-    'Study in UK Germany Canada Australia from Namakkal',
-    'Overseas education loan assistance Namakkal',
+    'KC Overseas Education',
+    'Study Abroad Consultants in Tamil Nadu',
+    'Overseas Education Consultant',
+    'IELTS coaching Tamil Nadu',
+    'PTE training Tamil Nadu',
+    'Study in UK Germany Canada Australia USA',
+    'Overseas education loan assistance',
   ],
   authors: [{ name: 'KC Overseas Education' }],
   metadataBase: new URL('https://www.studies-overseas.com'),
   alternates: {
-    canonical: 'https://www.studies-overseas.com/branch/namakkal',
+    canonical: 'https://www.studies-overseas.com',
   },
   openGraph: {
-    title: 'Study Abroad with KC Overseas Education — Namakkal Branch',
+    title: 'Study Abroad with KC Overseas Education | Tamil Nadu',
     description:
-      'Unlock your global education with 1,200+ universities across 47+ countries. Free profile evaluation, test prep coaching & visa assistance.',
-    url: 'https://www.studies-overseas.com/branch/namakkal',
+      'Unlock your global education with 1,200+ universities across 47+ countries. 25+ years of trust and 99% visa success record.',
+    url: 'https://www.studies-overseas.com',
     siteName: 'KC Overseas Education',
     locale: 'en_IN',
     type: 'website',

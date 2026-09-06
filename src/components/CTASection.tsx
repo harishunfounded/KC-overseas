@@ -14,8 +14,8 @@ interface CTASectionProps {
 
 export default function CTASection({
   id = 'cta-section',
-  title = 'Book Your Free Study Abroad Counselling Today',
-  subtitle = 'Get 1-on-1 profile evaluation, university shortlisting, and scholarship guidance from KC Namakkal experts.',
+  title = 'Ready to Plan Your Study Abroad Journey?',
+  subtitle = 'Get 1-on-1 profile evaluation, university shortlisting, and scholarship guidance from certified education counsellors.',
   badge = 'Zero Consultation Fee • Direct University Representative',
   variant = 'primary',
 }: CTASectionProps) {
@@ -53,7 +53,7 @@ export default function CTASection({
 
   return (
     <section id={id} className={`py-10 sm:py-14 relative overflow-hidden ${styles.wrapper}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         {/* Badge */}
         {badge && (
@@ -64,20 +64,20 @@ export default function CTASection({
         )}
 
         {/* Title */}
-        <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight max-w-3xl mx-auto leading-tight ${styles.title}`}>
+        <h2 className={`text-2xl sm:text-3xl font-black tracking-tight max-w-2xl mx-auto leading-tight ${styles.title}`}>
           {title}
         </h2>
 
         {/* Subtitle */}
-        <p className={`text-xs sm:text-sm max-w-2xl mx-auto mt-2.5 leading-relaxed ${styles.sub}`}>
+        <p className={`text-xs sm:text-sm max-w-xl mx-auto mt-2 leading-relaxed ${styles.sub}`}>
           {subtitle}
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6">
           <a
-            href="#enquiry"
-            className={`min-h-[48px] px-6 sm:px-8 py-3 rounded-xl font-extrabold text-sm sm:text-base transition-all flex items-center justify-center gap-2 active:scale-95 ${styles.ctaBtn}`}
+            href="#enquiry-section"
+            className={`min-h-[48px] px-6 sm:px-8 py-3 rounded-xl font-extrabold text-sm transition-all flex items-center justify-center gap-2 active:scale-95 ${styles.ctaBtn}`}
           >
             <span>Book Free Counselling</span>
             <ArrowRight className="w-4 h-4" />
@@ -87,25 +87,17 @@ export default function CTASection({
             href={siteConfig.contact.whatsappChatUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-[48px] px-6 sm:px-7 py-3 rounded-xl bg-kc-whatsapp text-white font-bold text-sm sm:text-base shadow-whatsapp-glow hover:bg-kc-whatsapp-hover transition-all flex items-center justify-center gap-2 active:scale-95"
+            className="min-h-[48px] px-6 sm:px-7 py-3 rounded-xl bg-kc-whatsapp text-white font-bold text-sm shadow-whatsapp-glow hover:bg-kc-whatsapp-hover transition-all flex items-center justify-center gap-2 active:scale-95"
           >
-            <MessageCircle className="w-5 h-5 fill-white" />
+            <MessageCircle className="w-4 h-4 fill-white" />
             <span>Chat on WhatsApp</span>
-          </a>
-
-          <a
-            href={`tel:${siteConfig.contact.phone1Clean}`}
-            className="min-h-[48px] px-5 py-3 rounded-xl bg-white/15 backdrop-blur-sm text-white font-bold text-sm hover:bg-white/25 transition-all flex items-center justify-center gap-2 border border-white/30"
-          >
-            <Phone className="w-4 h-4 fill-white" />
-            <span>Call: {siteConfig.contact.phone1}</span>
           </a>
         </div>
 
         {/* Trust Note */}
         <p className="text-[11px] opacity-80 mt-4 flex items-center justify-center gap-1.5">
           <ShieldCheck className="w-3.5 h-3.5" />
-          <span>Walk-ins welcome at Pranav Complex, Salem Road, Namakkal (Mon-Sat, 9:30 AM – 7:30 PM)</span>
+          <span>In-person and online counselling sessions available Monday to Saturday.</span>
         </p>
 
       </div>

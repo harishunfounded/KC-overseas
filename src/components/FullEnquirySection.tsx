@@ -1,73 +1,59 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, ShieldCheck, CheckCircle2, Award, Clock } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
 import EnquiryForm from './EnquiryForm';
 import { siteConfig } from '@/config/site';
 
 export default function FullEnquirySection() {
   return (
-    <section id="enquiry-section" className="py-14 sm:py-20 bg-kc-sand/30 border-b border-slate-200 relative overflow-hidden">
-      {/* Background aesthetics */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-100/60 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-orange-100/60 blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="enquiry-section" className="py-14 sm:py-20 bg-slate-50/60 border-b border-slate-100 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
-          {/* Left Column: Why Book Counselling Now */}
+          {/* Left Column: Trust & Expectation */}
           <div className="lg:col-span-6 space-y-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-kc-primary font-bold text-xs uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" /> No Obligation • 100% Free
-            </span>
-
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-kc-heading tracking-tight leading-tight">
-              Ready to Take Your First Step Toward an International Degree?
+              Begin Your Overseas Education Journey
             </h2>
 
             <p className="text-xs sm:text-sm text-kc-muted leading-relaxed">
-              Fill out the details, and our certified Namakkal study abroad counsellors will review your profile, match your eligibility with 1200+ partner universities, and prepare a personalized roadmap for the <strong>{siteConfig.intakeLabel}</strong>.
+              Speak with experienced counsellors for personalized university shortlisting, test preparation planning, and visa guidance for the <strong>{siteConfig.intakeLabel}</strong>.
             </p>
 
-            {/* Checklist of what you get */}
-            <div className="space-y-3 pt-2">
+            {/* Factual Trust Highlights */}
+            <div className="space-y-3 pt-1">
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4 h-4" />
-                </div>
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-kc-heading">Comprehensive Profile Evaluation</h4>
-                  <p className="text-xs text-kc-muted">Analysis of GPA, work experience, English score & course preferences.</p>
+                  <h3 className="text-xs sm:text-sm font-bold text-kc-heading">Profile Evaluation & University Matching</h3>
+                  <p className="text-xs text-kc-muted">Objective course recommendations from 1,200+ global partner institutions.</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4 h-4" />
-                </div>
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-kc-heading">University & Scholarship Shortlist</h4>
-                  <p className="text-xs text-kc-muted">Direct options across UK, USA, Germany, Canada, Australia, and more with fee waivers.</p>
+                  <h3 className="text-xs sm:text-sm font-bold text-kc-heading">Scholarship & Loan Guidance</h3>
+                  <p className="text-xs text-kc-muted">Guidance on university fee waivers and pre-approved education loan options.</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4 h-4" />
-                </div>
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-kc-heading">Fast-Track Loan & Visa Guidance</h4>
-                  <p className="text-xs text-kc-muted">Pre-approved loan sanction letters up to ₹1.5 Cr and flawless visa file preparation.</p>
+                  <h3 className="text-xs sm:text-sm font-bold text-kc-heading">End-to-End Visa Filing Support</h3>
+                  <p className="text-xs text-kc-muted">Proven 99% visa success track record with thorough file auditing.</p>
                 </div>
               </div>
             </div>
 
             {/* Quick reassurance */}
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
-              <Clock className="w-8 h-8 text-kc-primary shrink-0" />
-              <div className="text-xs text-slate-700">
-                <strong>Fast Callback Promise:</strong> Our senior counsellor will get in touch with you within 15 minutes during office hours.
+            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
+              <Clock className="w-5 h-5 text-kc-primary shrink-0" />
+              <div className="text-xs text-slate-600">
+                <strong>Prompt Support:</strong> A dedicated counsellor will contact you within working hours.
               </div>
             </div>
 

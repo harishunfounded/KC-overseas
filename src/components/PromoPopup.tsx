@@ -118,7 +118,7 @@ export default function PromoPopup() {
           />
 
           <p className="text-[10px] text-slate-400 text-center mt-3">
-            Offer reserved exclusively for students contacting KC Overseas Namakkal via Google Ads.
+            Complimentary evaluation for students planning their international education.
           </p>
         </div>
       </div>

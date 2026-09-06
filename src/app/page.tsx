@@ -46,8 +46,8 @@ export default function Home() {
       {/* 7. Mid-Page Conversion CTA Banner */}
       <CTASection
         id="cta-mid"
-        title={`Admissions Open for ${siteConfig.intakeLabel}`}
-        subtitle="University seats filling rapidly. Secure early fee waivers, application discounts, and profile evaluations today."
+        title={siteConfig.intakeLabel}
+        subtitle="University admission rounds and scholarship evaluations are currently open."
         variant="primary"
       />
 
@@ -57,9 +57,9 @@ export default function Home() {
       {/* 9. Second Conversion Strip */}
       <CTASection
         id="cta-strip-2"
-        title="Get Guaranteed Guidance from British Council & IDP Certified Trainers"
-        subtitle="Visit our Namakkal office or book an online virtual counselling session at your convenience."
-        badge="100% Free Consultation • Trusted by 7.3 Lakh Students"
+        title="Training from British Council & IDP Certified Mentors"
+        subtitle="Personalized coaching and mock tests to help you achieve your target test scores."
+        badge="Official Test Partner • 25+ Years of Trust"
         variant="sand"
       />
 

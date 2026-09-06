@@ -12,13 +12,13 @@ export default function BranchDetailsMap() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-kc-primary font-bold text-xs uppercase tracking-wider">
-            <MapPin className="w-3.5 h-3.5" /> Visit In Person
+            <MapPin className="w-3.5 h-3.5" /> In-Person & Remote Support
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-kc-heading tracking-tight mt-2.5">
-            KC Overseas Education — Namakkal Branch
+          <h2 className="text-2xl sm:text-3xl font-black text-kc-heading tracking-tight mt-2.5">
+            Local Office & Contact Details
           </h2>
           <p className="text-xs sm:text-sm text-kc-muted mt-2">
-            Located conveniently on Salem Road above Thangamayil Jewellery. Walk in for a face-to-face consultation with our senior counsellors.
+            Serving students across Tamil Nadu with our local office in Namakkal. Walk in for an in-person counselling session or connect remotely.
           </p>
         </div>
 
