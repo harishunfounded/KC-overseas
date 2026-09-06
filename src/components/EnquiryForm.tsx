@@ -1,0 +1,420 @@
+'use client';
+
+import React, { useState } from 'react';
+import { Send, CheckCircle2, ShieldAlert, Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
+import { siteConfig } from '@/config/site';
+
+interface EnquiryFormProps {
+  id?: string;
+  mode?: 'full' | 'quick';
+  source?: string;
+  defaultCountry?: string;
+  defaultService?: string;
+  onSuccessCallback?: () => void;
+  className?: string;
+}
+
+export default function EnquiryForm({
+  id = 'enquiry-form',
+  mode = 'full',
+  source = 'landing_page',
+  defaultCountry = '',
+  defaultService = '',
+  onSuccessCallback,
+  className = '',
+}: EnquiryFormProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    preferredCountry: defaultCountry,
+    preferredService: defaultService,
+    message: '',
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
+
+  const validate = () => {
+    const errs: Record<string, string> = {};
+
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
+      errs.name = 'Please enter your name.';
+    }
+
+    const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
+    if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+      errs.phone = 'Enter valid 10-digit mobile number.';
+    }
+
+    if (mode === 'full') {
+      if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+        errs.email = 'Enter a valid email address.';
+      }
+      if (!formData.preferredCountry) {
+        errs.preferredCountry = 'Select your target country.';
+      }
+    }
+
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setApiError(null);
+
+    if (!validate()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          source,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsSubmitted(true);
+        if (onSuccessCallback) onSuccessCallback();
+
+        // Trigger Google Ads conversion tracking event
+        if (typeof window !== 'undefined' && (window as any).gtag && siteConfig.tracking.formConversionLabel) {
+          (window as any).gtag('event', 'conversion', {
+            send_to: `${siteConfig.tracking.googleAdsId}/${siteConfig.tracking.formConversionLabel}`,
+            event_callback: () => console.log('Google Ads conversion logged.'),
+          });
+        }
+      } else {
+        setApiError(data.message || 'Something went wrong. Please call us directly.');
+      }
+    } catch (err) {
+      setApiError('Unable to submit enquiry. Please call +91-8056600507.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Success Confirmation Card
+  if (isSubmitted) {
+    return (
+      <div className={`bg-white rounded-2xl p-6 shadow-xl border border-emerald-200 text-center ${className}`}>
+        <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+          <CheckCircle2 className="w-8 h-8" />
+        </div>
+        <h3 className="text-xl font-extrabold text-kc-heading">Thank You, {formData.name}!</h3>
+        <p className="text-sm text-kc-muted mt-2">
+          Your enquiry has been received by our <strong>Namakkal Branch</strong> counsellor. We will call you within 15 minutes during office hours.
+        </p>
+
+        {/* Immediate WhatsApp Connect */}
+        <div className="mt-5 p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+          <p className="text-xs font-semibold text-emerald-900 mb-2">Want an immediate reply?</p>
+          <a
+            href={`https://wa.me/${siteConfig.contact.whatsappClean}?text=Hi%2C%20I%20am%20${encodeURIComponent(
+              formData.name
+            )}.%20I%20just%20submitted%20my%20study%20abroad%20enquiry%20for%20${encodeURIComponent(
+              formData.preferredCountry || 'abroad'
+            )}.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-kc-whatsapp text-white font-bold text-sm shadow-md hover:bg-kc-whatsapp-hover transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-white" />
+            Connect Instantly on WhatsApp
+          </a>
+        </div>
+
+        <button
+          onClick={() => {
+            setIsSubmitted(false);
+            setFormData({
+              name: '',
+              phone: '',
+              email: '',
+              preferredCountry: defaultCountry,
+              preferredService: defaultService,
+              message: '',
+            });
+          }}
+          className="mt-4 text-xs font-medium text-kc-primary hover:underline"
+        >
+          Submit another response
+        </button>
+      </div>
+    );
+  }
+
+  // Quick Mini-Form Mode (Ultra-compact for mobile fold)
+  if (mode === 'quick') {
+    return (
+      <form
+        id={id}
+        onSubmit={handleSubmit}
+        className={`bg-white/95 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-lg border border-slate-200 ${className}`}
+        noValidate
+      >
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-kc-primary flex items-center gap-1">
+            <Sparkles className="w-3 h-3 text-kc-amber" /> Quick 30-Sec Enquiry
+          </span>
+          <span className="text-[10px] text-emerald-700 bg-emerald-100 font-semibold px-2 py-0.5 rounded-full">
+            Free Evaluation
+          </span>
+        </div>
+
+        {apiError && (
+          <div className="p-2 mb-2 bg-red-50 text-red-700 text-xs rounded border border-red-200 flex items-center gap-1">
+            <ShieldAlert className="w-3.5 h-3.5 shrink-0" />
+            <span>{apiError}</span>
+          </div>
+        )}
+
+        <div className="space-y-2">
+          <div>
+            <input
+              type="text"
+              placeholder="Your Full Name *"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className={`w-full px-3 py-2 text-xs rounded-lg border ${
+                errors.name ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
+              } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+            />
+            {errors.name && <p className="text-[10px] text-red-600 mt-0.5">{errors.name}</p>}
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <div className="flex rounded-lg shadow-sm">
+                <span className="inline-flex items-center px-2 rounded-l-lg border border-r-0 border-slate-300 bg-slate-50 text-slate-500 text-xs">
+                  +91
+                </span>
+                <input
+                  type="tel"
+                  placeholder="Mobile No. *"
+                  maxLength={10}
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className={`w-full px-2 py-2 text-xs rounded-r-lg border ${
+                    errors.phone ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
+                  } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+                />
+              </div>
+              {errors.phone && <p className="text-[10px] text-red-600 mt-0.5">{errors.phone}</p>}
+            </div>
+
+            <div>
+              <select
+                value={formData.preferredCountry}
+                onChange={(e) => setFormData({ ...formData, preferredCountry: e.target.value })}
+                className="w-full px-2 py-2 text-xs rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-kc-primary text-slate-700"
+              >
+                <option value="">Destination?</option>
+                {siteConfig.destinations.map((d) => (
+                  <option key={d.id} value={d.name}>
+                    {d.flag} {d.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full min-h-[44px] flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-kc-accent text-white font-extrabold text-xs sm:text-sm shadow-cta-glow hover:bg-kc-accent-hover active:scale-[0.98] transition-all disabled:opacity-70"
+          >
+            {isSubmitting ? (
+              <span className="inline-flex items-center gap-2">Submitting...</span>
+            ) : (
+              <>
+                <span>Book Free Counselling</span>
+                <ArrowRight className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        </div>
+
+        <p className="text-[9px] text-slate-500 text-center mt-1.5 leading-tight">
+          🔒 100% Privacy. By submitting, you agree to be contacted by KC Overseas.
+        </p>
+      </form>
+    );
+  }
+
+  // Full Comprehensive Form Mode
+  return (
+    <div className={`bg-white rounded-2xl p-5 sm:p-7 shadow-xl border border-slate-200 ${className}`}>
+      <div className="mb-4">
+        <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-kc-primary bg-kc-primary-light px-2.5 py-1 rounded-full">
+          <Sparkles className="w-3.5 h-3.5 text-kc-primary" /> Free 1-on-1 Expert Session
+        </span>
+        <h3 className="text-xl sm:text-2xl font-extrabold text-kc-heading mt-2">
+          Kickstart Your Study Abroad Journey
+        </h3>
+        <p className="text-xs sm:text-sm text-kc-muted mt-1">
+          Get university shortlisting, IELTS coaching schedule, and scholarship eligibility guidance.
+        </p>
+      </div>
+
+      {apiError && (
+        <div className="p-3 mb-4 bg-red-50 text-red-700 text-xs rounded-lg border border-red-200 flex items-center gap-2">
+          <ShieldAlert className="w-4 h-4 shrink-0" />
+          <span>{apiError}</span>
+        </div>
+      )}
+
+      <form id={id} onSubmit={handleSubmit} className="space-y-3.5" noValidate>
+        {/* Full Name */}
+        <div>
+          <label className="block text-xs font-semibold text-kc-heading mb-1">
+            Full Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="e.g. Anand Kumar"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
+              errors.name ? 'border-red-500 bg-red-50/40' : 'border-slate-300'
+            } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+          />
+          {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
+        </div>
+
+        {/* Mobile Number & Email (2-col on desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label className="block text-xs font-semibold text-kc-heading mb-1">
+              Mobile Number <span className="text-red-500">*</span>
+            </label>
+            <div className="flex rounded-lg shadow-sm">
+              <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-slate-300 bg-slate-50 text-slate-600 text-sm">
+                +91
+              </span>
+              <input
+                type="tel"
+                placeholder="98765 43210"
+                maxLength={10}
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className={`w-full px-3.5 py-2.5 text-sm rounded-r-lg border ${
+                  errors.phone ? 'border-red-500 bg-red-50/40' : 'border-slate-300'
+                } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+              />
+            </div>
+            {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-kc-heading mb-1">
+              Email Address <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              placeholder="anand@example.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
+                errors.email ? 'border-red-500 bg-red-50/40' : 'border-slate-300'
+              } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+            />
+            {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
+          </div>
+        </div>
+
+        {/* Target Country & Preferred Service */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label className="block text-xs font-semibold text-kc-heading mb-1">
+              Preferred Country <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={formData.preferredCountry}
+              onChange={(e) => setFormData({ ...formData, preferredCountry: e.target.value })}
+              className={`w-full px-3 py-2.5 text-sm rounded-lg border ${
+                errors.preferredCountry ? 'border-red-500' : 'border-slate-300'
+              } bg-white focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+            >
+              <option value="">-- Choose Country --</option>
+              {siteConfig.destinations.map((d) => (
+                <option key={d.id} value={d.name}>
+                  {d.flag} {d.name}
+                </option>
+              ))}
+            </select>
+            {errors.preferredCountry && (
+              <p className="text-xs text-red-600 mt-1">{errors.preferredCountry}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-kc-heading mb-1">
+              Preferred Service / Test Prep
+            </label>
+            <select
+              value={formData.preferredService}
+              onChange={(e) => setFormData({ ...formData, preferredService: e.target.value })}
+              className="w-full px-3 py-2.5 text-sm rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-kc-primary"
+            >
+              <option value="">General Free Counselling</option>
+              {siteConfig.services.map((s) => (
+                <option key={s.id} value={s.name}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Message / Remarks */}
+        <div>
+          <label className="block text-xs font-semibold text-kc-heading mb-1">
+            Additional Questions / Academic Background (Optional)
+          </label>
+          <textarea
+            rows={2}
+            placeholder="Tell us about your current qualification, intended course, or test scores..."
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-kc-primary resize-none"
+          ></textarea>
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          id="enquiry-submit-button"
+          className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-base shadow-cta-glow hover:bg-kc-accent-hover active:scale-[0.99] transition-all disabled:opacity-70"
+        >
+          {isSubmitting ? (
+            <span>Processing your booking...</span>
+          ) : (
+            <>
+              <Send className="w-5 h-5" />
+              <span>Book Free Counselling Session</span>
+            </>
+          )}
+        </button>
+
+        {/* Privacy Consent */}
+        <p className="text-[11px] text-kc-muted text-center pt-1 leading-normal">
+          By submitting, you agree to be contacted by KC Overseas regarding your study abroad enquiry. We respect your privacy and never spam.
+        </p>
+      </form>
+    </div>
+  );
+}
