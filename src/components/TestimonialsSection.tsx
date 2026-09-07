@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
           {siteConfig.testimonials.slice(0, 3).map((t) => (
             <div
               key={t.id}
-              className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col justify-between"
+              className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-elevation-low card-elevation-interactive flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center text-amber-400 mb-3">

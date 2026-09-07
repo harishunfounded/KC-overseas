@@ -34,7 +34,7 @@ export default function StickyMobileBar() {
           href={`tel:${siteConfig.contact.phone1Clean}`}
           onClick={handleCallClick}
           id="mobile-sticky-call-btn"
-          className="flex-1 min-h-[48px] px-3 py-2.5 rounded-xl bg-kc-call text-white text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all"
+          className="flex-1 min-h-[48px] px-3 py-2.5 rounded-xl bg-kc-call text-white text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-sm cta-tactile"
         >
           <Phone className="w-4 h-4 fill-white" />
           <span>Call Now</span>
@@ -44,7 +44,7 @@ export default function StickyMobileBar() {
         <button
           onClick={scrollToForm}
           id="mobile-sticky-counselling-btn"
-          className="flex-[1.5] min-h-[48px] px-3 py-2.5 rounded-xl bg-kc-accent text-white text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-cta-glow active:scale-95 transition-all"
+          className="flex-[1.5] min-h-[48px] px-3 py-2.5 rounded-xl bg-kc-accent text-white text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-cta-glow cta-tactile"
         >
           <Calendar className="w-4 h-4" />
           <span>Book Free Counselling</span>

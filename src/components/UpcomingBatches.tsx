@@ -31,7 +31,7 @@ export default function UpcomingBatches() {
           {siteConfig.upcomingBatches.map((batch) => (
             <div
               key={batch.id}
-              className="bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 hover:border-kc-primary hover:bg-white transition-all flex flex-col justify-between"
+              className="bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 hover:border-kc-primary hover:bg-white shadow-elevation-low card-elevation-interactive flex flex-col justify-between"
             >
               <div>
                 <span className="text-[10px] font-bold text-kc-primary bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100 inline-block mb-2">
@@ -56,7 +56,7 @@ export default function UpcomingBatches() {
 
               <button
                 onClick={handleReserveSeat}
-                className="w-full py-2 px-3 rounded-xl bg-kc-primary text-white text-xs font-bold hover:bg-kc-primary-hover active:scale-95 transition-all flex items-center justify-center gap-1 shadow-sm"
+                className="w-full py-2 px-3 rounded-xl bg-kc-primary text-white text-xs font-bold shadow-sm hover:bg-kc-primary-hover cta-tactile flex items-center justify-center gap-1"
               >
                 <span>Reserve Seat</span>
                 <ArrowRight className="w-3 h-3" />

@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={item.title}
-                className="bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 hover:border-kc-primary hover:bg-white hover:shadow-sm transition-all text-center flex flex-col items-center justify-center group"
+                className="bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 hover:border-kc-primary hover:bg-white shadow-elevation-low card-elevation-interactive text-center flex flex-col items-center justify-center group"
               >
                 <div className="w-10 h-10 rounded-xl bg-blue-50 text-kc-primary flex items-center justify-center mb-2.5 group-hover:bg-kc-primary group-hover:text-white transition-colors">
                   <IconComponent className="w-5 h-5" />

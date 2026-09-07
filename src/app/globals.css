@@ -35,3 +35,70 @@
 .tap-highlight-none {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Scroll-reveal section animation: 10px fade and slide (ease-out ~400ms) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Primary CTA Tactile Micro-Interactions */
+.cta-tactile {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms ease-out, background-color 150ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta-tactile:hover {
+    transform: scale(1.02);
+  }
+}
+
+.cta-tactile:active {
+  transform: scale(0.98);
+}
+
+/* Desktop-only Card Elevation Lift (skip touch screens to prevent sticky hover) */
+@media (hover: hover) and (pointer: fine) {
+  .card-elevation-interactive {
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+  }
+  .card-elevation-interactive:hover {
+    box-shadow: 0 10px 25px -4px rgba(11, 21, 38, 0.10), 0 4px 10px -4px rgba(11, 21, 38, 0.05);
+    transform: translateY(-2px);
+  }
+}
+
+/* Respect prefers-reduced-motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .cta-tactile:hover,
+  .cta-tactile:active,
+  .card-elevation-interactive:hover {
+    transform: none !important;
+  }
+}

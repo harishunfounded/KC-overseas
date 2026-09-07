@@ -77,7 +77,7 @@ export default function CTASection({
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6">
           <a
             href="#enquiry-section"
-            className={`min-h-[48px] px-6 sm:px-8 py-3 rounded-xl font-extrabold text-sm transition-all flex items-center justify-center gap-2 active:scale-95 ${styles.ctaBtn}`}
+            className={`min-h-[48px] px-6 sm:px-8 py-3 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 cta-tactile ${styles.ctaBtn}`}
           >
             <span>Book Free Counselling</span>
             <ArrowRight className="w-4 h-4" />
@@ -87,7 +87,7 @@ export default function CTASection({
             href={siteConfig.contact.whatsappChatUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-[48px] px-6 sm:px-7 py-3 rounded-xl bg-kc-whatsapp text-white font-bold text-sm shadow-whatsapp-glow hover:bg-kc-whatsapp-hover transition-all flex items-center justify-center gap-2 active:scale-95"
+            className="min-h-[48px] px-6 sm:px-7 py-3 rounded-xl bg-kc-whatsapp text-white font-bold text-sm shadow-whatsapp-glow hover:bg-kc-whatsapp-hover cta-tactile flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
             <span>Chat on WhatsApp</span>

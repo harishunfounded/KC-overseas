@@ -17,6 +17,7 @@ import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import StickyMobileBar from '@/components/StickyMobileBar';
 import PromoPopup from '@/components/PromoPopup';
+import SectionReveal from '@/components/SectionReveal';
 import { siteConfig } from '@/config/site';
 
 export default function Home() {
@@ -35,48 +36,70 @@ export default function Home() {
       <HeroSection />
 
       {/* 4. Trust & Credibility Stats Bar */}
-      <StatsBar />
+      <SectionReveal>
+        <StatsBar />
+      </SectionReveal>
 
       {/* 5. 10 Target Study Destinations */}
-      <CountriesGrid onSelectCountry={(c) => setSelectedCountry(c)} />
+      <SectionReveal>
+        <CountriesGrid onSelectCountry={(c) => setSelectedCountry(c)} />
+      </SectionReveal>
 
       {/* 6. Test Prep & Comprehensive Assistance Services */}
-      <ServicesGrid />
+      <SectionReveal>
+        <ServicesGrid />
+      </SectionReveal>
 
       {/* 7. Mid-Page Conversion CTA Banner */}
-      <CTASection
-        id="cta-mid"
-        title={siteConfig.intakeLabel}
-        subtitle="University admission rounds and scholarship evaluations are currently open."
-        variant="primary"
-      />
+      <SectionReveal>
+        <CTASection
+          id="cta-mid"
+          title={siteConfig.intakeLabel}
+          subtitle="University admission rounds and scholarship evaluations are currently open."
+          variant="primary"
+        />
+      </SectionReveal>
 
       {/* 8. Why Choose KC Overseas Differentiators */}
-      <WhyChooseUs />
+      <SectionReveal>
+        <WhyChooseUs />
+      </SectionReveal>
 
       {/* 9. Second Conversion Strip */}
-      <CTASection
-        id="cta-strip-2"
-        title="Training from British Council & IDP Certified Mentors"
-        subtitle="Personalized coaching and mock tests to help you achieve your target test scores."
-        badge="Official Test Partner • 25+ Years of Trust"
-        variant="sand"
-      />
+      <SectionReveal>
+        <CTASection
+          id="cta-strip-2"
+          title="Training from British Council & IDP Certified Mentors"
+          subtitle="Personalized coaching and mock tests to help you achieve your target test scores."
+          badge="Official Test Partner • 25+ Years of Trust"
+          variant="sand"
+        />
+      </SectionReveal>
 
       {/* 10. Student Testimonials & Success Stories */}
-      <TestimonialsSection />
+      <SectionReveal>
+        <TestimonialsSection />
+      </SectionReveal>
 
       {/* 11. Upcoming IELTS / PTE / GRE Batches */}
-      <UpcomingBatches />
+      <SectionReveal>
+        <UpcomingBatches />
+      </SectionReveal>
 
       {/* 12. Namakkal Branch Office Details & Embedded Map */}
-      <BranchDetailsMap />
+      <SectionReveal>
+        <BranchDetailsMap />
+      </SectionReveal>
 
       {/* 13. Full Final Enquiry Form Capture Point */}
-      <FullEnquirySection />
+      <SectionReveal>
+        <FullEnquirySection />
+      </SectionReveal>
 
       {/* 14. Comprehensive Footer with Legal & Google Ads Disclaimers */}
-      <Footer />
+      <SectionReveal>
+        <Footer />
+      </SectionReveal>
 
       {/* Floating & Persistent Conversion Elements */}
       <FloatingWhatsApp />

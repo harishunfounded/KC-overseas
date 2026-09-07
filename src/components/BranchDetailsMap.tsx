@@ -26,7 +26,7 @@ export default function BranchDetailsMap() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* Left Column: Branch Credentials */}
-          <div className="lg:col-span-5 bg-kc-surface rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-kc-surface rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-elevation-mid flex flex-col justify-between">
             <div className="space-y-5">
               
               {/* Address */}
@@ -133,7 +133,7 @@ export default function BranchDetailsMap() {
                 href={siteConfig.contact.mapDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-kc-primary text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-primary-hover active:scale-95 transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 rounded-xl bg-kc-primary text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-primary-hover cta-tactile flex items-center justify-center gap-2"
               >
                 <Navigation className="w-4 h-4" />
                 <span>Get Directions in Google Maps</span>
@@ -144,7 +144,7 @@ export default function BranchDetailsMap() {
           </div>
 
           {/* Right Column: Google Maps Embed (with clear placeholder comment for user) */}
-          <div className="lg:col-span-7 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative min-h-[350px] lg:min-h-full flex flex-col">
+          <div className="lg:col-span-7 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-elevation-mid relative min-h-[350px] lg:min-h-full flex flex-col">
             {/* Embedded Google Map iframe: Replace src with your exact embed key if preferred */}
             <iframe
               title="KC Overseas Education Namakkal Location Map"

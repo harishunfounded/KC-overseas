@@ -109,7 +109,7 @@ export default function EnquiryForm({
   // Success Confirmation Card
   if (isSubmitted) {
     return (
-      <div className={`bg-white rounded-2xl p-6 shadow-xl border border-emerald-200 text-center ${className}`}>
+      <div className={`bg-white rounded-2xl p-6 shadow-elevation-mid border border-emerald-200 text-center ${className}`}>
         <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
           <CheckCircle2 className="w-6 h-6" />
         </div>
@@ -159,7 +159,7 @@ export default function EnquiryForm({
       <form
         id={id}
         onSubmit={handleSubmit}
-        className={`bg-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-200/80 ${className}`}
+        className={`bg-white rounded-2xl p-4 sm:p-5 shadow-elevation-mid border border-slate-200/80 ${className}`}
         noValidate
       >
         {apiError && (
@@ -206,7 +206,7 @@ export default function EnquiryForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-xs sm:text-sm shadow-cta-glow hover:bg-kc-accent-hover active:scale-[0.98] transition-all disabled:opacity-70"
+          className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-xs sm:text-sm shadow-cta-glow hover:bg-kc-accent-hover cta-tactile disabled:opacity-70"
         >
           {isSubmitting ? (
             <span>Connecting...</span>
@@ -227,7 +227,7 @@ export default function EnquiryForm({
 
   // Full Comprehensive Form Mode
   return (
-    <div className={`bg-white rounded-2xl p-5 sm:p-7 shadow-xl border border-slate-200 ${className}`}>
+    <div className={`bg-white rounded-2xl p-5 sm:p-7 shadow-elevation-mid border border-slate-200 ${className}`}>
       <div className="mb-4">
         <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-kc-primary bg-kc-primary-light px-2.5 py-1 rounded-full">
           <Sparkles className="w-3.5 h-3.5 text-kc-primary" /> Free 1-on-1 Expert Session
@@ -369,7 +369,7 @@ export default function EnquiryForm({
           type="submit"
           disabled={isSubmitting}
           id="enquiry-submit-button"
-          className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-base shadow-cta-glow hover:bg-kc-accent-hover active:scale-[0.99] transition-all disabled:opacity-70"
+          className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-base shadow-cta-glow hover:bg-kc-accent-hover cta-tactile disabled:opacity-70"
         >
           {isSubmitting ? (
             <span>Processing your booking...</span>

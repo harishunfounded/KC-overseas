@@ -50,7 +50,7 @@ export default function FullEnquirySection() {
             </div>
 
             {/* Quick reassurance */}
-            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
+            <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-elevation-low flex items-center gap-3">
               <Clock className="w-5 h-5 text-kc-primary shrink-0" />
               <div className="text-xs text-slate-600">
                 <strong>Prompt Support:</strong> A dedicated counsellor will contact you within working hours.

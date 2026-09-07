@@ -16,11 +16,21 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative bg-gradient-to-b from-slate-50/80 via-white to-slate-50/50 pt-8 sm:pt-14 pb-12 sm:pb-20 border-b border-slate-100 overflow-hidden"
+      className="relative bg-gradient-to-b from-slate-50/90 via-white to-slate-50/60 pt-8 sm:pt-14 pb-12 sm:pb-20 border-b border-slate-100 overflow-hidden"
     >
-      {/* Generous background ambiance */}
-      <div className="absolute top-0 right-1/4 -mt-24 w-96 h-96 rounded-full bg-blue-50 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-0 left-1/4 -mb-24 w-96 h-96 rounded-full bg-orange-50/60 blur-3xl pointer-events-none -z-10" />
+      {/* Soft static gradient mesh & depth textures (no continuous animations) */}
+      <div
+        className="absolute inset-0 bg-[radial-gradient(#d1d5db_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none -z-10"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-0 right-1/4 -mt-20 w-[420px] h-[420px] rounded-full bg-gradient-to-br from-blue-100/70 to-indigo-100/40 blur-3xl pointer-events-none -z-10"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-1/4 -mb-20 w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-orange-100/50 to-amber-100/30 blur-3xl pointer-events-none -z-10"
+        aria-hidden="true"
+      />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -47,7 +57,7 @@ export default function HeroSection() {
 
           {/* Supporting Visual / Credibility Focal Card (No Form, No Clutter) */}
           <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-sm lg:max-w-none bg-gradient-to-br from-kc-primary via-blue-700 to-kc-navy text-white rounded-3xl p-6 sm:p-8 shadow-2xl shadow-blue-900/15 border border-blue-400/20 overflow-hidden">
+            <div className="relative mx-auto max-w-sm lg:max-w-none bg-gradient-to-br from-kc-primary via-blue-700 to-kc-navy text-white rounded-3xl p-6 sm:p-8 shadow-elevation-high border border-blue-400/20 card-elevation-interactive overflow-hidden">
               {/* Background ambient ring */}
               <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none" />
               

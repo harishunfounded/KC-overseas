@@ -50,7 +50,7 @@ export default function StickyHeader() {
             href={`tel:${siteConfig.contact.phone1Clean}`}
             onClick={handleCallClick}
             id="header-call-btn"
-            className="flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-kc-call text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-call-hover active:scale-95 transition-all min-h-[38px] sm:min-h-[42px]"
+            className="flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-kc-call text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-call-hover cta-tactile min-h-[38px] sm:min-h-[42px]"
             title={`Call KC Namakkal at ${siteConfig.contact.phone1}`}
           >
             <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" />
@@ -65,7 +65,7 @@ export default function StickyHeader() {
             rel="noopener noreferrer"
             onClick={handleWhatsAppClick}
             id="header-whatsapp-btn"
-            className="flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-kc-whatsapp text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-whatsapp-hover active:scale-95 transition-all min-h-[38px] sm:min-h-[42px]"
+            className="flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-kc-whatsapp text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-whatsapp-hover cta-tactile min-h-[38px] sm:min-h-[42px]"
             title="Chat on WhatsApp with KC Namakkal"
           >
             <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" />
@@ -75,8 +75,8 @@ export default function StickyHeader() {
 
           {/* Desktop Counselling CTA */}
           <a
-            href="#enquiry"
-            className="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-full bg-kc-accent text-white text-sm font-bold shadow-cta-glow hover:bg-kc-accent-hover active:scale-95 transition-all ml-1"
+            href="#enquiry-section"
+            className="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-full bg-kc-accent text-white text-sm font-bold shadow-cta-glow hover:bg-kc-accent-hover cta-tactile ml-1"
           >
             Book Free Counselling
           </a>

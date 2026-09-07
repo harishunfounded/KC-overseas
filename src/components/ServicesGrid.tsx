@@ -59,7 +59,7 @@ export default function ServicesGrid() {
               <button
                 key={service.id}
                 onClick={handleSelectService}
-                className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm hover:border-kc-primary hover:shadow-md transition-all duration-200 flex flex-col items-center text-center group"
+                className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-elevation-low hover:border-kc-primary card-elevation-interactive flex flex-col items-center text-center group"
               >
                 <div className="w-11 h-11 rounded-xl bg-blue-50 text-kc-primary flex items-center justify-center mb-2.5 group-hover:bg-kc-primary group-hover:text-white transition-colors">
                   <Icon className="w-5 h-5" />

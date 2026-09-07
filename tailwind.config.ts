@@ -40,11 +40,14 @@ const config: Config = {
         sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
+        'elevation-low': '0 1px 3px 0 rgba(11, 21, 38, 0.05), 0 1px 2px -1px rgba(11, 21, 38, 0.04)',
+        'elevation-mid': '0 4px 14px -2px rgba(11, 21, 38, 0.07), 0 2px 6px -2px rgba(11, 21, 38, 0.04)',
+        'elevation-high': '0 12px 28px -4px rgba(11, 21, 38, 0.10), 0 4px 10px -4px rgba(11, 21, 38, 0.05)',
         'kc-sm': '0 2px 8px rgba(30, 100, 220, 0.08)',
         'kc-md': '0 4px 20px rgba(30, 100, 220, 0.12)',
         'kc-lg': '0 10px 30px rgba(30, 100, 220, 0.16)',
-        'cta-glow': '0 4px 20px rgba(255, 112, 84, 0.4)',
-        'whatsapp-glow': '0 4px 20px rgba(37, 211, 102, 0.45)',
+        'cta-glow': '0 4px 20px rgba(255, 112, 84, 0.35)',
+        'whatsapp-glow': '0 4px 20px rgba(37, 211, 102, 0.35)',
       },
       animation: {
         'pulse-subtle': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',

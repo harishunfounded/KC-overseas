@@ -39,7 +39,7 @@ export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
             <button
               key={country.id}
               onClick={() => handleSelectCountry(country)}
-              className="bg-slate-50/70 hover:bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200/80 hover:border-kc-primary hover:shadow-md transition-all duration-200 text-left group flex flex-col justify-between"
+              className="bg-slate-50/70 hover:bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200/80 hover:border-kc-primary shadow-elevation-low card-elevation-interactive text-left group flex flex-col justify-between"
             >
               <div>
                 <span className="text-2xl sm:text-3xl block mb-2 select-none" role="img" aria-label={country.name}>
