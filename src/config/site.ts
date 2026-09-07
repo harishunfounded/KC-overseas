@@ -179,4 +179,14 @@ export const siteConfig = {
     gtmId: process.env.NEXT_PUBLIC_GTM_ID || '',
     gaMeasurementId: process.env.NEXT_PUBLIC_GA_ID || '',
   },
+
+  // Hero Video Configuration (easily swappable for future footage)
+  heroVideo: {
+    desktopMp4: '/hero-bg.mp4',
+    desktopWebm: '/hero-bg.webm',
+    mobileMp4: '/hero-bg-mobile.mp4',
+    poster: '/hero-poster.jpg',
+    // Set to true to test mobile video playback vs static poster image
+    enableMobileVideo: true,
+  },
 };
