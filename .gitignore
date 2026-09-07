@@ -38,3 +38,4 @@ data/leads.json
 data/leads.csv
 
 .vercel
+.env*
