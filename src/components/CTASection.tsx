@@ -23,7 +23,7 @@ export default function CTASection({
     switch (variant) {
       case 'sand':
         return {
-          wrapper: 'bg-kc-sand text-kc-heading border-y border-kc-sand-dark',
+          wrapper: 'bg-gradient-to-r from-kc-sand via-[#FAF3EB] to-kc-sand animate-gradient-slow text-kc-heading border-y border-kc-sand-dark',
           badge: 'bg-white/80 text-kc-primary border border-amber-200',
           title: 'text-kc-heading',
           sub: 'text-slate-700',
@@ -31,7 +31,7 @@ export default function CTASection({
         };
       case 'navy':
         return {
-          wrapper: 'bg-kc-navy text-white border-y border-slate-800',
+          wrapper: 'bg-gradient-to-r from-kc-navy via-slate-900 to-[#122340] animate-gradient-slow text-white border-y border-slate-800',
           badge: 'bg-white/10 text-yellow-300 border border-white/20',
           title: 'text-white',
           sub: 'text-slate-300',
@@ -40,7 +40,7 @@ export default function CTASection({
       case 'primary':
       default:
         return {
-          wrapper: 'bg-gradient-to-r from-kc-primary via-blue-600 to-kc-primary text-white',
+          wrapper: 'bg-gradient-to-r from-kc-primary via-blue-600 to-[#1853B8] animate-gradient-slow text-white',
           badge: 'bg-white/15 text-yellow-300 border border-white/20',
           title: 'text-white',
           sub: 'text-blue-100',

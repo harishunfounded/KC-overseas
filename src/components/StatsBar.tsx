@@ -91,7 +91,7 @@ function StatCounterItem({
 
   return (
     <div className="p-3.5 sm:p-4 rounded-2xl bg-kc-navy-card/60 border border-slate-800/80 shadow-elevation-low hover:border-kc-primary/60 card-elevation-interactive group">
-      <div className="w-8 h-8 rounded-lg bg-white/5 text-sky-400 flex items-center justify-center mx-auto mb-2 group-hover:scale-105 transition-transform">
+      <div className={`w-8 h-8 rounded-lg bg-white/5 text-sky-400 flex items-center justify-center mx-auto mb-2 transition-all duration-500 ease-out group-hover:scale-110 ${isTriggered ? 'scale-100 opacity-100' : 'scale-75 opacity-40'}`}>
         <IconComponent className="w-4 h-4" />
       </div>
       <div className="text-xl sm:text-2xl font-black text-white tracking-tight tabular-nums">

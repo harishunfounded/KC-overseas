@@ -39,17 +39,17 @@ export default function HeroSection() {
           <div className="lg:col-span-7 text-center lg:text-left space-y-5">
             
             {/* Headline: Under 8 Words */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-kc-heading tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-kc-heading tracking-tight leading-[1.15] animate-hero-1">
               Study Abroad with Complete Confidence
             </h1>
 
             {/* Value Line: Under 12 Words */}
-            <p className="text-base sm:text-lg text-kc-muted leading-relaxed font-normal max-w-xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg text-kc-muted leading-relaxed font-normal max-w-xl mx-auto lg:mx-0 animate-hero-2">
               1,200+ global universities. Expert guidance from admission to visa.
             </p>
 
             {/* Quick 2-Field Lead Capture (Name + Mobile + Single Dominant CTA) */}
-            <div className="pt-2 max-w-md mx-auto lg:mx-0">
+            <div className="pt-2 max-w-md mx-auto lg:mx-0 animate-hero-3">
               <EnquiryForm mode="quick" source="hero_quick" />
             </div>
 
@@ -57,7 +57,7 @@ export default function HeroSection() {
 
           {/* Supporting Visual / Credibility Focal Card (No Form, No Clutter) */}
           <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-sm lg:max-w-none bg-gradient-to-br from-kc-primary via-blue-700 to-kc-navy text-white rounded-3xl p-6 sm:p-8 shadow-elevation-high border border-blue-400/20 card-elevation-interactive overflow-hidden">
+            <div className="relative mx-auto max-w-sm lg:max-w-none bg-gradient-to-br from-kc-primary via-blue-700 to-kc-navy text-white rounded-3xl p-6 sm:p-8 shadow-elevation-high border border-white/20 ring-1 ring-white/10 card-elevation-interactive overflow-hidden backdrop-blur-md">
               {/* Background ambient ring */}
               <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none" />
               
@@ -78,26 +78,26 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* 3 Core Confidence Facts */}
+                {/* 3 Core Confidence Facts with soft row hover highlights */}
                 <div className="space-y-3 pt-2 border-t border-white/15">
-                  <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                    <Building2 className="w-5 h-5 text-yellow-300 shrink-0" />
+                  <div className="flex items-center gap-3 bg-white/10 hover:bg-white/15 backdrop-blur-sm rounded-xl p-3 transition-all duration-200 cursor-default group/fact">
+                    <Building2 className="w-5 h-5 text-yellow-300 shrink-0 group-hover/fact:scale-110 transition-transform" />
                     <div>
                       <span className="text-sm font-bold text-white block">1,200+ Partner Universities</span>
                       <span className="text-[11px] text-blue-200">Across UK, USA, Germany, Canada, Australia & more</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                    <ShieldCheck className="w-5 h-5 text-emerald-300 shrink-0" />
+                  <div className="flex items-center gap-3 bg-white/10 hover:bg-white/15 backdrop-blur-sm rounded-xl p-3 transition-all duration-200 cursor-default group/fact">
+                    <ShieldCheck className="w-5 h-5 text-emerald-300 shrink-0 group-hover/fact:scale-110 transition-transform" />
                     <div>
                       <span className="text-sm font-bold text-white block">99% Visa Success Track Record</span>
                       <span className="text-[11px] text-blue-200">End-to-end documentation and interview preparation</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                    <Award className="w-5 h-5 text-amber-300 shrink-0" />
+                  <div className="flex items-center gap-3 bg-white/10 hover:bg-white/15 backdrop-blur-sm rounded-xl p-3 transition-all duration-200 cursor-default group/fact">
+                    <Award className="w-5 h-5 text-amber-300 shrink-0 group-hover/fact:scale-110 transition-transform" />
                     <div>
                       <span className="text-sm font-bold text-white block">Official Test Prep Partners</span>
                       <span className="text-[11px] text-blue-200">British Council & IDP certified master trainers</span>

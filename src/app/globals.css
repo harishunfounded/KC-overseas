@@ -75,6 +75,98 @@
   }
 }
 
+/* Keyframes for Staggered Hero Entrance, Ambient CTA, and Icon Scale */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ambientGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.85;
+  }
+}
+
+/* Staggered Hero Entrance Animation Utilities */
+.animate-hero-1 {
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-2 {
+  opacity: 0;
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+}
+
+.animate-hero-3 {
+  opacity: 0;
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) 220ms forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-gradient-slow {
+  background-size: 200% 200% !important;
+  animation: ambientGradient 16s ease infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 2.5s ease-in-out infinite;
+}
+
+/* Hide scrollbar for mobile carousels while allowing momentum touch scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Input Focus Glow */
+.input-refined {
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.input-refined:focus {
+  border-color: #1E64DC !important;
+  box-shadow: 0 0 0 4px rgba(30, 100, 220, 0.12) !important;
+}
+
 /* Respect prefers-reduced-motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -94,6 +186,17 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .animate-hero-1,
+  .animate-hero-2,
+  .animate-hero-3,
+  .animate-scale-in,
+  .animate-gradient-slow,
+  .animate-gentle-pulse {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
   }
 
   .cta-tactile:hover,

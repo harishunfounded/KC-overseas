@@ -27,11 +27,11 @@ export default function BranchDetailsMap() {
           
           {/* Left Column: Branch Credentials */}
           <div className="lg:col-span-5 bg-kc-surface rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-elevation-mid flex flex-col justify-between">
-            <div className="space-y-5">
+            <div className="space-y-3">
               
               {/* Address */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-kc-primary flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-slate-100/80 transition-colors cursor-default">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-kc-primary flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -46,8 +46,8 @@ export default function BranchDetailsMap() {
               </div>
 
               {/* Contact Numbers */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-slate-100/80 transition-colors cursor-default">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -76,8 +76,8 @@ export default function BranchDetailsMap() {
               </div>
 
               {/* WhatsApp Support */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-kc-whatsapp flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-slate-100/80 transition-colors cursor-default">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-kc-whatsapp flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                   <MessageCircle className="w-5 h-5 fill-kc-whatsapp text-white" />
                 </div>
                 <div>
@@ -97,8 +97,8 @@ export default function BranchDetailsMap() {
               </div>
 
               {/* Working Hours */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-kc-amber flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-slate-100/80 transition-colors cursor-default">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 text-kc-amber flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
@@ -110,8 +110,8 @@ export default function BranchDetailsMap() {
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-slate-100/80 transition-colors cursor-default">
+                <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -143,8 +143,8 @@ export default function BranchDetailsMap() {
 
           </div>
 
-          {/* Right Column: Google Maps Embed (with clear placeholder comment for user) */}
-          <div className="lg:col-span-7 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-elevation-mid relative min-h-[350px] lg:min-h-full flex flex-col">
+          {/* Right Column: Google Maps Embed with rounded corners & elevation */}
+          <div className="lg:col-span-7 bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-elevation-mid relative min-h-[350px] lg:min-h-full flex flex-col">
             {/* Embedded Google Map iframe: Replace src with your exact embed key if preferred */}
             <iframe
               title="KC Overseas Education Namakkal Location Map"

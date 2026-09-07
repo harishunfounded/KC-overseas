@@ -16,10 +16,10 @@ export default function IntakeBanner() {
       className="w-full bg-gradient-to-r from-kc-primary via-blue-600 to-kc-primary text-white py-1 px-3 sm:px-4 text-xs font-medium flex items-center justify-between shadow-inner"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 text-center w-full">
-        {/* Pulsing indicator */}
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-kc-accent opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-kc-accent"></span>
+        {/* Smooth, subtle pulsing indicator */}
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-kc-accent opacity-30 duration-1000" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-kc-accent" />
         </span>
 
         {/* Banner Copy with single config variable */}
@@ -31,8 +31,8 @@ export default function IntakeBanner() {
             — Up to 100% scholarships & 99% visa success track record.
           </span>
           <a
-            href="#enquiry"
-            className="underline underline-offset-2 hover:text-yellow-200 inline-flex items-center text-[11px] sm:text-xs font-semibold ml-1"
+            href="#enquiry-section"
+            className="underline underline-offset-2 hover:text-yellow-200 inline-flex items-center text-[11px] sm:text-xs font-semibold ml-1 transition-colors"
           >
             Apply <ChevronRight className="w-3 h-3 inline" />
           </a>

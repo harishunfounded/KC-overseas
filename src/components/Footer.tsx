@@ -57,10 +57,10 @@ export default function Footer() {
                 <li key={d.id}>
                   <a
                     href="#destinations"
-                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center gap-1.5 group/link"
                   >
-                    <ChevronRight className="w-3 h-3 text-kc-primary" />
-                    <span>Study in {d.name}</span>
+                    <ChevronRight className="w-3 h-3 text-kc-primary group-hover/link:text-white transition-colors" />
+                    <span className="group-hover/link:underline underline-offset-2">Study in {d.name}</span>
                   </a>
                 </li>
               ))}
@@ -77,10 +77,10 @@ export default function Footer() {
                 <li key={s.id}>
                   <a
                     href="#services"
-                    className="hover:text-white transition-colors flex items-center gap-1.5"
+                    className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center gap-1.5 group/link"
                   >
-                    <ChevronRight className="w-3 h-3 text-kc-accent" />
-                    <span>{s.name}</span>
+                    <ChevronRight className="w-3 h-3 text-kc-accent group-hover/link:text-white transition-colors" />
+                    <span className="group-hover/link:underline underline-offset-2">{s.name}</span>
                   </a>
                 </li>
               ))}

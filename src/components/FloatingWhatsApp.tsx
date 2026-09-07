@@ -37,7 +37,7 @@ export default function FloatingWhatsApp() {
         title="Chat on WhatsApp with KC Namakkal"
       >
         {/* Subtle breathing ripple */}
-        <span className="absolute -inset-1 rounded-full bg-emerald-400 opacity-40 animate-ping pointer-events-none" />
+        <span className="absolute -inset-1 rounded-full bg-emerald-400 opacity-30 animate-gentle-pulse pointer-events-none" />
         
         <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 fill-white relative z-10" />
       </a>

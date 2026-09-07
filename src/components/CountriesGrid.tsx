@@ -33,16 +33,20 @@ export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
           </p>
         </div>
 
-        {/* Minimal 10 Countries Grid: Flag + Name + 1-Liner Only */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
+        {/* Minimal 10 Countries: Horizontal scroll-snap carousel on mobile, 5-col grid on desktop */}
+        <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none no-scrollbar gap-3 sm:gap-4 pb-3 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
           {siteConfig.destinations.map((country) => (
             <button
               key={country.id}
               onClick={() => handleSelectCountry(country)}
-              className="bg-slate-50/70 hover:bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200/80 hover:border-kc-primary shadow-elevation-low card-elevation-interactive text-left group flex flex-col justify-between"
+              className="min-w-[170px] sm:min-w-0 snap-start shrink-0 sm:shrink bg-slate-50/70 hover:bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200/80 hover:border-kc-primary shadow-elevation-low card-elevation-interactive text-left group flex flex-col justify-between"
             >
               <div>
-                <span className="text-2xl sm:text-3xl block mb-2 select-none" role="img" aria-label={country.name}>
+                <span
+                  className="text-2xl sm:text-3xl block mb-2 select-none inline-block transition-transform duration-200 group-hover:scale-125 group-hover:rotate-6 origin-bottom-left"
+                  role="img"
+                  aria-label={country.name}
+                >
                   {country.flag}
                 </span>
                 <h3 className="font-extrabold text-xs sm:text-sm text-kc-heading group-hover:text-kc-primary transition-colors">
@@ -60,6 +64,11 @@ export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
             </button>
           ))}
         </div>
+
+        {/* Mobile scroll hint */}
+        <p className="sm:hidden text-center text-[11px] text-slate-400 mt-2 flex items-center justify-center gap-1">
+          <span>← Swipe to explore destinations →</span>
+        </p>
 
       </div>
     </section>

@@ -110,8 +110,8 @@ export default function EnquiryForm({
   if (isSubmitted) {
     return (
       <div className={`bg-white rounded-2xl p-6 shadow-elevation-mid border border-emerald-200 text-center ${className}`}>
-        <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
-          <CheckCircle2 className="w-6 h-6" />
+        <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner animate-scale-in">
+          <CheckCircle2 className="w-6 h-6 animate-scale-in" />
         </div>
         <h3 className="text-lg font-extrabold text-kc-heading">Thank You, {formData.name || 'Student'}!</h3>
         <p className="text-xs text-kc-muted mt-1.5 leading-relaxed">
@@ -126,7 +126,7 @@ export default function EnquiryForm({
             )}.%20I%20just%20submitted%20my%20study%20abroad%20enquiry.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-kc-whatsapp text-white font-bold text-xs shadow-sm hover:bg-kc-whatsapp-hover transition-all"
+            className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-kc-whatsapp text-white font-bold text-xs shadow-sm hover:bg-kc-whatsapp-hover cta-tactile"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
             Connect on WhatsApp
@@ -178,7 +178,7 @@ export default function EnquiryForm({
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className={`w-full px-3.5 py-2.5 text-xs rounded-xl border ${
                 errors.name ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
-              } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+              } input-refined focus:outline-none`}
             />
             {errors.name && <p className="text-[10px] text-red-600 mt-0.5">{errors.name}</p>}
           </div>
@@ -196,7 +196,7 @@ export default function EnquiryForm({
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className={`w-full px-3 py-2.5 text-xs rounded-r-xl border ${
                   errors.phone ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
-                } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+                } input-refined focus:outline-none`}
               />
             </div>
             {errors.phone && <p className="text-[10px] text-red-600 mt-0.5">{errors.phone}</p>}
@@ -260,7 +260,7 @@ export default function EnquiryForm({
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
               errors.name ? 'border-red-500 bg-red-50/40' : 'border-slate-300'
-            } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+            } input-refined focus:outline-none`}
           />
           {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
         </div>
@@ -283,7 +283,7 @@ export default function EnquiryForm({
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className={`w-full px-3.5 py-2.5 text-sm rounded-r-lg border ${
                   errors.phone ? 'border-red-500 bg-red-50/40' : 'border-slate-300'
-                } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+                } input-refined focus:outline-none`}
               />
             </div>
             {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
@@ -300,7 +300,7 @@ export default function EnquiryForm({
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                 errors.email ? 'border-red-500 bg-red-50/40' : 'border-slate-300'
-              } focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+              } input-refined focus:outline-none`}
             />
             {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
           </div>
@@ -317,7 +317,7 @@ export default function EnquiryForm({
               onChange={(e) => setFormData({ ...formData, preferredCountry: e.target.value })}
               className={`w-full px-3 py-2.5 text-sm rounded-lg border ${
                 errors.preferredCountry ? 'border-red-500' : 'border-slate-300'
-              } bg-white focus:outline-none focus:ring-2 focus:ring-kc-primary`}
+              } bg-white input-refined focus:outline-none`}
             >
               <option value="">-- Choose Country --</option>
               {siteConfig.destinations.map((d) => (
@@ -338,7 +338,7 @@ export default function EnquiryForm({
             <select
               value={formData.preferredService}
               onChange={(e) => setFormData({ ...formData, preferredService: e.target.value })}
-              className="w-full px-3 py-2.5 text-sm rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-kc-primary"
+              className="w-full px-3 py-2.5 text-sm rounded-lg border border-slate-300 bg-white input-refined focus:outline-none"
             >
               <option value="">General Free Counselling</option>
               {siteConfig.services.map((s) => (
@@ -360,7 +360,7 @@ export default function EnquiryForm({
             placeholder="Tell us about your current qualification, intended course, or test scores..."
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            className="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-kc-primary resize-none"
+            className="w-full px-3.5 py-2 text-sm rounded-lg border border-slate-300 input-refined focus:outline-none resize-none"
           ></textarea>
         </div>
 

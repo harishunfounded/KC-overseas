@@ -18,6 +18,7 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import StickyMobileBar from '@/components/StickyMobileBar';
 import PromoPopup from '@/components/PromoPopup';
 import SectionReveal from '@/components/SectionReveal';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 import { siteConfig } from '@/config/site';
 
 export default function Home() {
@@ -25,6 +26,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col bg-white text-kc-body">
+      {/* Top Scroll Progress Indicator */}
+      <ScrollProgressBar />
       
       {/* 1. Sticky Header (<60px tall with brand, Call Now, and WhatsApp) */}
       <StickyHeader />

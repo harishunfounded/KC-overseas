@@ -34,9 +34,15 @@ export default function UpcomingBatches() {
               className="bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 hover:border-kc-primary hover:bg-white shadow-elevation-low card-elevation-interactive flex flex-col justify-between"
             >
               <div>
-                <span className="text-[10px] font-bold text-kc-primary bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100 inline-block mb-2">
-                  {batch.mode}
-                </span>
+                <div className="flex items-center justify-between mb-2 gap-2">
+                  <span className="text-[10px] font-bold text-kc-primary bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100 inline-block">
+                    {batch.mode}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Seats Open
+                  </span>
+                </div>
 
                 <h3 className="font-extrabold text-sm text-kc-heading mb-2 leading-snug">
                   {batch.course}
