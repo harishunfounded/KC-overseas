@@ -19,7 +19,7 @@ export default function FloatingWhatsApp() {
   return (
     <aside
       aria-label="Contact via WhatsApp"
-      className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-40 flex items-center group select-none"
+      className="hidden md:flex fixed bottom-6 right-6 z-40 items-center group select-none"
     >
       {/* Tooltip on desktop hover */}
       <span className="hidden sm:inline-block mr-2.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
