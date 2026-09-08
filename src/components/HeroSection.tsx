@@ -38,43 +38,25 @@ export default function HeroSection() {
           aria-hidden="true"
         />
 
-        {/* Video Element: Lazy-loaded metadata, muted, loop, autoplay */}
+        {/* Video Element: Full-bleed, autoPlay, muted, loop, playsInline, single raw 4K source */}
         {!reduceMotion && (
           <video
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             poster={siteConfig.heroVideo.poster}
             onLoadedData={() => setVideoLoaded(true)}
+            onPlaying={() => setVideoLoaded(true)}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
               videoLoaded ? 'opacity-100' : 'opacity-0'
-            } ${siteConfig.heroVideo.enableMobileVideo ? 'block' : 'hidden md:block'}`}
+            }`}
             aria-hidden="true"
           >
-            {siteConfig.heroVideo.enableMobileVideo && (
-              <source
-                src={siteConfig.heroVideo.mobileMp4}
-                type="video/mp4"
-                media="(max-width: 767px)"
-              />
-            )}
-            <source src={siteConfig.heroVideo.desktopWebm} type="video/webm" />
             <source src={siteConfig.heroVideo.desktopMp4} type="video/mp4" />
           </video>
         )}
-
-        {/* Dark Gradient Overlay for Maximum Text Contrast & Legibility */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-kc-navy/70 to-slate-950/85 md:bg-gradient-to-r md:from-slate-950/85 md:via-kc-navy/65 md:to-slate-950/75"
-          aria-hidden="true"
-        />
-        {/* Subtle dot mesh for depth */}
-        <div
-          className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-10"
-          aria-hidden="true"
-        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

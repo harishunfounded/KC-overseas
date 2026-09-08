@@ -182,11 +182,17 @@ export const siteConfig = {
 
   // Hero Video Configuration (easily swappable for future footage)
   heroVideo: {
-    desktopMp4: '/hero-bg.mp4',
-    desktopWebm: '/hero-bg.webm',
-    mobileMp4: '/hero-bg-mobile.mp4',
+    desktopMp4: '/hero-bg-raw.mp4',
+    desktopWebm: '/hero-bg-raw.mp4',
+    mobileMp4: '/hero-bg-raw.mp4',
     poster: '/hero-poster.jpg',
     // Set to true to test mobile video playback vs static poster image
     enableMobileVideo: true,
+  },
+
+  // Target Study Destinations Video Configuration
+  destinationsVideo: {
+    rawMp4: '/destinations-bg-raw.mp4',
+    poster: '/destinations-poster.jpg',
   },
 };
