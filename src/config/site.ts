@@ -182,9 +182,21 @@ export const siteConfig = {
 
   // Hero Video Configuration (easily swappable for future footage)
   heroVideo: {
-    desktopMp4: '/hero-bg-raw.mp4',
+    desktopMp4:
+      process.env.VERCEL ||
+      (typeof window !== 'undefined' &&
+        window.location.hostname !== 'localhost' &&
+        window.location.hostname !== '127.0.0.1')
+        ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/hero-bg-raw.mp4'
+        : '/hero-bg-raw.mp4',
     desktopWebm: '/hero-bg-raw.mp4',
-    mobileMp4: '/hero-bg-raw.mp4',
+    mobileMp4:
+      process.env.VERCEL ||
+      (typeof window !== 'undefined' &&
+        window.location.hostname !== 'localhost' &&
+        window.location.hostname !== '127.0.0.1')
+        ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/hero-bg-raw.mp4'
+        : '/hero-bg-raw.mp4',
     poster: '/hero-poster.jpg',
     // Set to true to test mobile video playback vs static poster image
     enableMobileVideo: true,
