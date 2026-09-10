@@ -5,12 +5,12 @@ import {
   GraduationCap,
   MapPin,
   Phone,
-  MessageCircle,
   Mail,
   Clock,
   ShieldCheck,
   ChevronRight,
 } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
 export default function Footer() {
@@ -113,7 +113,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <MessageCircle className="w-4 h-4 text-kc-whatsapp shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 text-kc-whatsapp shrink-0 fill-current" />
                 <a
                   href={siteConfig.contact.whatsappChatUrl}
                   target="_blank"

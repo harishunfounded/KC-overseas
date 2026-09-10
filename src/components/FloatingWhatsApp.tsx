@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
 export default function FloatingWhatsApp() {
@@ -23,7 +23,7 @@ export default function FloatingWhatsApp() {
     >
       {/* Tooltip on desktop hover */}
       <span className="hidden sm:inline-block mr-2.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-        Chat with Namakkal Counsellor
+        WhatsApp Chat with Counsellor
       </span>
 
       {/* Floating Circular WhatsApp Button */}
@@ -34,12 +34,12 @@ export default function FloatingWhatsApp() {
         onClick={handleClick}
         id="floating-whatsapp-btn"
         className="w-13 h-13 sm:w-14 sm:h-14 w-[54px] h-[54px] rounded-full bg-kc-whatsapp text-white flex items-center justify-center shadow-whatsapp-glow hover:bg-kc-whatsapp-hover active:scale-95 transition-all duration-300 relative group"
-        title="Chat on WhatsApp with KC Namakkal"
+        title="WhatsApp Chat with KC Overseas Education"
       >
         {/* Subtle breathing ripple */}
         <span className="absolute -inset-1 rounded-full bg-emerald-400 opacity-30 animate-gentle-pulse pointer-events-none" />
         
-        <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 fill-white relative z-10" />
+        <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7 fill-white relative z-10" />
       </a>
     </aside>
   );

@@ -59,7 +59,8 @@ export const siteConfig = {
     phone2Clean: '+919626614567',
     whatsappNumber: '+91 6382188816',
     whatsappClean: '916382188816',
-    whatsappChatUrl: 'https://wa.me/916382188816?text=Hi%2C%20I%20want%20to%20know%20more%20about%20studying%20abroad',
+    whatsappChatUrl:
+      'https://wa.me/916382188816?text=Hello%20KC%20Overseas%20Education%2C%20I%20am%20reaching%20out%20through%20your%20website.%20I%20would%20like%20to%20get%20professional%20counselling%20for%20studying%20abroad%2C%20university%20admissions%2C%20and%20scholarships.%20Please%20guide%20me.',
     email: 'namakkal@studies-overseas.com',
     workingHours: 'Monday to Saturday: 9:30 AM – 7:30 PM (Sunday Closed)',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3910.749502937762!2d78.16434857488884!3d11.222718950853504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babce281313768f%3A0x8677c756f7ef0d19!2sThangamayil%20Jewellery%20Limited%20-%20Namakkal!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
@@ -180,31 +181,25 @@ export const siteConfig = {
     gaMeasurementId: process.env.NEXT_PUBLIC_GA_ID || '',
   },
 
-  // Hero Video Configuration (easily swappable for future footage)
+  // Hero Video Configuration (Swapped to destinations-bg-raw.mp4 as requested)
   heroVideo: {
     desktopMp4:
       process.env.VERCEL ||
       (typeof window !== 'undefined' &&
         window.location.hostname !== 'localhost' &&
         window.location.hostname !== '127.0.0.1')
-        ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/hero-bg-raw.mp4'
-        : '/hero-bg-raw.mp4',
-    desktopWebm: '/hero-bg-raw.mp4',
+        ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/destinations-bg-raw.mp4'
+        : '/destinations-bg-raw.mp4',
+    desktopWebm: '/destinations-bg-raw.mp4',
     mobileMp4:
       process.env.VERCEL ||
       (typeof window !== 'undefined' &&
         window.location.hostname !== 'localhost' &&
         window.location.hostname !== '127.0.0.1')
-        ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/hero-bg-raw.mp4'
-        : '/hero-bg-raw.mp4',
-    poster: '/hero-poster.jpg',
+        ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/destinations-bg-raw.mp4'
+        : '/destinations-bg-raw.mp4',
+    poster: '/destinations-poster.jpg',
     // Set to true to test mobile video playback vs static poster image
     enableMobileVideo: true,
-  },
-
-  // Target Study Destinations Video Configuration
-  destinationsVideo: {
-    rawMp4: '/destinations-bg-raw.mp4',
-    poster: '/destinations-poster.jpg',
   },
 };

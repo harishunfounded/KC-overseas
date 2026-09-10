@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Phone, MessageCircle, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { Phone, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
 interface CTASectionProps {
@@ -89,8 +90,8 @@ export default function CTASection({
             rel="noopener noreferrer"
             className="min-h-[48px] px-6 sm:px-7 py-3 rounded-xl bg-kc-whatsapp text-white font-bold text-sm shadow-whatsapp-glow hover:bg-kc-whatsapp-hover cta-tactile flex items-center justify-center gap-2"
           >
-            <MessageCircle className="w-4 h-4 fill-white" />
-            <span>Chat on WhatsApp</span>
+            <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
+            <span>WhatsApp Chat</span>
           </a>
         </div>
 

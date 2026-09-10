@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import StickyHeader from '@/components/StickyHeader';
 import IntakeBanner from '@/components/IntakeBanner';
 import HeroSection from '@/components/HeroSection';
-import StatsBar from '@/components/StatsBar';
 import CountriesGrid from '@/components/CountriesGrid';
 import ServicesGrid from '@/components/ServicesGrid';
 import CTASection from '@/components/CTASection';
@@ -38,12 +37,7 @@ export default function Home() {
       {/* 3. Hero Section (Strict mobile above-the-fold CRO path + Desktop 2-column) */}
       <HeroSection />
 
-      {/* 4. Trust & Credibility Stats Bar */}
-      <SectionReveal>
-        <StatsBar />
-      </SectionReveal>
-
-      {/* 5. 10 Target Study Destinations */}
+      {/* 4. 10 Target Study Destinations */}
       <SectionReveal>
         <CountriesGrid onSelectCountry={(c) => setSelectedCountry(c)} />
       </SectionReveal>

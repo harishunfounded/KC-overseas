@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
 export default function StickyMobileBar() {
@@ -50,8 +51,8 @@ export default function StickyMobileBar() {
           id="mobile-sticky-whatsapp-btn"
           className="min-h-[48px] px-3 py-2.5 rounded-xl bg-kc-whatsapp text-white text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-whatsapp-glow cta-tactile hover:bg-kc-whatsapp-hover"
         >
-          <MessageCircle className="w-4 h-4 fill-white shrink-0" />
-          <span>WhatsApp</span>
+          <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
+          <span>WhatsApp Chat</span>
         </a>
 
       </div>

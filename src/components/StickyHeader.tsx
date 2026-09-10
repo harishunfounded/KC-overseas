@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Phone, MessageCircle, GraduationCap } from 'lucide-react';
+import { Phone, GraduationCap } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
 export default function StickyHeader() {
@@ -81,12 +82,11 @@ export default function StickyHeader() {
             rel="noopener noreferrer"
             onClick={handleWhatsAppClick}
             id="header-whatsapp-btn"
-            className="flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-kc-whatsapp text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-whatsapp-hover cta-tactile min-h-[38px] sm:min-h-[42px]"
+            className="flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-kc-whatsapp text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-kc-whatsapp-hover cta-tactile min-h-[38px] sm:min-h-[42px]"
             title="Chat on WhatsApp with KC Namakkal"
           >
-            <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" />
-            <span className="hidden xs:inline">WhatsApp</span>
-            <span className="xs:hidden">Chat</span>
+            <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
+            <span className="whitespace-nowrap">WhatsApp Chat</span>
           </a>
 
           {/* Desktop Counselling CTA */}

@@ -39,3 +39,4 @@ data/leads.csv
 
 .vercel
 .env*
+.vscode/
