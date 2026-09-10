@@ -12,14 +12,16 @@ def get_font(name, size):
     except:
         return ImageFont.truetype(os.path.join(font_dir, "arial.ttf"), size)
 
-font_hero_bold = get_font("segoeuib.ttf", 46)
-font_title_bold = get_font("segoeuib.ttf", 38)
-font_stat_num = get_font("segoeuib.ttf", 52)
-font_stat_title = get_font("segoeuib.ttf", 26)
-font_stat_desc = get_font("segoeui.ttf", 22)
-font_sub = get_font("segoeui.ttf", 24)
-font_badge = get_font("segoeuib.ttf", 20)
-font_tiny = get_font("segoeui.ttf", 18)
+font_hero_bold = get_font("segoeuib.ttf", 54)
+font_title_bold = get_font("segoeuib.ttf", 46)
+font_stat_num = get_font("segoeuib.ttf", 78)
+font_stat_num_long = get_font("segoeuib.ttf", 58)
+font_stat_title = get_font("segoeuib.ttf", 36)
+font_stat_desc = get_font("segoeui.ttf", 28)
+font_sub = get_font("segoeui.ttf", 30)
+font_badge = get_font("segoeuib.ttf", 24)
+font_pill_bold = get_font("segoeuib.ttf", 30)
+font_tiny = get_font("segoeui.ttf", 22)
 
 def draw_star(draw, cx, cy, r_out, r_in, fill=(251, 191, 36)):
     points = []
@@ -64,7 +66,7 @@ draw_front.rounded_rectangle(
 # Top clip slot / hole punch simulation
 slot_w, slot_h = 160, 24
 slot_x = (W - slot_w) // 2
-slot_y = card_margin + 22
+slot_y = card_margin + 20
 draw_front.rounded_rectangle(
     [slot_x, slot_y, slot_x + slot_w, slot_y + slot_h],
     radius=12,
@@ -73,9 +75,9 @@ draw_front.rounded_rectangle(
     width=2
 )
 
-# --- HEADER SECTION ---
-header_y = slot_y + slot_h + 34
-icon_box_size = 88
+# --- HEADER SECTION (clearance for metal clip) ---
+header_y = slot_y + slot_h + 85
+icon_box_size = 96
 icon_box_x = card_margin + 36
 icon_box_y = header_y
 draw_front.rounded_rectangle(
@@ -88,33 +90,32 @@ draw_front.rounded_rectangle(
 # Graduation cap inside icon box
 cx = icon_box_x + icon_box_size // 2
 cy = icon_box_y + icon_box_size // 2
-draw_front.polygon([(cx, cy - 24), (cx + 32, cy - 7), (cx, cy + 9), (cx - 32, cy - 7)], fill=(253, 224, 71))
-draw_front.rectangle([cx - 16, cy + 9, cx + 16, cy + 22], fill=(253, 224, 71))
-draw_front.line([(cx + 25, cy - 4), (cx + 34, cy + 18)], fill=(255, 255, 255), width=3)
+draw_front.polygon([(cx, cy - 26), (cx + 34, cy - 7), (cx, cy + 10), (cx - 34, cy - 7)], fill=(253, 224, 71))
+draw_front.rectangle([cx - 18, cy + 10, cx + 18, cy + 24], fill=(253, 224, 71))
+draw_front.line([(cx + 26, cy - 4), (cx + 36, cy + 20)], fill=(255, 255, 255), width=3)
 
 # Brand Titles
 text_x = icon_box_x + icon_box_size + 24
 draw_front.text((text_x, header_y + 4), "KC Overseas Education", fill=(255, 255, 255), font=font_title_bold)
-# Green check badge next to title
-draw_front.text((text_x, header_y + 52), "Official Representative • Namakkal & Tamil Nadu", fill=(147, 197, 253), font=font_sub)
+draw_front.text((text_x, header_y + 56), "Official Representative • Namakkal & Tamil Nadu", fill=(147, 197, 253), font=font_sub)
 
 # Live Active Badge (Top Right)
 badge_text = "● ACTIVE"
-badge_w = 120
-badge_h = 36
+badge_w = 136
+badge_h = 42
 badge_x = W - card_margin - 36 - badge_w
-badge_y = header_y + 10
+badge_y = header_y + 8
 draw_front.rounded_rectangle(
     [badge_x, badge_y, badge_x + badge_w, badge_y + badge_h],
-    radius=18,
+    radius=21,
     fill=(6, 78, 59),
     outline=(52, 211, 153),
     width=2
 )
-draw_front.text((badge_x + 16, badge_y + 6), badge_text, fill=(110, 231, 183), font=font_badge)
+draw_front.text((badge_x + 18, badge_y + 6), badge_text, fill=(110, 231, 183), font=font_badge)
 
 # Horizontal divider
-div_y = header_y + icon_box_size + 30
+div_y = header_y + icon_box_size + 24
 draw_front.line([(card_margin + 30, div_y), (W - card_margin - 30, div_y)], fill=(45, 65, 105), width=2)
 
 # --- 6 BENTO CARDS ---
@@ -131,7 +132,7 @@ cards_data = [
         "badge": "TOP RANKED", "badge_bg": (12, 53, 85), "badge_border": (56, 189, 248), "badge_text": (186, 230, 253),
         "stat": "1,200+", "stat_color": (255, 255, 255),
         "title": "Partner Universities",
-        "sub": "Direct global representation"
+        "sub": "Direct representation"
     },
     {
         "col": 0, "row": 1,
@@ -163,12 +164,12 @@ cards_data = [
     },
 ]
 
-grid_start_y = div_y + 36
+grid_start_y = div_y + 22
 grid_gap_x = 24
-grid_gap_y = 24
+grid_gap_y = 20
 grid_w = W - (card_margin + 36) * 2
 cell_w = (grid_w - grid_gap_x) // 2
-cell_h = 246
+cell_h = 295
 
 for item in cards_data:
     c_x = (card_margin + 36) + item["col"] * (cell_w + grid_gap_x)
@@ -177,63 +178,71 @@ for item in cards_data:
     # Dark glass cell background
     draw_front.rounded_rectangle(
         [c_x, c_y, c_x + cell_w, c_y + cell_h],
-        radius=28,
+        radius=30,
         fill=(18, 29, 54),
-        outline=(48, 72, 118),
+        outline=(52, 78, 126),
         width=2
     )
     
     # Badge Pill
-    bw = len(item["badge"]) * 14 + 20
-    bh = 32
+    bw = len(item["badge"]) * 16 + 28
+    bh = 38
     draw_front.rounded_rectangle(
-        [c_x + cell_w - bw - 20, c_y + 20, c_x + cell_w - 20, c_y + 20 + bh],
-        radius=10,
+        [c_x + cell_w - bw - 18, c_y + 18, c_x + cell_w - 18, c_y + 18 + bh],
+        radius=14,
         fill=item["badge_bg"],
         outline=item["badge_border"],
         width=1
     )
-    draw_front.text((c_x + cell_w - bw - 10, c_y + 24), item["badge"], fill=item["badge_text"], font=font_badge)
+    draw_front.text((c_x + cell_w - bw - 4, c_y + 22), item["badge"], fill=item["badge_text"], font=font_badge)
     
     # Stat number
     stat_font = font_stat_num
     if len(item["stat"]) > 10:
-        stat_font = font_title_bold
+        stat_font = font_stat_num_long
     draw_front.text((c_x + 24, c_y + 68), item["stat"], fill=item["stat_color"], font=stat_font)
     
     # Stat Title
-    draw_front.text((c_x + 24, c_y + 140), item["title"], fill=(226, 232, 240), font=font_stat_title)
+    draw_front.text((c_x + 24, c_y + 168), item["title"], fill=(241, 245, 249), font=font_stat_title)
     
     # Stat Subtitle
-    draw_front.text((c_x + 24, c_y + 184), item["sub"], fill=(148, 163, 184), font=font_stat_desc)
+    draw_front.text((c_x + 24, c_y + 226), item["sub"], fill=(148, 163, 184), font=font_stat_desc)
 
 # --- FOOTER / TRUST STRIP ---
-footer_y = grid_start_y + 3 * cell_h + 2 * grid_gap_y + 34
+footer_y = grid_start_y + 3 * cell_h + 2 * grid_gap_y + 24
 draw_front.line([(card_margin + 30, footer_y), (W - card_margin - 30, footer_y)], fill=(45, 65, 105), width=2)
 
-footer_content_y = footer_y + 24
-# Draw 5 geometric gold stars
-star_start_x = card_margin + 44
+footer_content_y = footer_y + 20
+# Row 1: 5 geometric gold stars + Rating text
+star_start_x = card_margin + 40
 star_cy = footer_content_y + 20
 for i in range(5):
-    draw_star(draw_front, star_start_x + i * 30, star_cy, 13, 6, fill=(251, 191, 36))
+    draw_star(draw_front, star_start_x + i * 38, star_cy, 17, 8, fill=(251, 191, 36))
 
-draw_front.text((star_start_x + 165, footer_content_y + 2), "4.9/5", fill=(255, 255, 255), font=font_title_bold)
-draw_front.text((star_start_x + 260, footer_content_y + 12), "(3,500+ Reviews)", fill=(147, 197, 253), font=font_sub)
+score_text = "4.9 / 5"
+score_bb = draw_front.textbbox((0, 0), score_text, font=font_title_bold)
+score_w = score_bb[2] - score_bb[0]
+draw_front.text((star_start_x + 205, footer_content_y), score_text, fill=(255, 255, 255), font=font_title_bold)
+draw_front.text((star_start_x + 205 + score_w + 20, footer_content_y + 10), "(3,500+ Verified Student Reviews)", fill=(147, 197, 253), font=font_sub)
 
-# Scholarship unlocked pill
-pill_w = 350
-pill_h = 52
-pill_x = W - card_margin - 40 - pill_w
-pill_y = footer_content_y + 4
+# Row 2: Full-width Scholarship Trust Pill
+pill_y = footer_content_y + 70
+pill_h = 74
+pill_w = W - (card_margin + 36) * 2
+pill_x = card_margin + 36
 draw_front.rounded_rectangle(
     [pill_x, pill_y, pill_x + pill_w, pill_y + pill_h],
-    radius=26,
+    radius=20,
     fill=(6, 78, 59),
     outline=(52, 211, 153),
     width=2
 )
-draw_front.text((pill_x + 24, pill_y + 11), "₹25Cr+ Scholarships Unlocked", fill=(110, 231, 183), font=font_stat_desc)
+pill_text = "●   ₹25Cr+ TOTAL SCHOLARSHIPS UNLOCKED FOR STUDENTS   ●"
+# Center text inside pill
+t_bbox = draw_front.textbbox((0, 0), pill_text, font=font_pill_bold)
+t_w = t_bbox[2] - t_bbox[0]
+t_x = pill_x + (pill_w - t_w) // 2
+draw_front.text((t_x, pill_y + 18), pill_text, fill=(110, 231, 183), font=font_pill_bold)
 
 
 # ==========================================
@@ -270,31 +279,41 @@ draw_back.rounded_rectangle(
     width=2
 )
 
-holo_y = slot_y + slot_h + 40
-draw_back.rectangle([(card_margin + 12, holo_y), (W - card_margin - 12, holo_y + 60)], fill=(245, 158, 11))
-draw_back.text((card_margin + 60, holo_y + 15), "● OFFICIAL ACCREDITED GLOBAL STUDY ABROAD PASS ●", fill=(15, 23, 42), font=font_badge)
+holo_y = slot_y + slot_h + 85
+draw_back.rectangle([(card_margin + 12, holo_y), (W - card_margin - 12, holo_y + 54)], fill=(245, 158, 11))
+holo_text = "● OFFICIAL ACCREDITED GLOBAL STUDY ABROAD PASS ●"
+h_bbox = draw_back.textbbox((0, 0), holo_text, font=font_badge)
+draw_back.text(((W - (h_bbox[2] - h_bbox[0])) // 2, holo_y + 13), holo_text, fill=(15, 23, 42), font=font_badge)
 
-center_box_y = holo_y + 110
-crest_size = 120
+center_box_y = holo_y + 90
+crest_size = 110
 crest_x = (W - crest_size) // 2
 draw_back.rounded_rectangle(
     [crest_x, center_box_y, crest_x + crest_size, center_box_y + crest_size],
-    radius=30,
+    radius=26,
     fill=(26, 86, 219),
     outline=(253, 224, 71),
     width=3
 )
-draw_back.polygon([(W//2, center_box_y + 25), (W//2 + 40, center_box_y + 50), (W//2, center_box_y + 75), (W//2 - 40, center_box_y + 50)], fill=(253, 224, 71))
-draw_back.rectangle([W//2 - 20, center_box_y + 75, W//2 + 20, center_box_y + 95], fill=(253, 224, 71))
+draw_back.polygon([(W//2, center_box_y + 22), (W//2 + 36, center_box_y + 46), (W//2, center_box_y + 68), (W//2 - 36, center_box_y + 46)], fill=(253, 224, 71))
+draw_back.rectangle([W//2 - 18, center_box_y + 68, W//2 + 18, center_box_y + 86], fill=(253, 224, 71))
 
-draw_back.text((W//2 - 275, center_box_y + 150), "KC OVERSEAS EDUCATION", fill=(255, 255, 255), font=font_hero_bold)
-draw_back.text((W//2 - 240, center_box_y + 215), "STUDY ABROAD ADVISORY PASS", fill=(147, 197, 253), font=font_title_bold)
-draw_back.text((W//2 - 170, center_box_y + 265), "Namakkal & Tamil Nadu Centre", fill=(203, 213, 225), font=font_sub)
+t1 = "KC OVERSEAS EDUCATION"
+bb1 = draw_back.textbbox((0, 0), t1, font=font_hero_bold)
+draw_back.text(((W - (bb1[2] - bb1[0])) // 2, center_box_y + 135), t1, fill=(255, 255, 255), font=font_hero_bold)
 
-detail_y = center_box_y + 325
-detail_h = 420
+t2 = "GLOBAL STUDY ABROAD PASS"
+bb2 = draw_back.textbbox((0, 0), t2, font=font_title_bold)
+draw_back.text(((W - (bb2[2] - bb2[0])) // 2, center_box_y + 200), t2, fill=(147, 197, 253), font=font_title_bold)
+
+t3 = "Official Representative • Namakkal & Tamil Nadu"
+bb3 = draw_back.textbbox((0, 0), t3, font=font_sub)
+draw_back.text(((W - (bb3[2] - bb3[0])) // 2, center_box_y + 254), t3, fill=(203, 213, 225), font=font_sub)
+
+detail_y = center_box_y + 310
+detail_h = 430
 draw_back.rounded_rectangle(
-    [card_margin + 50, detail_y, W - card_margin - 50, detail_y + detail_h],
+    [card_margin + 36, detail_y, W - card_margin - 36, detail_y + detail_h],
     radius=24,
     fill=(18, 29, 54),
     outline=(48, 72, 118),
@@ -303,32 +322,34 @@ draw_back.rounded_rectangle(
 
 info_lines = [
     ("OFFICIAL PARTNER", "1,200+ Global Universities"),
-    ("HOTLINE", "+91 97914 94747"),
+    ("DIRECT HOTLINE", "+91 97914 94747"),
     ("CONSULTATION", "100% Free Profile Assessment"),
     ("VISA SUCCESS", "99% Documented Track Record"),
-    ("HEADQUARTERS", "Pan-India Network across 55+ Offices"),
-    ("OFFICIAL TRAINERS", "British Council & IDP Certified"),
+    ("NETWORK", "55+ Offices Across India & TN"),
+    ("TRAINERS", "British Council & IDP Certified"),
 ]
 
-line_y = detail_y + 28
+line_y = detail_y + 26
 for label, val in info_lines:
-    draw_back.text((card_margin + 80, line_y), label, fill=(148, 163, 184), font=font_badge)
-    draw_back.text((card_margin + 340, line_y - 4), val, fill=(255, 255, 255), font=font_stat_title)
-    line_y += 62
+    draw_back.text((card_margin + 64, line_y + 4), label, fill=(148, 163, 184), font=font_badge)
+    draw_back.text((card_margin + 310, line_y), val, fill=(255, 255, 255), font=font_stat_title)
+    line_y += 66
 
-barcode_y = detail_y + detail_h + 40
+barcode_y = detail_y + detail_h + 36
 draw_back.rounded_rectangle(
-    [card_margin + 60, barcode_y, W - card_margin - 60, barcode_y + 110],
+    [card_margin + 50, barcode_y, W - card_margin - 50, barcode_y + 110],
     radius=16,
     fill=(255, 255, 255)
 )
-bar_x = card_margin + 90
-while bar_x < W - card_margin - 90:
+bar_x = card_margin + 80
+while bar_x < W - card_margin - 80:
     w_bar = 4 if (bar_x % 9 < 4) else 8
     draw_back.rectangle([bar_x, barcode_y + 16, bar_x + w_bar, barcode_y + 94], fill=(15, 23, 42))
     bar_x += w_bar + 6
 
-draw_back.text((W//2 - 160, barcode_y + 125), "SCAN FOR 1-ON-1 COUNSELLING", fill=(148, 163, 184), font=font_badge)
+bc_text = "SCAN FOR 1-ON-1 COUNSELLING & SHORTLISTING"
+bc_bb = draw_back.textbbox((0, 0), bc_text, font=font_badge)
+draw_back.text(((W - (bc_bb[2] - bc_bb[0])) // 2, barcode_y + 125), bc_text, fill=(148, 163, 184), font=font_badge)
 
 # Save images
 out_dir = "public/assets/lanyard"
@@ -339,8 +360,4 @@ back_path = os.path.join(out_dir, "kc-bento-card-back.png")
 img_front.save(front_path, "PNG", quality=95)
 img_back.save(back_path, "PNG", quality=95)
 
-comp_dir = "src/components"
-img_front.save(os.path.join(comp_dir, "kc-bento-card-front.png"), "PNG", quality=95)
-img_back.save(os.path.join(comp_dir, "kc-bento-card-back.png"), "PNG", quality=95)
-
-print("Generated successfully:", front_path, back_path)
+print("Generated with larger typography:", front_path, back_path)

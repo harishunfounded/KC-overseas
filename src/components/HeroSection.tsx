@@ -79,10 +79,10 @@ export default function HeroSection() {
 
       {/* 2. Fluid Widescreen Container - Eliminates Side Gaps */}
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
           
           {/* Left Column: Headline, Destination Chips & Glass Quick Booking Console */}
-          <div className="lg:col-span-7 xl:col-span-7 space-y-4 sm:space-y-5 text-left">
+          <div className="lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 text-left">
             
             {/* Live Intake & Reputation Pill */}
             <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-lg text-xs animate-hero-1">
@@ -160,7 +160,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: 3D Interactive Lanyard holding the Bento Grid Badge */}
-          <div className="lg:col-span-5 xl:col-span-5 animate-hero-3 relative flex flex-col items-center justify-center min-h-[580px] sm:min-h-[640px] lg:min-h-[680px]">
+          <div className="lg:col-span-6 xl:col-span-6 animate-hero-3 relative flex flex-col items-center justify-center min-h-[620px] sm:min-h-[680px] lg:min-h-[740px]">
             {/* Interactive Drag & Swing Hint Pill */}
             <div className="absolute top-2 right-2 sm:right-4 z-20 pointer-events-none">
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-xs font-semibold text-emerald-300 shadow-lg">
@@ -170,13 +170,14 @@ export default function HeroSection() {
             </div>
 
             {/* The 3D Lanyard Effect containing the Full Bento Grid */}
-            <div className="w-full h-[580px] sm:h-[640px] lg:h-[680px]">
+            <div className="w-full h-[640px] sm:h-[700px] lg:h-[760px] xl:h-[800px]">
               <Lanyard
-                position={[0, 0, 13]}
+                position={[0, -0.9, 10]}
                 gravity={[0, -40, 0]}
                 frontImage="/assets/lanyard/kc-bento-card-front.png"
                 backImage="/assets/lanyard/kc-bento-card-back.png"
                 imageFit="cover"
+                cardScale={3.25}
               />
             </div>
 
