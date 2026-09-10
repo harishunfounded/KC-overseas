@@ -28,6 +28,28 @@ const BLANK_PIXEL =
 const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
 const BACK_UV_RECT = { x: 0.5, y: 0, w: 0.5, h: 0.757 };
 
+const DEFAULT_MODEL_SOURCE =
+  typeof cardGLB === 'string' && (cardGLB as any).length > 0
+    ? cardGLB
+    : (cardGLB as any)?.src || (cardGLB as any)?.default || '/assets/lanyard/card.glb';
+
+const DEFAULT_TEXTURE_SOURCE =
+  typeof lanyard === 'string' && (lanyard as any).length > 0
+    ? lanyard
+    : (lanyard as any)?.src || (lanyard as any)?.default || '/assets/lanyard/lanyard.png';
+
+// Preload 3D model and textures immediately in browser memory
+if (typeof window !== 'undefined') {
+  try {
+    useGLTF.preload(DEFAULT_MODEL_SOURCE);
+    useTexture.preload(DEFAULT_TEXTURE_SOURCE);
+    useTexture.preload('/assets/lanyard/kc-bento-card-front.png');
+    useTexture.preload('/assets/lanyard/kc-bento-card-back.png');
+  } catch (e) {
+    // Ignore in non-browser environments
+  }
+}
+
 interface LanyardProps {
   position?: [number, number, number];
   gravity?: [number, number, number];
@@ -40,6 +62,7 @@ interface LanyardProps {
   lanyardWidth?: number;
   cardScale?: number;
   className?: string;
+  onReady?: () => void;
 }
 
 export default function Lanyard({
@@ -54,29 +77,25 @@ export default function Lanyard({
   lanyardWidth = 1,
   cardScale = 2.7,
   className = '',
+  onReady,
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (!mounted) {
-    return (
-      <div className={`lanyard-wrapper ${className}`}>
-        <div className="w-12 h-12 rounded-full border-2 border-kc-primary/30 border-t-kc-primary animate-spin" />
-      </div>
-    );
-  }
+  const effectivePosition: [number, number, number] = isMobile
+    ? [position[0], position[1] + 0.35, position[2] + 0.6]
+    : position;
+  const effectiveCardScale = isMobile ? cardScale * 0.86 : cardScale;
 
   return (
     <div className={`lanyard-wrapper ${className}`}>
       <Canvas
-        camera={{ position: position, fov: fov }}
+        camera={{ position: effectivePosition, fov: fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
@@ -91,7 +110,8 @@ export default function Lanyard({
               imageFit={imageFit}
               lanyardImage={lanyardImage}
               lanyardWidth={lanyardWidth}
-              cardScale={cardScale}
+              cardScale={effectiveCardScale}
+              onReady={onReady}
             />
           </Physics>
           <Environment blur={0.75}>
@@ -140,6 +160,7 @@ function Band({
   lanyardImage = null,
   lanyardWidth = 1,
   cardScale = 2.7,
+  onReady,
 }: any) {
   const band = useRef<any>(),
     fixed = useRef<any>(),
@@ -147,6 +168,10 @@ function Band({
     j2 = useRef<any>(),
     j3 = useRef<any>(),
     card = useRef<any>();
+
+  useEffect(() => {
+    onReady?.();
+  }, [onReady]);
 
   const vec = new THREE.Vector3(),
     ang = new THREE.Vector3(),
@@ -270,8 +295,10 @@ function Band({
 
       // Generous clamp matching the expanded 3D stage and rope radius
       // Ensures the card freely moves around but can never be dragged out of the rendered canvas
-      const clampedX = Math.max(-2.5, Math.min(2.5, targetX));
-      const clampedY = Math.max(-3.0, Math.min(1.0, targetY));
+      const maxClampX = isMobile ? 1.8 : 2.5;
+      const minClampY = isMobile ? -2.2 : -3.0;
+      const clampedX = Math.max(-maxClampX, Math.min(maxClampX, targetX));
+      const clampedY = Math.max(minClampY, Math.min(1.0, targetY));
       const clampedZ = Math.max(-1.5, Math.min(1.5, targetZ));
 
       card.current?.setNextKinematicTranslation({
