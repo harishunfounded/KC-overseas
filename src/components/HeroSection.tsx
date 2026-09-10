@@ -37,10 +37,10 @@ export default function HeroSection() {
     >
       {/* 1. Full-Bleed Background Video & Static Poster Fallback (UNTOUCHED) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-slate-950">
-        {/* Static Poster Frame (Instant first visual, zero layout shift) */}
+        {/* Static Background Frame */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${siteConfig.heroVideo.poster})` }}
+          className="absolute inset-0 bg-slate-950 bg-cover bg-center"
+          style={siteConfig.heroVideo.poster ? { backgroundImage: `url(${siteConfig.heroVideo.poster})` } : undefined}
           aria-hidden="true"
         />
 
@@ -52,7 +52,7 @@ export default function HeroSection() {
             loop
             playsInline
             preload="auto"
-            poster={siteConfig.heroVideo.poster}
+            poster={siteConfig.heroVideo.poster || undefined}
             onLoadedData={() => setVideoLoaded(true)}
             onPlaying={() => setVideoLoaded(true)}
             onCanPlay={() => setVideoLoaded(true)}

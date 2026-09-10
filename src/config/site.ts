@@ -198,7 +198,7 @@ export const siteConfig = {
         window.location.hostname !== '127.0.0.1')
         ? 'https://media.githubusercontent.com/media/harishunfounded/KC-overseas/main/public/destinations-bg-raw.mp4'
         : '/destinations-bg-raw.mp4',
-    poster: '/destinations-poster.jpg',
+    poster: '',
     // Set to true to test mobile video playback vs static poster image
     enableMobileVideo: true,
   },
