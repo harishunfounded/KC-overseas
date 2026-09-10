@@ -82,7 +82,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
           
           {/* Left Column: Headline, Destination Chips & Glass Quick Booking Console */}
-          <div className="lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 text-left">
+          <div className="lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 text-left relative z-20">
             
             {/* Live Intake & Reputation Pill */}
             <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-lg text-xs animate-hero-1">
@@ -160,25 +160,27 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: 3D Interactive Lanyard holding the Bento Grid Badge */}
-          <div className="lg:col-span-6 xl:col-span-6 animate-hero-3 relative flex flex-col items-center justify-center min-h-[620px] sm:min-h-[680px] lg:min-h-[740px]">
+          <div className="lg:col-span-6 xl:col-span-6 animate-hero-3 relative flex flex-col items-center justify-center min-h-[620px] sm:min-h-[680px] lg:min-h-[740px] z-10">
             {/* Interactive Drag & Swing Hint Pill */}
-            <div className="absolute top-2 right-2 sm:right-4 z-20 pointer-events-none">
+            <div className="absolute top-2 right-2 sm:right-4 z-30 pointer-events-none">
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-xs font-semibold text-emerald-300 shadow-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                 <span>Drag & Swing Grid Badge ✨</span>
               </div>
             </div>
 
-            {/* The 3D Lanyard Effect containing the Full Bento Grid */}
-            <div className="w-full h-[640px] sm:h-[700px] lg:h-[760px] xl:h-[800px]">
-              <Lanyard
-                position={[0, -1.25, 10.4]}
-                gravity={[0, -40, 0]}
-                frontImage="/assets/lanyard/kc-bento-card-front.png"
-                backImage="/assets/lanyard/kc-bento-card-back.png"
-                imageFit="cover"
-                cardScale={3.25}
-              />
+            {/* Stage container with generous bleed so card can freely swing without hitting invisible bounding box */}
+            <div className="relative w-full h-[640px] sm:h-[700px] lg:h-[760px] xl:h-[800px] flex items-center justify-center">
+              <div className="absolute w-[150%] sm:w-[165%] lg:w-[180%] h-[125%] sm:h-[130%] lg:h-[135%] -left-[25%] sm:-left-[32.5%] lg:-left-[40%] -top-[12%] sm:-top-[15%] lg:-top-[17.5%]">
+                <Lanyard
+                  position={[0, -1.15, 10.8]}
+                  gravity={[0, -40, 0]}
+                  frontImage="/assets/lanyard/kc-bento-card-front.png"
+                  backImage="/assets/lanyard/kc-bento-card-back.png"
+                  imageFit="cover"
+                  cardScale={3.15}
+                />
+              </div>
             </div>
 
             {/* PREVIOUS 6-CARD BENTO GRID (Preserved for easy 1-click revert if needed):
@@ -193,7 +195,7 @@ export default function HeroSection() {
         </div>
 
         {/* 3. Full-Bleed Grounding Trust Ribbon - Eliminates Gaps & Bridges Columns */}
-        <div className="mt-8 lg:mt-12 pt-5 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 animate-hero-3">
+        <div className="mt-8 lg:mt-12 pt-5 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 animate-hero-3 relative z-20">
           <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
             <div className="w-9 h-9 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 border border-amber-400/30">
               <Sparkles className="w-5 h-5" />

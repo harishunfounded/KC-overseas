@@ -263,10 +263,21 @@ function Band({
       dir.copy(vec).sub(state.camera.position).normalize();
       vec.add(dir.multiplyScalar(state.camera.position.length()));
       [card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp());
+      
+      const targetX = vec.x - dragged.x;
+      const targetY = vec.y - dragged.y;
+      const targetZ = vec.z - dragged.z;
+
+      // Generous clamp matching the expanded 3D stage and rope radius
+      // Ensures the card freely moves around but can never be dragged out of the rendered canvas
+      const clampedX = Math.max(-2.5, Math.min(2.5, targetX));
+      const clampedY = Math.max(-3.0, Math.min(1.0, targetY));
+      const clampedZ = Math.max(-1.5, Math.min(1.5, targetZ));
+
       card.current?.setNextKinematicTranslation({
-        x: vec.x - dragged.x,
-        y: vec.y - dragged.y,
-        z: vec.z - dragged.z,
+        x: clampedX,
+        y: clampedY,
+        z: clampedZ,
       });
     }
     if (
