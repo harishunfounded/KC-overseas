@@ -172,7 +172,7 @@ export default function HeroSection() {
             {/* The 3D Lanyard Effect containing the Full Bento Grid */}
             <div className="w-full h-[640px] sm:h-[700px] lg:h-[760px] xl:h-[800px]">
               <Lanyard
-                position={[0, -0.9, 10]}
+                position={[0, -1.25, 10.4]}
                 gravity={[0, -40, 0]}
                 frontImage="/assets/lanyard/kc-bento-card-front.png"
                 backImage="/assets/lanyard/kc-bento-card-back.png"
