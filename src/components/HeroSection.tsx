@@ -159,53 +159,25 @@ export default function HeroSection() {
 
           </div>
 
-          {/* Right Column: Interactive 3D Lanyard ID Card (React Bits) */}
-          <div className="lg:col-span-5 xl:col-span-5 animate-hero-3 flex flex-col justify-center">
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none bg-gradient-to-br from-slate-900/90 via-kc-navy/90 to-blue-950/90 text-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20 ring-1 ring-white/10 backdrop-blur-xl overflow-hidden h-[540px] sm:h-[580px] lg:h-[620px] flex flex-col">
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-kc-primary/25 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Header with Brand & Live Interactive Status */}
-              <div className="relative z-20 px-5 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-3 border-b border-white/15 bg-slate-900/40 backdrop-blur-md">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-kc-primary to-blue-700 flex items-center justify-center text-white shadow-inner ring-1 ring-white/25">
-                    <GraduationCap className="w-5 h-5 text-amber-300" />
-                  </div>
-                  <div>
-                    <h3 className="font-extrabold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
-                      KC Overseas Education
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 fill-emerald-400/20" />
-                    </h3>
-                    <p className="text-[11px] sm:text-xs text-blue-200">
-                      Official Representative • Interactive 3D ID
-                    </p>
-                  </div>
-                </div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-[11px] font-semibold text-emerald-300 shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="hidden sm:inline">Drag & Swing</span>
-                  <span className="sm:hidden">Interactive</span>
-                </div>
+          {/* Right Column: 3D Interactive Lanyard holding the Bento Grid Badge */}
+          <div className="lg:col-span-5 xl:col-span-5 animate-hero-3 relative flex flex-col items-center justify-center min-h-[580px] sm:min-h-[640px] lg:min-h-[680px]">
+            {/* Interactive Drag & Swing Hint Pill */}
+            <div className="absolute top-2 right-2 sm:right-4 z-20 pointer-events-none">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-xs font-semibold text-emerald-300 shadow-lg">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <span>Drag & Swing Grid Badge ✨</span>
               </div>
+            </div>
 
-              {/* 3D Lanyard Interactive Physics Area */}
-              <div className="relative z-10 flex-1 w-full h-full min-h-[380px] flex items-center justify-center">
-                <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
-              </div>
-
-              {/* Bottom Social Proof & Trust Strip */}
-              <div className="relative z-20 px-5 sm:px-6 py-3.5 border-t border-white/15 bg-slate-900/60 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <div className="flex text-amber-400 text-sm">
-                    ★★★★★
-                  </div>
-                  <span className="font-extrabold text-white">4.9/5</span>
-                  <span className="text-blue-200 text-[11px]">(3,500+ Reviews)</span>
-                </div>
-                <span className="text-xs font-semibold text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-500/30">
-                  ₹25Cr+ Scholarships Unlocked
-                </span>
-              </div>
+            {/* The 3D Lanyard Effect containing the Full Bento Grid */}
+            <div className="w-full h-[580px] sm:h-[640px] lg:h-[680px]">
+              <Lanyard
+                position={[0, 0, 13]}
+                gravity={[0, -40, 0]}
+                frontImage="/assets/lanyard/kc-bento-card-front.png"
+                backImage="/assets/lanyard/kc-bento-card-back.png"
+                imageFit="cover"
+              />
             </div>
 
             {/* PREVIOUS 6-CARD BENTO GRID (Preserved for easy 1-click revert if needed):

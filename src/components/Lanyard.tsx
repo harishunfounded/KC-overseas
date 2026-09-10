@@ -184,8 +184,8 @@ function Band({
     const baseImg = baseMap.image;
     if (!baseImg) return baseMap;
 
-    const W = baseImg.width || 1024;
-    const H = baseImg.height || 1024;
+    const W = Math.max(baseImg.width || 1024, 2048);
+    const H = Math.max(baseImg.height || 1024, 2048);
     const canvas = document.createElement('canvas');
     canvas.width = W;
     canvas.height = H;
