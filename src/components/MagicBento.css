@@ -1,0 +1,235 @@
+/* MagicBento Styles - Scroll-driven & Touch-driven Flag Color Animations on Mobile */
+
+.magic-bento-section {
+  position: relative;
+  width: 100%;
+}
+
+/* Vertical grid layout:
+   Mobile: 2 columns (5 neat rows of 2 cards), scrolls vertically with the page!
+   Narrow (<350px): 1 column
+   Tablet: 3 columns
+   Desktop: 5 columns (2 rows of 5 cards) */
+.magic-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+@media (max-width: 340px) {
+  .magic-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 640px) {
+  .magic-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .magic-bento-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Card sizing matching previous grid proportions */
+.magic-bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  min-height: 146px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #090d18;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 200px;
+  --glow-color: 245, 158, 11;
+  --scroll-glow-intensity: 0;
+}
+
+/* Hover, Active Touch, and Scroll-Focal Activation */
+.magic-bento-card:hover,
+.magic-bento-card:active,
+.magic-bento-card.is-touched,
+.magic-bento-card.is-in-focus {
+  transform: translateY(-2px);
+  border-color: rgba(var(--glow-color), 0.7);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.6), 0 0 22px -2px rgba(var(--glow-color), 0.4);
+}
+
+/* Inner Country Flag Gradient Wash - blooms on hover, touch, and as you scroll around it */
+.magic-bento-card__flag-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--card-flag-gradient);
+  opacity: 0.15;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.magic-bento-card:hover .magic-bento-card__flag-bg,
+.magic-bento-card:active .magic-bento-card__flag-bg,
+.magic-bento-card.is-touched .magic-bento-card__flag-bg,
+.magic-bento-card.is-in-focus .magic-bento-card__flag-bg {
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+
+/* Spotlight wash inside the card following the cursor / touch / scroll */
+.magic-bento-card__spot-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--glow-radius, 220px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(var(--glow-color), 0.45) 0%,
+    rgba(var(--glow-color), 0.18) 35%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magic-bento-card:hover .magic-bento-card__spot-glow,
+.magic-bento-card:active .magic-bento-card__spot-glow,
+.magic-bento-card.is-touched .magic-bento-card__spot-glow,
+.magic-bento-card.is-in-focus .magic-bento-card__spot-glow {
+  opacity: 1;
+}
+
+/* Border Glow effect matching the country flag color */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: radial-gradient(
+    var(--glow-radius, 200px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(var(--glow-color, 245, 158, 11), 0.95) 0%,
+    rgba(var(--glow-color, 245, 158, 11), 0.45) 35%,
+    transparent 65%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.magic-bento-card--border-glow:hover::after,
+.magic-bento-card--border-glow:active::after,
+.magic-bento-card--border-glow.is-touched::after,
+.magic-bento-card--border-glow.is-in-focus::after {
+  opacity: 1;
+}
+
+/* Typography & Icon Accents on Focus/Hover */
+.magic-bento-card.is-in-focus span[role="img"],
+.magic-bento-card.is-touched span[role="img"] {
+  transform: scale(1.15) rotate(4deg);
+}
+
+.magic-bento-card.is-in-focus h3,
+.magic-bento-card.is-touched h3 {
+  color: #fde047; /* amber-300 */
+}
+
+.magic-bento-card.is-in-focus .magic-bento-card__explore,
+.magic-bento-card.is-touched .magic-bento-card__explore {
+  color: #fde047;
+}
+
+.magic-bento-card.is-in-focus .magic-bento-card__explore svg,
+.magic-bento-card.is-touched .magic-bento-card__explore svg {
+  transform: translate(2px, -2px);
+}
+
+/* Star particles inside the card */
+.magic-bento-particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-bento-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+  will-change: transform, opacity;
+}
+
+.magic-bento-particle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: inherit;
+  filter: blur(2px);
+  opacity: 0.7;
+}
+
+/* Global cursor spotlight */
+.magic-bento-global-spotlight {
+  position: fixed;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(var(--spotlight-color, 245, 158, 11), 0.16) 0%,
+    rgba(var(--spotlight-color, 245, 158, 11), 0.08) 20%,
+    rgba(var(--spotlight-color, 245, 158, 11), 0.03) 40%,
+    transparent 70%
+  );
+  z-index: 99;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magic-bento-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}

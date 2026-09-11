@@ -3,13 +3,14 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { siteConfig, CountryDestination } from '@/config/site';
+import MagicBento, { DEFAULT_DESTINATIONS, DestinationBentoItem } from './MagicBento';
 
 interface CountriesGridProps {
   onSelectCountry?: (countryName: string) => void;
 }
 
 export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
-  const handleSelectCountry = (country: CountryDestination) => {
+  const handleSelectCountry = (country: { name: string }) => {
     if (onSelectCountry) {
       onSelectCountry(country.name);
     }
@@ -22,21 +23,49 @@ export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
   return (
     <section
       id="destinations"
-      className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200"
+      className="py-12 sm:py-16 bg-slate-900 border-b border-slate-800 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background ambient lighting */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Clean Header */}
         <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl font-black text-kc-heading tracking-tight">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700/80 text-xs font-bold text-amber-400 mb-2.5 shadow-sm">
+            <span>Global Study Opportunities</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
             Target Study Destinations
           </h2>
-          <p className="text-xs sm:text-sm text-kc-muted mt-1.5 font-normal">
-            Direct institutional representation across 10 premier education hubs.
+          <p className="text-xs sm:text-sm text-slate-400 mt-1.5 font-normal">
+            Direct institutional representation across 10 premier education hubs. Hover over any country to explore with its authentic flag glow.
           </p>
         </div>
 
-        {/* Minimal 10 Countries: Horizontal scroll-snap carousel on mobile, 5-col grid on desktop */}
+        {/* MagicBento Grid with Country Flag Glow on Hover */}
+        <div className="w-full">
+          <MagicBento
+            destinations={DEFAULT_DESTINATIONS}
+            onSelectCountry={(dest) => handleSelectCountry(dest)}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={280}
+            particleCount={10}
+          />
+        </div>
+
+        {/* Mobile hint */}
+        <p className="sm:hidden text-center text-[11px] text-slate-400 mt-2 flex items-center justify-center gap-1">
+          <span>✨ Tap any destination to explore with its flag glow</span>
+        </p>
+
+        {/* PREVIOUS DESTINATIONS GRID (Preserved for easy 1-click revert if needed):
         <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none no-scrollbar gap-3 sm:gap-4 pb-3 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
           {siteConfig.destinations.map((country) => (
             <button
@@ -67,11 +96,7 @@ export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
             </button>
           ))}
         </div>
-
-        {/* Mobile scroll hint */}
-        <p className="sm:hidden text-center text-[11px] text-slate-400 mt-2 flex items-center justify-center gap-1">
-          <span>← Swipe to explore destinations →</span>
-        </p>
+        */}
 
       </div>
     </section>

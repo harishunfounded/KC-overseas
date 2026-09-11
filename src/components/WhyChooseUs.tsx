@@ -1,64 +1,62 @@
-'use client';
-
-import React, { useEffect, useRef, useState } from 'react';
-import {
-  CheckCircle2,
-  Search,
-  BookOpen,
-  FileText,
-  Landmark,
-  PlaneTakeoff,
-} from 'lucide-react';
+import React from 'react';
+import AccordionGallery, { AccordionGalleryItem } from './AccordionGallery';
 import { siteConfig } from '@/config/site';
 
-const stepIcons = [
-  CheckCircle2,
-  Search,
-  BookOpen,
-  FileText,
-  Landmark,
-  PlaneTakeoff,
+const processSteps: AccordionGalleryItem[] = [
+  {
+    step: 'Step 01',
+    label: 'Free Profile Evaluation',
+    description: '1-on-1 academic analysis & global eligibility check',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
+    link: '#hero',
+  },
+  {
+    step: 'Step 02',
+    label: 'University & Course Selection',
+    description: 'Data-driven shortlisting across 1,200+ partner universities',
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80',
+    link: '#destinations',
+  },
+  {
+    step: 'Step 03',
+    label: 'Certified Test Preparation',
+    description: 'British Council & IDP coaching for IELTS, PTE & GRE',
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80',
+    link: '#batches',
+  },
+  {
+    step: 'Step 04',
+    label: 'Application & Admission',
+    description: 'End-to-end SOP, LOR review & rapid offer letter turnaround',
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80',
+    link: '#enquiry-section',
+  },
+  {
+    step: 'Step 05',
+    label: 'Education Loan Assistance',
+    description: 'Quick sanction tie-ups with ₹25Cr+ scholarship access',
+    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80',
+    link: '#enquiry-section',
+  },
+  {
+    step: 'Step 06',
+    label: 'Student Visa Processing',
+    description: '99% documented visa success with mock interview drills',
+    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80',
+    link: '#enquiry-section',
+  },
 ];
 
 export default function WhyChooseUs() {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      setIsIntersecting(true);
-      return;
-    }
-
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsIntersecting(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsIntersecting(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="process" className="py-12 sm:py-16 bg-white border-b border-slate-100">
+    <section id="process" className="py-12 sm:py-16 bg-white border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Clean Header */}
         <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-bold text-kc-primary mb-2.5">
+            <span>Proven 6-Step Pathway</span>
+          </div>
           <h2 className="text-2xl sm:text-3xl font-black text-kc-heading tracking-tight">
             The KC Guidance Process
           </h2>
@@ -67,37 +65,40 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* 6 Steps: 80ms sequential staggered reveal */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          {siteConfig.whyChooseUs.map((item, idx) => {
-            const IconComponent = stepIcons[idx % stepIcons.length];
-            return (
-              <div
-                key={item.title}
-                style={{
-                  transitionDelay: isIntersecting ? `${idx * 80}ms` : '0ms',
-                }}
-                className={`bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 hover:border-kc-primary hover:bg-white shadow-elevation-low card-elevation-interactive text-center flex flex-col items-center justify-center group transition-all duration-300 ${
-                  isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-                }`}
-              >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-kc-primary flex items-center justify-center mb-2.5 group-hover:bg-kc-primary group-hover:text-white transition-colors">
-                  <IconComponent className="w-5 h-5" />
-                </div>
-                <span
-                  className={`text-[10px] font-bold text-slate-400 uppercase mb-1 transition-transform duration-300 ${
-                    isIntersecting ? 'scale-100' : 'scale-75'
-                  }`}
-                >
-                  Step 0{idx + 1}
-                </span>
-                <h3 className="font-extrabold text-xs text-kc-heading group-hover:text-kc-primary transition-colors leading-snug">
-                  {item.title}
-                </h3>
-              </div>
-            );
-          })}
+        {/* Dynamic Accordion Gallery from React Bits */}
+        <div className="relative w-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-200/80 bg-slate-950">
+          <AccordionGallery
+            items={processSteps}
+            defaultIndex={0}
+            height={460}
+            mobileHeight={580}
+            gap={10}
+            radius={18}
+            expandRatio={0.46}
+            trigger="hover"
+            accentColor="#f59e0b"
+            overlayColor="#091122"
+            textColor="#ffffff"
+            grayscale={true}
+            tilt={7}
+            duration={0.6}
+          />
         </div>
+
+        {/* Mobile hint */}
+        <p className="sm:hidden text-center text-[12px] text-slate-500 mt-3.5 flex items-center justify-center gap-1.5 font-medium">
+          <span>👇 Scroll down or touch any step to explore</span>
+        </p>
+
+        {/* PREVIOUS 6-CARD GRID (Preserved for easy 1-click revert if needed):
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          {siteConfig.whyChooseUs.map((item, idx) => (
+            <div key={item.title} className="bg-slate-50/70 rounded-2xl p-4 border border-slate-200/80 ...">
+              ...
+            </div>
+          ))}
+        </div>
+        */}
 
       </div>
     </section>
