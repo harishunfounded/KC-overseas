@@ -755,7 +755,7 @@ export default function MagicBento({
               {/* Main Card Content */}
               <div className="relative z-10 flex flex-col justify-between h-full p-3.5 sm:p-4">
                 <div>
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between mb-2 gap-1.5">
                     <span
                       className="text-2xl sm:text-3xl select-none inline-block transition-transform duration-200 group-hover:scale-125 group-hover:rotate-6 origin-bottom-left"
                       role="img"
@@ -763,9 +763,11 @@ export default function MagicBento({
                     >
                       {destination.flag}
                     </span>
-                    <span className="magic-bento-card__code text-[11px] font-black uppercase tracking-wider">
-                      {destination.code}
-                    </span>
+                    {destination.highlight && (
+                      <span className="magic-bento-card__badge text-[9.5px] font-bold px-2 py-0.5 rounded-full border transition-colors truncate max-w-[125px]">
+                        {destination.highlight}
+                      </span>
+                    )}
                   </div>
                   <h3 className="magic-bento-card__title font-extrabold text-xs sm:text-sm leading-tight">
                     {destination.name}
