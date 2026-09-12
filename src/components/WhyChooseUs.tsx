@@ -28,7 +28,7 @@ const processSteps: AccordionGalleryItem[] = [
     step: 'Step 04',
     label: 'Application & Admission',
     description: 'End-to-end SOP, LOR review & rapid offer letter turnaround',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80',
     link: '#enquiry-section',
   },
   {

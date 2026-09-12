@@ -375,7 +375,17 @@ export default function AccordionGallery({
                   mediaRefs.current[i] = el;
                 }}
               >
-                <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+                <img
+                  src={item.image}
+                  alt={item.alt || item.label || ''}
+                  draggable="false"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.includes('photo-1522202176988-66273c2fd55f')) {
+                      target.src = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80';
+                    }
+                  }}
+                />
               </span>
               <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
