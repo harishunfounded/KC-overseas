@@ -225,7 +225,7 @@ export default function EnquiryForm({
           <div
             className={`p-2.5 mb-3 text-xs rounded-xl flex items-center gap-2 ${
               isHero
-                ? 'bg-red-500/20 text-red-200 border border-red-500/40'
+                ? 'bg-red-50 text-red-700 border border-red-200'
                 : 'bg-red-50 text-red-700 border border-red-200'
             }`}
           >
@@ -243,16 +243,16 @@ export default function EnquiryForm({
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className={
                 isHero
-                  ? `w-full px-4 py-3 text-xs sm:text-sm rounded-xl bg-slate-900/80 border ${
-                      errors.name ? 'border-red-400 bg-red-950/40 text-red-200' : 'border-white/20 text-white'
-                    } placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-kc-primary focus:border-transparent transition-all backdrop-blur-md`
+                  ? `w-full px-4 py-3 text-xs sm:text-sm rounded-xl bg-slate-50 border ${
+                      errors.name ? 'border-red-400 bg-red-50 text-red-900' : 'border-slate-200 text-slate-900'
+                    } placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 focus:bg-white transition-all`
                   : `w-full px-3.5 py-2.5 text-xs rounded-xl border ${
                       errors.name ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
                     } input-refined focus:outline-none`
               }
             />
             {errors.name && (
-              <p className={`text-[11px] mt-1 font-medium ${isHero ? 'text-red-400' : 'text-red-600'}`}>
+              <p className={`text-[11px] mt-1 font-medium ${isHero ? 'text-red-600' : 'text-red-600'}`}>
                 {errors.name}
               </p>
             )}
@@ -263,7 +263,7 @@ export default function EnquiryForm({
               <span
                 className={
                   isHero
-                    ? 'inline-flex items-center px-3 rounded-l-xl border border-r-0 border-white/20 bg-slate-800/80 text-slate-300 text-xs sm:text-sm font-semibold backdrop-blur-md'
+                    ? 'inline-flex items-center px-3 rounded-l-xl border border-r-0 border-slate-200 bg-slate-100 text-slate-700 text-xs sm:text-sm font-semibold'
                     : 'inline-flex items-center px-2.5 rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 text-slate-500 text-xs'
                 }
               >
@@ -278,8 +278,8 @@ export default function EnquiryForm({
                 className={
                   isHero
                     ? `w-full px-3.5 py-3 text-xs sm:text-sm rounded-r-xl border ${
-                        errors.phone ? 'border-red-400 bg-red-950/40 text-red-200' : 'border-white/20 text-white'
-                      } bg-slate-900/80 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-kc-primary focus:border-transparent transition-all backdrop-blur-md`
+                        errors.phone ? 'border-red-400 bg-red-50 text-red-900' : 'border-slate-200 text-slate-900'
+                      } bg-slate-50 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 focus:bg-white transition-all`
                     : `w-full px-3 py-2.5 text-xs rounded-r-xl border ${
                         errors.phone ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
                       } input-refined focus:outline-none`
@@ -287,7 +287,7 @@ export default function EnquiryForm({
               />
             </div>
             {errors.phone && (
-              <p className={`text-[11px] mt-1 font-medium ${isHero ? 'text-red-400' : 'text-red-600'}`}>
+              <p className={`text-[11px] mt-1 font-medium ${isHero ? 'text-red-600' : 'text-red-600'}`}>
                 {errors.phone}
               </p>
             )}
@@ -299,7 +299,7 @@ export default function EnquiryForm({
           disabled={isSubmitting}
           className={
             isHero
-              ? 'w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-kc-accent via-orange-500 to-amber-500 hover:from-kc-accent-hover hover:via-orange-600 hover:to-amber-600 text-white font-black text-xs sm:text-sm tracking-wide shadow-cta-glow cta-tactile disabled:opacity-70 transition-all cursor-pointer'
+              ? 'w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-black text-xs sm:text-sm tracking-wide shadow-[0_4px_18px_rgba(37,99,235,0.4)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.5)] cta-tactile disabled:opacity-70 transition-all cursor-pointer'
               : 'w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-xs sm:text-sm shadow-cta-glow hover:bg-kc-accent-hover cta-tactile disabled:opacity-70'
           }
         >
@@ -313,7 +313,7 @@ export default function EnquiryForm({
           )}
         </button>
 
-        <p className={`text-[11px] ${isHero ? 'text-slate-300/80' : 'text-slate-400'} text-center mt-2.5 leading-tight`}>
+        <p className={`text-[11px] ${isHero ? 'text-slate-500 font-medium' : 'text-slate-400'} text-center mt-2.5 leading-tight`}>
           {isHero
             ? '🔒 100% Free Profile Assessment • Zero Service Charges • Confidential'
             : 'By submitting, you agree to be contacted regarding your enquiry.'}

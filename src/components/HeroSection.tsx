@@ -204,18 +204,17 @@ export default function HeroSection() {
 
           {/* Bottom of Left Column on Desktop / Third on Mobile: Quick Consultation Console */}
           <div className="lg:col-span-6 xl:col-span-6 animate-hero-3 relative z-20 order-3">
-            <div className="relative overflow-hidden bg-slate-900/75 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-white/10">
-              <div className="absolute -top-16 -right-16 w-36 h-36 bg-kc-primary/25 rounded-full blur-2xl pointer-events-none" />
+            <div className="relative overflow-hidden bg-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
               <div className="relative z-10">
-                <div className="flex items-center justify-between gap-3 mb-3.5 pb-2.5 border-b border-white/10">
+                <div className="flex items-center justify-between gap-3 mb-3.5 pb-2.5 border-b border-slate-100">
                   <div>
-                    <h2 className="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                    <h2 className="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
                       <span>Book Free 1-on-1 Counselling</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
                         100% Free
                       </span>
                     </h2>
-                    <p className="text-[11px] text-slate-300 mt-0.5">
+                    <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
                       Get shortlisted universities & scholarship evaluation in 15 mins
                     </p>
                   </div>
