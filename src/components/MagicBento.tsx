@@ -755,22 +755,27 @@ export default function MagicBento({
               {/* Main Card Content */}
               <div className="relative z-10 flex flex-col justify-between h-full p-3.5 sm:p-4">
                 <div>
-                  <span
-                    className="text-2xl sm:text-3xl block mb-2 select-none inline-block transition-transform duration-200 group-hover:scale-125 group-hover:rotate-6 origin-bottom-left"
-                    role="img"
-                    aria-label={destination.name}
-                  >
-                    {destination.flag}
-                  </span>
-                  <h3 className="font-extrabold text-xs sm:text-sm text-white group-hover:text-amber-300 transition-colors leading-tight">
+                  <div className="flex items-center justify-between mb-2">
+                    <span
+                      className="text-2xl sm:text-3xl select-none inline-block transition-transform duration-200 group-hover:scale-125 group-hover:rotate-6 origin-bottom-left"
+                      role="img"
+                      aria-label={destination.name}
+                    >
+                      {destination.flag}
+                    </span>
+                    <span className="magic-bento-card__code text-[11px] font-black uppercase tracking-wider">
+                      {destination.code}
+                    </span>
+                  </div>
+                  <h3 className="magic-bento-card__title font-extrabold text-xs sm:text-sm leading-tight">
                     {destination.name}
                   </h3>
-                  <p className="text-[10px] sm:text-[11px] text-slate-300 mt-1 leading-snug line-clamp-2">
+                  <p className="magic-bento-card__desc text-[10px] sm:text-[11px] mt-1 leading-snug line-clamp-2 font-normal">
                     {destination.oneLiner}
                   </p>
                 </div>
 
-                <div className="magic-bento-card__explore mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-bold text-white/80 group-hover:text-amber-300 transition-colors">
+                <div className="magic-bento-card__explore mt-2.5 pt-2 border-t flex items-center justify-between text-[10px] font-bold">
                   <span>Explore</span>
                   <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>

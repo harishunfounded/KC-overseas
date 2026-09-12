@@ -38,7 +38,7 @@
   }
 }
 
-/* Card sizing matching previous grid proportions */
+/* Card sizing: Clean White Brand Card in Resting State */
 .magic-bento-card {
   display: flex;
   flex-direction: column;
@@ -47,15 +47,16 @@
   width: 100%;
   min-height: 146px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #090d18;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(11, 21, 38, 0.05), 0 1px 2px -1px rgba(11, 21, 38, 0.04);
   overflow: hidden;
   cursor: pointer;
   outline: none;
   text-align: left;
   transform-style: preserve-3d;
   transform-origin: center center;
-  transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+  transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   user-select: none;
@@ -68,23 +69,23 @@
   --scroll-glow-intensity: 0;
 }
 
-/* Hover, Active Touch, and Scroll-Focal Activation */
+/* Hover, Active Touch, and Scroll-Focal Activation: Flag Color Bloom */
 .magic-bento-card:hover,
 .magic-bento-card:active,
 .magic-bento-card.is-touched,
 .magic-bento-card.is-in-focus {
-  transform: translateY(-2px);
-  border-color: rgba(var(--glow-color), 0.7);
-  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.6), 0 0 22px -2px rgba(var(--glow-color), 0.4);
+  transform: translateY(-3px);
+  border-color: rgba(var(--glow-color), 0.75);
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.18), 0 0 24px -2px rgba(var(--glow-color), 0.4);
 }
 
-/* Inner Country Flag Gradient Wash - blooms on hover, touch, and as you scroll around it */
+/* Inner Country Flag Gradient Wash - 0 opacity in resting state, blooms on hover/touch/scroll */
 .magic-bento-card__flag-bg {
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: var(--card-flag-gradient);
-  opacity: 0.15;
+  opacity: 0;
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s ease;
   pointer-events: none;
   z-index: 0;
@@ -94,7 +95,7 @@
 .magic-bento-card:active .magic-bento-card__flag-bg,
 .magic-bento-card.is-touched .magic-bento-card__flag-bg,
 .magic-bento-card.is-in-focus .magic-bento-card__flag-bg {
-  opacity: 0.92;
+  opacity: 0.96;
   transform: scale(1.02);
 }
 
@@ -156,23 +157,71 @@
   opacity: 1;
 }
 
-/* Typography & Icon Accents on Focus/Hover */
+/* Country Code watermark */
+.magic-bento-card__code {
+  color: #94a3b8; /* slate-400 */
+  opacity: 0.75;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.magic-bento-card:hover .magic-bento-card__code,
+.magic-bento-card:active .magic-bento-card__code,
+.magic-bento-card.is-touched .magic-bento-card__code,
+.magic-bento-card.is-in-focus .magic-bento-card__code {
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+/* Typography & Icon Accents in Resting State */
+.magic-bento-card__title {
+  color: #1a2b4c; /* kc-heading */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.magic-bento-card__desc {
+  color: #5a6a85; /* kc-muted */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.magic-bento-card__explore {
+  color: #1e64dc; /* kc-primary */
+  border-color: #f1f5f9; /* slate-100 */
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Typography & Icon Accents on Hover / Focus (Flag Illumination Mode) */
+.magic-bento-card:hover .magic-bento-card__title,
+.magic-bento-card:active .magic-bento-card__title,
+.magic-bento-card.is-touched .magic-bento-card__title,
+.magic-bento-card.is-in-focus .magic-bento-card__title {
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.magic-bento-card:hover .magic-bento-card__desc,
+.magic-bento-card:active .magic-bento-card__desc,
+.magic-bento-card.is-touched .magic-bento-card__desc,
+.magic-bento-card.is-in-focus .magic-bento-card__desc {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.magic-bento-card:hover .magic-bento-card__explore,
+.magic-bento-card:active .magic-bento-card__explore,
+.magic-bento-card.is-touched .magic-bento-card__explore,
+.magic-bento-card.is-in-focus .magic-bento-card__explore {
+  color: #fde047; /* amber-300 */
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.magic-bento-card:hover span[role="img"],
 .magic-bento-card.is-in-focus span[role="img"],
 .magic-bento-card.is-touched span[role="img"] {
-  transform: scale(1.15) rotate(4deg);
-}
-
-.magic-bento-card.is-in-focus h3,
-.magic-bento-card.is-touched h3 {
-  color: #fde047; /* amber-300 */
-}
-
-.magic-bento-card.is-in-focus .magic-bento-card__explore,
-.magic-bento-card.is-touched .magic-bento-card__explore {
-  color: #fde047;
+  transform: scale(1.18) rotate(4deg);
 }
 
 .magic-bento-card.is-in-focus .magic-bento-card__explore svg,
+.magic-bento-card:hover .magic-bento-card__explore svg,
 .magic-bento-card.is-touched .magic-bento-card__explore svg {
   transform: translate(2px, -2px);
 }
@@ -209,21 +258,21 @@
 /* Global cursor spotlight */
 .magic-bento-global-spotlight {
   position: fixed;
-  width: 650px;
-  height: 650px;
+  width: 600px;
+  height: 600px;
   border-radius: 50%;
   pointer-events: none;
   background: radial-gradient(
     circle,
-    rgba(var(--spotlight-color, 245, 158, 11), 0.16) 0%,
-    rgba(var(--spotlight-color, 245, 158, 11), 0.08) 20%,
-    rgba(var(--spotlight-color, 245, 158, 11), 0.03) 40%,
+    rgba(var(--spotlight-color, 245, 158, 11), 0.12) 0%,
+    rgba(var(--spotlight-color, 245, 158, 11), 0.05) 25%,
+    rgba(var(--spotlight-color, 245, 158, 11), 0.01) 45%,
     transparent 70%
   );
   z-index: 99;
   opacity: 0;
   transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
   will-change: transform, opacity;
 }
 
