@@ -28,7 +28,7 @@ export default function CTASection({
           badge: 'bg-white/80 text-kc-primary border border-amber-200',
           title: 'text-kc-heading',
           sub: 'text-slate-700',
-          ctaBtn: 'bg-kc-primary text-white hover:bg-kc-primary-hover shadow-kc-md',
+          ctaBtn: 'bg-kc-accent text-white hover:bg-kc-accent-hover shadow-cta-glow',
         };
       case 'navy':
         return {

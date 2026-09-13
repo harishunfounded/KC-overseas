@@ -151,7 +151,7 @@ export default function FAQSection() {
           </div>
           <a
             href="#hero"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-kc-primary hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm shrink-0"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-kc-accent hover:bg-kc-accent-hover text-white text-xs font-bold transition-all shadow-cta-glow shrink-0"
           >
             <span>Book Free 1-on-1 Counselling</span>
             <ArrowRight className="w-3.5 h-3.5" />

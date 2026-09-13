@@ -299,7 +299,7 @@ export default function EnquiryForm({
           disabled={isSubmitting}
           className={
             isHero
-              ? 'w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-black text-xs sm:text-sm tracking-wide shadow-[0_4px_18px_rgba(37,99,235,0.4)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.5)] cta-tactile disabled:opacity-70 transition-all cursor-pointer'
+              ? 'w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-kc-accent hover:bg-kc-accent-hover active:bg-[#E85B3F] text-white font-black text-xs sm:text-sm tracking-wide shadow-cta-glow hover:shadow-[0_6px_25px_rgba(255,112,84,0.45)] cta-tactile disabled:opacity-70 transition-all cursor-pointer'
               : 'w-full min-h-[48px] flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-kc-accent text-white font-extrabold text-xs sm:text-sm shadow-cta-glow hover:bg-kc-accent-hover cta-tactile disabled:opacity-70'
           }
         >
