@@ -13,31 +13,36 @@ import {
   Calendar,
   MapPin,
 } from 'lucide-react';
-import dynamic from 'next/dynamic';
 import { siteConfig } from '@/config/site';
 import EnquiryForm from './EnquiryForm';
 import CardBentoContent from './CardBentoContent';
 
-const Lanyard = dynamic(() => import('./Lanyard'), {
-  ssr: false,
-  loading: () => null,
-});
-
 export default function HeroSection() {
   const [reduceMotion, setReduceMotion] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [threeReady, setThreeReady] = useState(false);
-  const [countUpDone, setCountUpDone] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    // Let the CountUp numbers animate smoothly for 2.2s on page load before seamless hand-off to 3D
-    const timer = setTimeout(() => {
-      setCountUpDone(true);
-    }, 2200);
-    return () => clearTimeout(timer);
-  }, []);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduceMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    setTilt({ x: rotateX, y: rotateY });
+  };
 
-  const is3DReady = threeReady && countUpDone;
+  const handleMouseEnter = () => {
+    if (!reduceMotion) setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.matchMedia) {
@@ -144,60 +149,43 @@ export default function HeroSection() {
 
           </div>
 
-          {/* Right Column on Desktop / Second on Mobile: 3D Interactive Lanyard holding Bento Badge */}
-          <div className="lg:col-span-6 xl:col-span-6 lg:row-span-2 animate-hero-3 relative flex flex-col items-center justify-start min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] z-10 order-2">
-            {/* Interactive Drag & Swing Hint Pill */}
-            <div className="absolute top-0 right-2 sm:right-4 z-30 pointer-events-none">
-              <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-[11px] sm:text-xs font-semibold text-emerald-300 shadow-lg">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                <span>Drag & Swing Grid Badge ✨</span>
+          {/* Right Column on Desktop / Second on Mobile: Bento Grid Card */}
+          <div className="lg:col-span-6 xl:col-span-6 lg:row-span-2 animate-hero-3 relative flex flex-col items-center justify-center z-10 order-2 w-full py-1 sm:py-2">
+            {/* Verified Track Record Status Pill */}
+            <div className="mb-3 sm:mb-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-[11px] sm:text-xs font-semibold text-emerald-300 shadow-lg">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Verified Global Track Record ✨</span>
               </div>
             </div>
 
-            {/* Stage container with generous bleed so card can freely swing without hitting invisible bounding box */}
-            <div 
-              className="relative w-full h-[380px] sm:h-[440px] lg:h-[500px] xl:h-[520px] flex items-center justify-center -mt-4 sm:-mt-6 lg:-mt-8 cursor-grab active:cursor-grabbing touch-pan-y"
-              onMouseEnter={() => setCountUpDone(true)}
-              onTouchStart={() => setCountUpDone(true)}
+            {/* Interactive 3D Bento Grid Card Container */}
+            <div
+              className="relative group perspective-1000 flex items-center justify-center touch-pan-y"
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              {/* 1. Instant Zero-Delay Static Card Poster (Shown instantly on initial frame paint) */}
+              {/* Subtle ambient backdrop blur glow */}
               <div
-                className={`absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-700 z-10 ${
-                  is3DReady ? 'opacity-0' : 'opacity-100'
-                }`}
-              >
-                <div className="relative flex flex-col items-center justify-center">
-                  {/* Top Lanyard Strap */}
-                  <div className="w-6 sm:w-7 h-10 sm:h-16 bg-slate-900 border-x border-white/20 shadow-md relative z-10 flex items-center justify-center overflow-hidden">
-                    <div className="w-full h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_4px,rgba(255,255,255,0.12)_4px,rgba(255,255,255,0.12)_8px)]" />
-                    <div className="absolute w-2.5 sm:w-3 h-4 sm:h-5 rounded-full border-2 border-white/30" />
-                  </div>
-                  {/* Metal Clamp & Ring */}
-                  <div className="-mt-1.5 w-5 sm:w-6 h-4 sm:h-4.5 rounded-md bg-gradient-to-b from-slate-400 via-slate-300 to-slate-600 border border-white/40 shadow-sm z-20 flex items-center justify-center">
-                    <div className="w-2 sm:w-2.5 h-1 bg-slate-800 rounded-sm" />
-                  </div>
-                  {/* Card Body with Bento Grid Artwork & CountUp Animation */}
-                  <div className="-mt-1.5 relative w-[275px] sm:w-[315px] lg:w-[340px] aspect-[1/1.48] rounded-[24px] sm:rounded-[26px] overflow-hidden border border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.6)] ring-1 ring-white/10 z-20 bg-slate-950">
-                    <CardBentoContent animate={true} />
-                  </div>
-                </div>
-              </div>
+                className="absolute -inset-3 sm:-inset-5 bg-gradient-to-tr from-blue-600/30 via-sky-500/20 to-amber-500/25 rounded-[32px] sm:rounded-[36px] blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                aria-hidden="true"
+              />
 
-              {/* 2. Interactive 3D Canvas Layer (Fades in smoothly when Three.js physics & textures ready) */}
+              {/* Card Body with Bento Grid Artwork & Live Animations */}
               <div
-                className={`absolute w-[150%] sm:w-[165%] lg:w-[180%] h-[130%] sm:h-[135%] lg:h-[140%] -left-[25%] sm:-left-[32.5%] lg:-left-[40%] -top-[18%] sm:-top-[22%] lg:-top-[24%] transition-opacity duration-700 z-20 ${
-                  is3DReady ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                }`}
+                className="relative w-[285px] xs:w-[315px] sm:w-[335px] lg:w-[350px] xl:w-[365px] aspect-[1/1.48] rounded-[24px] sm:rounded-[28px] overflow-hidden border border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.6)] ring-1 ring-white/10 z-20 bg-slate-950 will-change-transform"
+                style={{
+                  transform:
+                    isHovered && !reduceMotion
+                      ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.02, 1.02, 1.02)`
+                      : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+                  transition: isHovered
+                    ? 'transform 0.1s ease-out'
+                    : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease',
+                }}
               >
-                <Lanyard
-                  position={[0, -0.65, 14.6]}
-                  gravity={[0, -40, 0]}
-                  frontImage="/assets/lanyard/kc-bento-card-front.png"
-                  backImage="/assets/lanyard/kc-bento-card-back.png"
-                  imageFit="cover"
-                  cardScale={3.15}
-                  onReady={() => setThreeReady(true)}
-                />
+                <CardBentoContent animate={true} />
               </div>
             </div>
           </div>

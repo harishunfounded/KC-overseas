@@ -41,7 +41,7 @@ export default function CardBentoContent({
       {/* 2. Bento Grid 2x3 */}
       <div className="grid grid-cols-2 gap-2 my-2">
         {/* Cell 1: 25+ Years */}
-        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between">
+        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8.5px] font-extrabold bg-amber-400/15 text-amber-300 border border-amber-400/25">
               SINCE 1998
@@ -61,7 +61,7 @@ export default function CardBentoContent({
         </div>
 
         {/* Cell 2: 1,200+ Partner Universities */}
-        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between">
+        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8.5px] font-extrabold bg-sky-400/15 text-sky-300 border border-sky-400/25">
               TOP RANKED
@@ -80,7 +80,7 @@ export default function CardBentoContent({
         </div>
 
         {/* Cell 3: 7,30,000+ Students Placed */}
-        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between">
+        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8.5px] font-extrabold bg-emerald-400/15 text-emerald-300 border border-emerald-400/25">
               GLOBAL
@@ -99,7 +99,7 @@ export default function CardBentoContent({
         </div>
 
         {/* Cell 4: 99% Visa Success Rate */}
-        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between">
+        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8.5px] font-extrabold bg-teal-400/15 text-teal-300 border border-teal-400/25">
               DOCUMENTED
@@ -118,7 +118,7 @@ export default function CardBentoContent({
         </div>
 
         {/* Cell 5: 55+ Offices */}
-        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between">
+        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8.5px] font-extrabold bg-indigo-400/15 text-indigo-300 border border-indigo-400/25">
               PAN-INDIA
@@ -137,7 +137,7 @@ export default function CardBentoContent({
         </div>
 
         {/* Cell 6: British Council & IDP */}
-        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between">
+        <div className="relative rounded-xl p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8.5px] font-extrabold bg-purple-400/15 text-purple-300 border border-purple-400/25">
               OFFICIAL
