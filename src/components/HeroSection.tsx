@@ -112,15 +112,15 @@ export default function HeroSection() {
 
             {/* Main Headline with Radiant Gradient Accent & Contrast Shadows */}
             <h1 className="text-[1.65rem] sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-6xl font-black text-white tracking-tight leading-[1.16] sm:leading-[1.12] animate-hero-1 drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)]">
-              Study Abroad with{' '}
+              Tamil Nadu&apos;s Trusted{' '}
               <span className="bg-gradient-to-r from-white via-sky-100 to-amber-300 bg-clip-text text-transparent">
-                Complete Confidence
+                Study Abroad Consultant
               </span>
             </h1>
 
             {/* High-Impact Value Line */}
             <p className="text-xs sm:text-base lg:text-lg xl:text-xl text-slate-100 leading-relaxed font-normal max-w-2xl animate-hero-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              Direct partner to <strong className="text-white font-semibold underline decoration-amber-400/60 decoration-2 underline-offset-4">1,200+ prestigious universities</strong> across 10 top global destinations. Free profile evaluation, scholarship guidance & 99% visa success rate.
+              Direct partner to <strong className="text-white font-semibold underline decoration-amber-400/60 decoration-2 underline-offset-4">1,200+ prestigious universities</strong> across 10 top global destinations. Free profile evaluation, personalized study abroad counselling & 99% visa success rate.
             </p>
 
             {/* Quick Destination Pill Tags */}
@@ -162,7 +162,7 @@ export default function HeroSection() {
                       </span>
                     </h2>
                     <p className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 font-medium">
-                      Get shortlisted universities & scholarship evaluation in 15 mins
+                      Shortlisted universities & scholarship evaluation from certified overseas education consultants in 15 mins
                     </p>
                   </div>
                 </div>

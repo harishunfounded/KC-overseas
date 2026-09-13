@@ -40,7 +40,7 @@ export default function CountriesGrid({ onSelectCountry }: CountriesGridProps) {
             Target Study Destinations
           </h2>
           <p className="text-xs sm:text-sm text-kc-muted mt-1.5 font-normal">
-            Direct institutional representation across 10 premier education hubs. Hover over any country to explore with its authentic flag glow.
+            Direct institutional representation from certified overseas education consultants across 10 premier global hubs.
           </p>
         </div>
 

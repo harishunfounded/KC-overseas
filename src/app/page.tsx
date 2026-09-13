@@ -8,6 +8,7 @@ import CountriesGrid from '@/components/CountriesGrid';
 import ServicesGrid from '@/components/ServicesGrid';
 import CTASection from '@/components/CTASection';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import FAQSection from '@/components/FAQSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import UpcomingBatches from '@/components/UpcomingBatches';
 import BranchDetailsMap from '@/components/BranchDetailsMap';
@@ -73,7 +74,12 @@ export default function Home() {
         />
       </SectionReveal>
 
-      {/* 10. Student Testimonials & Success Stories */}
+      {/* 10. Frequently Asked Questions (SEO & Trust-building Accordion) */}
+      <SectionReveal>
+        <FAQSection />
+      </SectionReveal>
+
+      {/* 11. Student Testimonials & Success Stories */}
       <SectionReveal>
         <TestimonialsSection />
       </SectionReveal>

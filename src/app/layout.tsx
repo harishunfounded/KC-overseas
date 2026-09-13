@@ -11,13 +11,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'KC Overseas Education | Study Abroad Consultants in Tamil Nadu',
+  title: 'KC Overseas Education | Study Abroad Consultant in Tamil Nadu',
   description:
-    'Study abroad with KC Overseas Education. Guiding students across Tamil Nadu to 1,200+ top universities in 47+ countries. Free profile evaluation, certified IELTS/PTE coaching, and 99% visa success rate.',
+    'KC Overseas Education is a trusted study abroad consultant in Tamil Nadu, guiding students to 1,200+ top universities in 47+ countries. Free profile evaluation, certified IELTS/PTE coaching, and 99% visa success rate.',
   keywords: [
     'KC Overseas Education',
-    'Study Abroad Consultants in Tamil Nadu',
-    'Overseas Education Consultant',
+    'study abroad consultant in Tamil Nadu',
+    'study abroad consultants',
+    'overseas education consultants',
+    'study abroad education consultants',
+    'study abroad counselling',
+    'overseas education consultancy',
+    'study abroad admission guidance',
+    'study abroad university application assistance',
+    'foreign education consultants',
     'IELTS coaching Tamil Nadu',
     'PTE training Tamil Nadu',
     'Study in UK Germany Canada Australia USA',
@@ -29,9 +36,9 @@ export const metadata: Metadata = {
     canonical: 'https://www.studies-overseas.com',
   },
   openGraph: {
-    title: 'Study Abroad with KC Overseas Education | Tamil Nadu',
+    title: 'KC Overseas Education | Study Abroad Consultant in Tamil Nadu',
     description:
-      'Unlock your global education with 1,200+ universities across 47+ countries. 25+ years of trust and 99% visa success record.',
+      'Trusted study abroad consultant in Tamil Nadu with 25+ years legacy, 1,200+ partner universities, 99% visa success rate, and personalized overseas education guidance.',
     url: 'https://www.studies-overseas.com',
     siteName: 'KC Overseas Education',
     locale: 'en_IN',
@@ -56,7 +63,7 @@ export default function RootLayout({
     name: 'KC Overseas Education - Namakkal Branch',
     alternateName: 'KC Overseas Namakkal',
     description:
-      'Leading overseas education consultant in Namakkal offering free counselling, university admission, IELTS/PTE training, study loans, and visa processing.',
+      'Trusted study abroad consultant in Tamil Nadu offering free profile evaluation, university shortlisting, IELTS/PTE training, education loan guidance, and 99% visa success processing.',
     url: 'https://www.studies-overseas.com/branch/namakkal',
     telephone: siteConfig.contact.phone1,
     email: siteConfig.contact.email,
@@ -93,6 +100,9 @@ export default function RootLayout({
     ],
   };
 
+  const gtmId = siteConfig.tracking.gtmId || 'GTM-W39MCWRZ';
+  const metaPixelId = siteConfig.tracking.metaPixelId || '318704320650880';
+
   return (
     <html lang="en" className={`${inter.variable} font-sans scroll-smooth`}>
       <head>
@@ -103,10 +113,39 @@ export default function RootLayout({
         />
 
         {/* 
-          Google Ads & Analytics Tracking Script Injection
-          To enable live conversion tracking, set NEXT_PUBLIC_GOOGLE_ADS_ID in .env.local 
-          or siteConfig.tracking.googleAdsId in src/config/site.ts
+          Google Tag Manager (GTM)
+          Loaded with strategy="beforeInteractive" to execute as early as possible in head
         */}
+        <Script id="gtm-script" strategy="beforeInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${gtmId}');
+          `}
+        </Script>
+
+        {/* 
+          Meta Pixel (Facebook Pixel)
+          Loaded with strategy="afterInteractive" to keep off critical render path
+        */}
+        <Script id="meta-pixel-script" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${metaPixelId}');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
+        {/* Google Ads & Analytics Tracking Script Injection (Optional) */}
         {siteConfig.tracking.googleAdsId && siteConfig.tracking.googleAdsId !== 'AW-CONVERSION-ID-PLACEHOLDER' && (
           <>
             <Script
@@ -123,32 +162,30 @@ export default function RootLayout({
             </Script>
           </>
         )}
-
-        {/* Google Tag Manager (GTM) script if GTM_ID is provided */}
-        {siteConfig.tracking.gtmId && (
-          <Script id="gtm-script" strategy="afterInteractive">
-            {`
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${siteConfig.tracking.gtmId}');
-            `}
-          </Script>
-        )}
       </head>
       <body className="antialiased text-slate-900 bg-white selection:bg-kc-primary selection:text-white">
-        {/* GTM Noscript fallback */}
-        {siteConfig.tracking.gtmId && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.tracking.gtmId}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
-        )}
+        {/* Google Tag Manager (noscript) - immediately after opening body */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
+        {/* Meta Pixel (noscript) */}
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
+
         {children}
       </body>
     </html>

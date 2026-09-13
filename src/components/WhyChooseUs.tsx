@@ -8,6 +8,7 @@ const processSteps: AccordionGalleryItem[] = [
     label: 'Free Profile Evaluation',
     description: '1-on-1 academic analysis & global eligibility check',
     image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
+    alt: 'Study abroad education consultants conducting student profile evaluation',
     link: '#hero',
   },
   {
@@ -15,6 +16,7 @@ const processSteps: AccordionGalleryItem[] = [
     label: 'University & Course Selection',
     description: 'Data-driven shortlisting across 1,200+ partner universities',
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80',
+    alt: 'Foreign education consultants shortlisting top global universities',
     link: '#destinations',
   },
   {
@@ -22,6 +24,7 @@ const processSteps: AccordionGalleryItem[] = [
     label: 'Certified Test Preparation',
     description: 'British Council & IDP coaching for IELTS, PTE & GRE',
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80',
+    alt: 'Certified IELTS and PTE coaching by study abroad consultants',
     link: '#batches',
   },
   {
@@ -29,6 +32,7 @@ const processSteps: AccordionGalleryItem[] = [
     label: 'Application & Admission',
     description: 'End-to-end SOP, LOR review & rapid offer letter turnaround',
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80',
+    alt: 'Study abroad university application assistance and SOP admission review',
     link: '#enquiry-section',
   },
   {
@@ -36,6 +40,7 @@ const processSteps: AccordionGalleryItem[] = [
     label: 'Education Loan Assistance',
     description: 'Quick sanction tie-ups with ₹25Cr+ scholarship access',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80',
+    alt: 'Overseas education loan assistance and scholarship guidance',
     link: '#enquiry-section',
   },
   {
@@ -43,6 +48,7 @@ const processSteps: AccordionGalleryItem[] = [
     label: 'Student Visa Processing',
     description: '99% documented visa success with mock interview drills',
     image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80',
+    alt: 'Overseas education consultancy student visa processing and mock interviews',
     link: '#enquiry-section',
   },
 ];
@@ -61,7 +67,7 @@ export default function WhyChooseUs() {
             The KC Guidance Process
           </h2>
           <p className="text-xs sm:text-sm text-kc-muted mt-1.5">
-            Structured, transparent support from your first counselling session to visa approval.
+            End-to-end study abroad university application assistance from Tamil Nadu&apos;s leading overseas education consultancy.
           </p>
         </div>
 

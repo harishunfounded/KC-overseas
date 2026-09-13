@@ -177,7 +177,8 @@ export const siteConfig = {
     formConversionLabel: process.env.NEXT_PUBLIC_GOOGLE_ADS_FORM_LABEL || 'CONVERSION_LABEL_PLACEHOLDER',
     callConversionLabel: process.env.NEXT_PUBLIC_GOOGLE_ADS_CALL_LABEL || 'CALL_CONVERSION_LABEL_PLACEHOLDER',
     whatsappConversionLabel: process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_LABEL || 'WHATSAPP_CONVERSION_LABEL_PLACEHOLDER',
-    gtmId: process.env.NEXT_PUBLIC_GTM_ID || '',
+    gtmId: process.env.NEXT_PUBLIC_GTM_ID || 'GTM-W39MCWRZ',
+    metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || '318704320650880',
     gaMeasurementId: process.env.NEXT_PUBLIC_GA_ID || '',
   },
 

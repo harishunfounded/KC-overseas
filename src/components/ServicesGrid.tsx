@@ -46,7 +46,7 @@ export default function ServicesGrid() {
             Services & Test Preparation
           </h2>
           <p className="text-xs sm:text-sm text-kc-muted mt-1.5">
-            Complete end-to-end assistance from certified master trainers and visa specialists.
+            Comprehensive study abroad admission guidance, certified test coaching, and loan assistance from experienced visa specialists.
           </p>
         </div>
 
