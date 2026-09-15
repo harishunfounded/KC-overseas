@@ -12,6 +12,7 @@ import {
   Globe,
   Calendar,
   MapPin,
+  SearchCheck,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import EnquiryForm from './EnquiryForm';
@@ -112,7 +113,7 @@ export default function HeroSection() {
 
             {/* Main Headline with Radiant Gradient Accent & Contrast Shadows */}
             <h1 className="text-[1.65rem] sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-6xl font-black text-white tracking-tight leading-[1.16] sm:leading-[1.12] animate-hero-1 drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)]">
-              Tamil Nadu&apos;s Trusted{' '}
+              Tamil Nadu&apos;s Most Trusted{' '}
               <span className="bg-gradient-to-r from-white via-sky-100 to-amber-300 bg-clip-text text-transparent">
                 Study Abroad Consultant
               </span>
@@ -120,7 +121,7 @@ export default function HeroSection() {
 
             {/* High-Impact Value Line */}
             <p className="text-xs sm:text-base lg:text-lg xl:text-xl text-slate-100 leading-relaxed font-normal max-w-2xl animate-hero-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              Direct partner to <strong className="text-white font-semibold underline decoration-amber-400/60 decoration-2 underline-offset-4">1,200+ prestigious universities</strong> across 10 top global destinations. Free profile evaluation, personalized study abroad counselling & 99% visa success rate.
+              Direct partner to <strong className="text-white font-semibold underline decoration-amber-400/60 decoration-2 underline-offset-4">1,200+ prestigious universities</strong> across 10 top global destinations. Only overseas consultancy with 60+ branches. Free profile evaluation, personalized study abroad counselling & 99% visa success rate.
             </p>
 
             {/* Quick Destination Pill Tags */}
@@ -215,44 +216,56 @@ export default function HeroSection() {
         </div>
 
         {/* 3. Full-Bleed Grounding Trust Ribbon - Eliminates Gaps & Bridges Columns */}
-        <div className="mt-4 sm:mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 animate-hero-3 relative z-20">
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+        <div className="mt-4 sm:mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 animate-hero-3 relative z-20">
+          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
             <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 border border-amber-400/30">
               <Sparkles className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-sm font-extrabold text-white leading-tight">Zero Service Charges</div>
-              <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">100% Free Guidance</div>
+              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">Zero Service Charge</div>
+              <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">With tie up university</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
             <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0 border border-emerald-400/30">
               <GraduationCap className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-sm font-extrabold text-white leading-tight">₹25Cr+ Scholarships</div>
+              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">₹25Cr+ Scholarships</div>
               <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">Merit & Grants</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
             <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-sky-400/20 text-sky-300 flex items-center justify-center shrink-0 border border-sky-400/30">
               <Globe className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-sm font-extrabold text-white leading-tight">10 Top Hubs</div>
+              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">10 Top Hubs</div>
               <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">UK, USA, Canada, Germany...</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
             <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-purple-400/20 text-purple-300 flex items-center justify-center shrink-0 border border-purple-400/30">
               <CheckCircle2 className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-sm font-extrabold text-white leading-tight">Express Offers</div>
+              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">Express Offers</div>
               <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">Within 48–72 Hours</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all col-span-2 sm:col-span-1">
+            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-rose-400/20 text-rose-300 flex items-center justify-center shrink-0 border border-rose-400/30">
+              <SearchCheck className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+            </div>
+            <div>
+              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">Public Universities</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 leading-snug">
+                Search & selection option: Germany, Austria, Japan, South Korea, Italy <span className="text-amber-300 font-semibold">• Paid service</span>
+              </div>
             </div>
           </div>
         </div>

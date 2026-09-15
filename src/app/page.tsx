@@ -67,19 +67,14 @@ export default function Home() {
       <SectionReveal>
         <CTASection
           id="cta-strip-2"
-          title="Training from British Council & IDP Certified Mentors"
-          subtitle="Personalized coaching and mock tests to help you achieve your target test scores."
+          title="Are You Looking for Language Training?"
+          subtitle="Personalized coaching and mock tests from British Council & IDP certified mentors to help you achieve your target scores."
           badge="Official Test Partner • 25+ Years of Trust"
           variant="sand"
         />
       </SectionReveal>
 
-      {/* 10. Frequently Asked Questions (SEO & Trust-building Accordion) */}
-      <SectionReveal>
-        <FAQSection />
-      </SectionReveal>
-
-      {/* 11. Student Testimonials & Success Stories */}
+      {/* 10. Student Testimonials & Success Stories */}
       <SectionReveal>
         <TestimonialsSection />
       </SectionReveal>
@@ -99,7 +94,12 @@ export default function Home() {
         <FullEnquirySection />
       </SectionReveal>
 
-      {/* 14. Comprehensive Footer with Legal & Google Ads Disclaimers */}
+      {/* 14. Frequently Asked Questions (SEO & Trust-building Accordion) */}
+      <SectionReveal>
+        <FAQSection />
+      </SectionReveal>
+
+      {/* 15. Comprehensive Footer with Legal & Google Ads Disclaimers */}
       <SectionReveal>
         <Footer />
       </SectionReveal>

@@ -438,10 +438,23 @@ export default function EnquiryForm({
               onChange={(e) => setFormData({ ...formData, preferredService: e.target.value })}
               className="w-full px-3 py-2.5 text-sm rounded-lg border border-slate-300 bg-white input-refined focus:outline-none"
             >
-              <option value="">General Free Counselling</option>
-              {siteConfig.services.map((s) => (
-                <option key={s.id} value={s.name}>
-                  {s.name}
+              {(siteConfig.formServices || [
+                'General Free Counselling',
+                'University Admission',
+                'IELTS Coaching',
+                'PTE Academic',
+                'GRE Preparation',
+                'German Language (A1–B2)',
+                'French Language',
+                'Japanese Language (JLPT)',
+                'Duolingo English Test (DET)',
+                'Education Loan Assistance',
+                'Accommodation Support',
+                'Forex',
+                'Search and Selection',
+              ]).map((serviceName, idx) => (
+                <option key={idx} value={idx === 0 ? '' : serviceName}>
+                  {serviceName}
                 </option>
               ))}
             </select>

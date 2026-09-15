@@ -55,14 +55,14 @@ export const siteConfig = {
     landmark: 'Above Thangamayil Jewellery, Pranav Complex',
     phone1: '+91-8056600507',
     phone1Clean: '+918056600507',
-    phone2: '+91-9626614567',
-    phone2Clean: '+919626614567',
+    phone2: '+91 6382188816',
+    phone2Clean: '+916382188816',
     whatsappNumber: '+91 6382188816',
     whatsappClean: '916382188816',
     whatsappChatUrl:
       'https://wa.me/916382188816?text=Hello%20KC%20Overseas%20Education%2C%20I%20am%20reaching%20out%20through%20your%20website.%20I%20would%20like%20to%20get%20professional%20counselling%20for%20studying%20abroad%2C%20university%20admissions%2C%20and%20scholarships.%20Please%20guide%20me.',
     email: 'namakkal@studies-overseas.com',
-    workingHours: 'Monday to Saturday: 9:30 AM – 7:30 PM (Sunday Closed)',
+    workingHours: 'Monday to Saturday: 10:00 AM – 7:30 PM (Sunday Closed)',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3910.749502937762!2d78.16434857488884!3d11.222718950853504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babce281313768f%3A0x8677c756f7ef0d19!2sThangamayil%20Jewellery%20Limited%20-%20Namakkal!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
     mapDirectionsUrl: 'https://maps.google.com/?q=Pranav+Complex,+Above+Thangamayil+Jewellery,+Salem+Road,+Namakkal+637001',
   },
@@ -146,13 +146,54 @@ export const siteConfig = {
     },
   ] as Testimonial[],
 
-  // Upcoming Batches (Clean, concise schedule)
+  // Upcoming Batches (Clean, concise schedule with weekly, GRE monthly, and offline details)
   upcomingBatches: [
-    { id: 'b-ielts-1', course: 'IELTS Academic Masterclass', startDate: 'Batches Every Monday', mode: 'Classroom & Online', timing: 'Morning & Evening' },
-    { id: 'b-pte-1', course: 'PTE Academic Fast-Track', startDate: 'Every Wednesday', mode: 'AI Lab & Classroom', timing: 'Flexible Timings' },
-    { id: 'b-gre-1', course: 'GRE Comprehensive 320+', startDate: '1st & 15th of Every Month', mode: 'Live Online / Weekend', timing: 'Weekend Intensive' },
-    { id: 'b-ger-1', course: 'German A1–B1 Goethe Exam', startDate: 'New Batch on 15th', mode: 'Offline Classroom', timing: 'Weekday Evenings' },
+    {
+      id: 'b-ielts-1',
+      course: 'IELTS Academic Masterclass',
+      startDate: 'New Batch Every Week',
+      mode: 'Online (Weekly) • Offline (Contact Us)',
+      timing: 'Morning & Evening Batches',
+    },
+    {
+      id: 'b-pte-1',
+      course: 'PTE Academic Fast-Track',
+      startDate: 'New Batch Every Week',
+      mode: 'Online (Weekly) • Offline (Contact Us)',
+      timing: 'Flexible Timings & AI Lab',
+    },
+    {
+      id: 'b-gre-1',
+      course: 'GRE Comprehensive 320+',
+      startDate: 'Monthly Batch',
+      mode: 'GRE Alone – Monthly Batch',
+      timing: 'Weekend & Live Online Intensive',
+    },
+    {
+      id: 'b-ger-1',
+      course: 'German Language (A1–B2)',
+      startDate: 'New Batch Every Week',
+      mode: 'Online (Weekly) • Offline (Contact Us)',
+      timing: 'Goethe Exam Oriented Batches',
+    },
   ] as UpcomingBatch[],
+
+  // Preferred Service / Test Prep Options for Enquiry Form
+  formServices: [
+    'General Free Counselling',
+    'University Admission',
+    'IELTS Coaching',
+    'PTE Academic',
+    'GRE Preparation',
+    'German Language (A1–B2)',
+    'French Language',
+    'Japanese Language (JLPT)',
+    'Duolingo English Test (DET)',
+    'Education Loan Assistance',
+    'Accommodation Support',
+    'Forex',
+    'Search and Selection',
+  ],
 
   // Feature Flags
   features: {
