@@ -7,6 +7,7 @@ import HeroSection from '@/components/HeroSection';
 import CountriesGrid from '@/components/CountriesGrid';
 import ServicesGrid from '@/components/ServicesGrid';
 import CTASection from '@/components/CTASection';
+import SearchSelectionSection from '@/components/SearchSelectionSection';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import FAQSection from '@/components/FAQSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -41,6 +42,11 @@ export default function Home() {
       {/* 4. 10 Target Study Destinations */}
       <SectionReveal>
         <CountriesGrid onSelectCountry={(c) => setSelectedCountry(c)} />
+      </SectionReveal>
+
+      {/* 5. Search & Selection Option for Public Universities */}
+      <SectionReveal>
+        <SearchSelectionSection />
       </SectionReveal>
 
       {/* 6. Test Prep & Comprehensive Assistance Services */}

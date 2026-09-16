@@ -245,17 +245,23 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all col-span-2 sm:col-span-1">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-rose-400/20 text-rose-300 flex items-center justify-center shrink-0 border border-rose-400/30">
+          <a
+            href="#search-selection"
+            className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all col-span-2 sm:col-span-1 cursor-pointer group"
+          >
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-rose-400/20 text-rose-300 flex items-center justify-center shrink-0 border border-rose-400/30 group-hover:bg-rose-400/30 transition-colors">
               <SearchCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">Public Universities</div>
+              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight flex items-center gap-1">
+                <span>Public Universities</span>
+                <span className="text-[10px] text-amber-300 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </div>
               <div className="text-[8.5px] sm:text-[9.5px] text-slate-300 mt-0.5 leading-tight">
                 Search & selection: Germany, Austria... <span className="text-amber-300 font-semibold">• Paid</span>
               </div>
             </div>
-          </div>
+          </a>
 
         </div>
 
