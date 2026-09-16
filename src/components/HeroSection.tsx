@@ -113,6 +113,11 @@ export default function HeroSection() {
               </span>
             </h1>
 
+            {/* High-Impact Value Line */}
+            <p className="text-xs sm:text-sm lg:text-[15px] text-slate-100 leading-relaxed font-normal max-w-2xl animate-hero-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+              Direct partner to <strong className="text-white font-semibold underline decoration-amber-400/60 decoration-2 underline-offset-4">1,200+ prestigious universities</strong> across 10 top global destinations. Only overseas consultancy with 60+ branches. Free profile evaluation, personalized study abroad counselling &amp; 99% visa success rate.
+            </p>
+
             {/* Quick Destination Pill Tags (Top Hubs) */}
             <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 pt-0.5 animate-hero-2">
               <span className="text-[10px] sm:text-[11px] font-bold text-amber-300/90 uppercase tracking-wider mr-0.5">
