@@ -197,7 +197,7 @@ export const siteConfig = {
     },
     {
       id: 't-bathmesh',
-      name: "Bathmesh's Parent",
+      name: 'Bathmesh parent',
       degree: 'Parent Testimonial',
       university: 'KC Namakkal',
       country: 'Parent Review',
@@ -211,7 +211,7 @@ export const siteConfig = {
       degree: 'Application & Visa Support',
       university: 'KC Namakkal Student',
       country: 'Visa & Admission Success',
-      quote: "KC Overseas brought my dream come true. Thank you Mr. Ramesh sir for helping and guiding me throughout the process. Each and every process was perfectly done, starting from admission to getting my visa. From start to end, Tinu mam explained and guided me through each and every step of what to do and how things work from choosing the country to submitting university applications and the visa process. One of the best and quickest services for abroad study. A huge thanks to Mr. Ramesh sir and the entire team.",
+      quote: "Kc consultancy brought my dream come true. Thank you Mr. Ramesh sir for helping and guiding me throughout the process. Each and every process was perfectly done, starting from admission to getting my visa. From start to end, Tinu mam explained and guided me through each and every step of what to do and how things work from choosing the country to submitting university applications and the visa process. One of the best and quickest services for abroad study. A huge thanks to Mr. Ramesh sir and the entire team.",
       avatarPlaceholder: 'K',
       studentImageUrl: 'https://assets.studies-overseas.com/Pic_03_Kishore_01_50dfa21731.png',
     },
