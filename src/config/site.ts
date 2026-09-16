@@ -22,11 +22,19 @@ export interface ServiceOffering {
 export interface Testimonial {
   id: string;
   name: string;
-  degree: string;
-  university: string;
-  country: string;
+  degree?: string;
+  university?: string;
+  country?: string;
   quote: string;
   avatarPlaceholder: string;
+  studentImageUrl?: string;
+  videoUrl?: string;
+}
+
+export interface StudentVideo {
+  id: string;
+  title: string;
+  embedUrl: string;
 }
 
 export interface UpcomingBatch {
@@ -115,36 +123,113 @@ export const siteConfig = {
     { title: 'Student Visa Processing', icon: 'PlaneTakeoff' },
   ],
 
-  // Testimonials: Shortened to 3 single-line verified experiences
+  // Genuine Student Testimonials from KC Overseas Namakkal Branch
   testimonials: [
     {
-      id: 't-1',
-      name: 'Kavitha R.',
-      degree: 'MSc Data Science',
-      university: 'University of Birmingham',
-      country: 'UK',
-      quote: 'From university shortlisting to visa approval, the KC team made my master’s admission smooth and stress-free.',
-      avatarPlaceholder: 'KR',
+      id: 't-viknesh',
+      name: 'Viknesh',
+      degree: 'Study Abroad Aspirant',
+      university: 'KC Namakkal Student',
+      country: 'Overseas Admission',
+      quote: "I am impressed with the way they handled my profile and being honest about all the process during my entire journey and how it's gonna be in the future. Especially, Ramesh sir's quick response on everything. Thanks to KC Overseas Namakkal :). If I were you, I would go for it!",
+      avatarPlaceholder: 'V',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_09_Viknesh_01_382ac71f6d.png',
     },
     {
-      id: 't-2',
-      name: 'Praveen K.',
-      degree: 'Master of Engineering Management',
-      university: 'Technical University of Munich (TUM)',
-      country: 'Germany',
-      quote: 'KC guided me step-by-step through admissions and visa paperwork for Germany with zero tuition fees.',
-      avatarPlaceholder: 'PK',
+      id: 't-rajkumar',
+      name: 'Raj Kumar',
+      degree: 'Study Abroad Aspirant',
+      university: 'KC Namakkal Student',
+      country: 'Overseas Admission',
+      quote: "KC Team Namakkal is super good and they are kind and helpful, especially according to me they were transparent from 1st process to till the end. And I hope that they will give their support and guidance in the future too. Thank you Team KC.",
+      avatarPlaceholder: 'RK',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_07_Raj_kumar_01_122321bada.png',
     },
     {
-      id: 't-3',
-      name: 'Deepika S.',
-      degree: 'MSc Pharmaceutical Sciences',
-      university: 'Trinity College Dublin',
-      country: 'Ireland',
-      quote: 'Secured my Ireland admit and student visa without a single hitch thanks to KC’s dedicated counsellors.',
-      avatarPlaceholder: 'DS',
+      id: 't-madhuri',
+      name: 'Madhuri',
+      degree: 'Visa & Admission',
+      university: 'KC Namakkal Student',
+      country: 'International Studies',
+      quote: "Excellent 24 hours service and one of the good parts is kind behavior in every section of the application process, mock interview section and until the visa application. What was the main attraction is that Ramesh sir is always ready to clear my doubts regarding the application anytime. He is my main supporter around all the application procedure and until the visa process. Thank you so much sir 💗",
+      avatarPlaceholder: 'M',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_04_Madhuri_01_c94a739950.png',
+    },
+    {
+      id: 't-premlekshmi',
+      name: 'Premlekshmi',
+      degree: 'University Shortlisting & Admit',
+      university: 'KC Namakkal Student',
+      country: 'Overseas University',
+      quote: "Have consulted with Mr. Ramesh sir. The process is so clean and hassle free. Their response is so calm and patient, much satisfied with their service and the main thing is I was tension free, since all my queries are answered clear from start to end. Thank you so much Ramesh sir, for all your help throughout the process. Would definitely recommend KC Overseas to those who wanna study abroad.",
+      avatarPlaceholder: 'P',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_05_Premlekshmi_01_90e72f4462.png',
+    },
+    {
+      id: 't-sheraya',
+      name: 'Sheraya',
+      degree: 'Admitted Student',
+      university: 'Huddersfield University',
+      country: 'United Kingdom',
+      quote: "KC Overseas helped me to get admission in Huddersfield University. From the starting to end they supported me and guided me to get my visa and flight tickets too. Last one year I have searched for good consultancy and I finally found out. Did my all process smoothly and perfectly. They had done a good job. Thank you so much!",
+      avatarPlaceholder: 'S',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_08_Shereya_01_b8e2d701cf.png',
+    },
+    {
+      id: 't-priyadharshini',
+      name: 'Priyadharshini',
+      degree: 'Visa Processing',
+      university: 'KC Namakkal Student',
+      country: 'Visa Approved',
+      quote: "Thank you so much Krishna Consultancy / KC Overseas for your excellent service. Thank you Ramesh bro and Sandhiya sis. From the beginning to the end they explained and guided me to get my visa. My dream comes true because of their help. Thank you so much for the entire team.",
+      avatarPlaceholder: 'PD',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_06_Priyadharshini_01_d2c42d22ea.png',
+    },
+    {
+      id: 't-hema',
+      name: 'Hema',
+      degree: 'Comprehensive Guidance',
+      university: 'KC Namakkal Student',
+      country: 'Study Abroad Success',
+      quote: "I have a very special experience with this consultancy. I have been trying to study abroad since 2 years and shifted between 3 to 4 consultancies, so I had all the good and bad experiences. KC Overseas was a lottery to me. They offered timely help and provided a very reliable and prompt service. They focus on details which not everyone will give importance to. Students can comfortably work on their preparation and they guide you everything from scratch. Zero hassles. Overall very good experience. Thank you!",
+      avatarPlaceholder: 'H',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_02_Hema_01_6043fc0480.png',
+    },
+    {
+      id: 't-bathmesh',
+      name: "Bathmesh's Parent",
+      degree: 'Parent Testimonial',
+      university: 'KC Namakkal',
+      country: 'Parent Review',
+      quote: "I am fortunate to have met them. They really explain very clearly and help as needed and not just for a business purpose but as a family member. Whenever contacted, they help without any hesitation. Very confident. I wish them all the best for their continued growth.",
+      avatarPlaceholder: 'BP',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_01_Bathmesh_01_2ee23ba8ff.png',
+    },
+    {
+      id: 't-kishore',
+      name: 'Kishore',
+      degree: 'Application & Visa Support',
+      university: 'KC Namakkal Student',
+      country: 'Visa & Admission Success',
+      quote: "KC Overseas brought my dream come true. Thank you Mr. Ramesh sir for helping and guiding me throughout the process. Each and every process was perfectly done, starting from admission to getting my visa. From start to end, Tinu mam explained and guided me through each and every step of what to do and how things work from choosing the country to submitting university applications and the visa process. One of the best and quickest services for abroad study. A huge thanks to Mr. Ramesh sir and the entire team.",
+      avatarPlaceholder: 'K',
+      studentImageUrl: 'https://assets.studies-overseas.com/Pic_03_Kishore_01_50dfa21731.png',
     },
   ] as Testimonial[],
+
+  // Video Testimonials from KC Namakkal Branch
+  studentVideos: [
+    {
+      id: 'v-1',
+      title: 'KC Overseas Student Experience',
+      embedUrl: 'https://www.youtube.com/embed/UymV-_V2jHY',
+    },
+    {
+      id: 'v-2',
+      title: 'Student Visa Success Story',
+      embedUrl: 'https://www.youtube.com/embed/GMdvbQC7e-s',
+    },
+  ],
 
   // Upcoming Batches (Clean, concise schedule with weekly, GRE monthly, and offline details)
   upcomingBatches: [
