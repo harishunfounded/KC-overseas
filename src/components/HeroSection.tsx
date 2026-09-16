@@ -113,7 +113,31 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* Lifted Consultation CTA Box (Directly under H1) */}
+            {/* Quick Destination Pill Tags (Top Hubs) */}
+            <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 pt-0.5 animate-hero-2">
+              <span className="text-[10px] sm:text-[11px] font-bold text-amber-300/90 uppercase tracking-wider mr-0.5">
+                Top Hubs:
+              </span>
+              {[
+                { name: 'UK', flag: '🇬🇧' },
+                { name: 'USA', flag: '🇺🇸' },
+                { name: 'Canada', flag: '🇨🇦' },
+                { name: 'Germany', flag: '🇩🇪' },
+                { name: 'Australia', flag: '🇦🇺' },
+                { name: 'Ireland', flag: '🇮🇪' },
+              ].map((dest) => (
+                <a
+                  key={dest.name}
+                  href="#destinations"
+                  className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full bg-slate-900/70 hover:bg-kc-primary/80 backdrop-blur-md border border-white/15 hover:border-white/40 text-[10px] sm:text-[11px] font-semibold text-slate-200 hover:text-white transition-all duration-200 hover:scale-105 shadow-sm"
+                >
+                  <span>{dest.flag}</span>
+                  <span>{dest.name}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Lifted Consultation CTA Box (Directly under Top Hubs) */}
             <div className="animate-hero-2 relative z-20 w-full pt-0.5 sm:pt-1">
               <div className="relative overflow-hidden bg-white/95 backdrop-blur-xl rounded-2xl p-3 sm:p-4 xl:p-5 border border-white/60 shadow-[0_15px_35px_rgba(0,0,0,0.3)] ring-1 ring-black/5">
                 <div className="relative z-10">
