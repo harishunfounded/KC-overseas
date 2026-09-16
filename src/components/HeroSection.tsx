@@ -163,32 +163,31 @@ export default function HeroSection() {
                       </p>
                     </div>
 
-                    {/* Secondary Download Brochure Button (Ghost / Outlined) */}
+                    {/* Secondary Download Brochure CTA Button */}
                     <button
                       type="button"
                       onClick={() => setIsBrochureOpen(true)}
-                      className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 text-slate-700 hover:text-kc-primary text-[10px] sm:text-[11px] font-bold transition-all shrink-0 shadow-2xs group cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-blue-200/90 bg-blue-50 hover:bg-kc-primary text-kc-primary hover:text-white text-[11px] font-extrabold transition-all shrink-0 shadow-xs hover:shadow-md group cursor-pointer"
                       title="Download KC Overseas Study Abroad Brochure (PDF)"
                     >
-                      <Download className="w-3 h-3 text-slate-500 group-hover:text-kc-primary transition-colors" />
-                      <span className="hidden xs:inline">Brochure</span>
-                      <span className="xs:hidden">PDF</span>
+                      <Download className="w-3.5 h-3.5 text-kc-primary group-hover:text-white group-hover:translate-y-0.5 transition-all" />
+                      <span className="hidden sm:inline">Download Brochure</span>
+                      <span className="sm:hidden">Brochure PDF</span>
                     </button>
                   </div>
                   <EnquiryForm mode="quick" variant="hero" source="hero_quick" />
 
-                  {/* Secondary Text Link below primary form */}
-                  <div className="mt-2 pt-1.5 border-t border-slate-100 text-center">
+                  {/* Secondary Full-Width CTA Button below primary form */}
+                  <div className="mt-2.5 pt-2 border-t border-slate-100">
                     <button
                       type="button"
                       onClick={() => setIsBrochureOpen(true)}
-                      className="inline-flex items-center gap-1.5 text-[10.5px] sm:text-[11px] font-semibold text-slate-500 hover:text-kc-primary transition-colors cursor-pointer group"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-blue-300/80 hover:border-kc-primary bg-gradient-to-r from-blue-50 via-sky-50/70 to-indigo-50/80 hover:from-blue-100 hover:to-indigo-100 text-kc-primary hover:text-blue-950 font-black text-xs sm:text-[13px] tracking-wide transition-all shadow-xs hover:shadow-md group cursor-pointer"
                     >
-                      <FileText className="w-3 h-3 text-slate-400 group-hover:text-kc-primary transition-colors" />
-                      <span>Prefer to read first?</span>
-                      <span className="text-kc-primary font-bold group-hover:underline inline-flex items-center gap-0.5">
-                        Download Brochure (PDF)
-                        <Download className="w-3 h-3" />
+                      <Download className="w-4 h-4 text-kc-primary group-hover:translate-y-0.5 transition-transform shrink-0" />
+                      <span>Download Free Study Abroad Brochure (PDF)</span>
+                      <span className="text-[9.5px] font-bold px-1.5 py-0.5 rounded-md bg-white border border-blue-200 text-blue-700 uppercase tracking-wide shrink-0 shadow-2xs">
+                        8 Pages
                       </span>
                     </button>
                   </div>
