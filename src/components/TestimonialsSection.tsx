@@ -42,21 +42,31 @@ function StudentAvatar({
 export default function TestimonialsSection() {
   const testimonials = siteConfig.testimonials;
   const videos = siteConfig.studentVideos;
+  const count = testimonials.length;
 
-  const [itemsPerPage, setItemsPerPage] = useState(3);
-  const [currentPage, setCurrentPage] = useState(0);
+  // Tripled list for seamless infinite horizontal scrolling in both directions
+  const extendedTestimonials = [
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+  ];
+
+  // Start in the middle set of testimonials
+  const [currentIndex, setCurrentIndex] = useState(count);
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
   const touchStartX = useRef<number | null>(null);
 
-  // Responsive items per page (1 on mobile, 2 on tablet, 3 on desktop)
+  // Responsive visible cards count (1 on mobile, 2 on tablet, 3 on desktop)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setItemsPerPage(1);
+        setVisibleCount(1);
       } else if (window.innerWidth < 1024) {
-        setItemsPerPage(2);
+        setVisibleCount(2);
       } else {
-        setItemsPerPage(3);
+        setVisibleCount(3);
       }
     };
 
@@ -65,41 +75,51 @@ export default function TestimonialsSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Split testimonials into screen pages
-  const pages: typeof testimonials[] = [];
-  for (let i = 0; i < testimonials.length; i += itemsPerPage) {
-    pages.push(testimonials.slice(i, i + itemsPerPage));
-  }
-  const totalPages = Math.max(1, pages.length);
-
-  // Navigation handlers
-  const handlePrev = useCallback(() => {
-    setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
-  }, [totalPages]);
-
   const handleNext = useCallback(() => {
-    setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
-  }, [totalPages]);
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
 
-  // Adjust currentPage if itemsPerPage changed and currentPage is out of bounds
-  useEffect(() => {
-    if (currentPage >= totalPages) {
-      setCurrentPage(0);
-    }
-  }, [currentPage, totalPages]);
+  const handlePrev = useCallback(() => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  }, []);
 
-  // Auto-play timer (advances every 4.5 seconds, pauses when hovered/touched)
+  // Move automatically horizontally every 3.5 seconds
   useEffect(() => {
-    if (isPaused || totalPages <= 1) return;
+    if (isPaused) return;
 
     const interval = setInterval(() => {
       handleNext();
-    }, 4500);
+    }, 3500);
 
     return () => clearInterval(interval);
-  }, [isPaused, totalPages, handleNext]);
+  }, [isPaused, handleNext]);
 
-  // Mobile Touch Swipe Handlers
+  // Seamless jump when reaching buffer boundaries so movement is infinite
+  const handleTransitionEnd = () => {
+    if (currentIndex >= count * 2) {
+      setIsTransitioning(false);
+      setCurrentIndex(currentIndex - count);
+    } else if (currentIndex < count) {
+      setIsTransitioning(false);
+      setCurrentIndex(currentIndex + count);
+    }
+  };
+
+  // Re-enable smooth transition after an invisible boundary reset
+  useEffect(() => {
+    if (!isTransitioning) {
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+        });
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [isTransitioning]);
+
+  // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsPaused(true);
     touchStartX.current = e.touches[0].clientX;
@@ -111,13 +131,15 @@ export default function TestimonialsSection() {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX.current - touchEndX;
 
-    if (diff > 50) {
+    if (diff > 45) {
       handleNext();
-    } else if (diff < -50) {
+    } else if (diff < -45) {
       handlePrev();
     }
     touchStartX.current = null;
   };
+
+  const activeDot = ((currentIndex % count) + count) % count;
 
   return (
     <section
@@ -126,7 +148,7 @@ export default function TestimonialsSection() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Heading - Exact match to site template */}
+        {/* Section Heading - Matching official site template */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#101F38] tracking-tight">
             Check what Our Students Say
@@ -154,7 +176,7 @@ export default function TestimonialsSection() {
           </div>
         )}
 
-        {/* Down: Reviews Moving Automatically (3 reviews per screen on desktop) */}
+        {/* Down: Written Reviews Moving Automatically Horizontally */}
         <div
           className="relative max-w-6xl mx-auto"
           onMouseEnter={() => setIsPaused(true)}
@@ -162,91 +184,91 @@ export default function TestimonialsSection() {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Carousel Viewport */}
+          {/* Horizontal Carousel Viewport */}
           <div className="overflow-hidden pt-12 pb-6 px-1">
             <div
-              className="flex transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(-${currentPage * 100}%)` }}
+              className={`flex ${
+                isTransitioning
+                  ? 'transition-transform duration-700 ease-in-out'
+                  : ''
+              }`}
+              style={{
+                transform: `translateX(-${(currentIndex * 100) / visibleCount}%)`,
+              }}
+              onTransitionEnd={handleTransitionEnd}
             >
-              {pages.map((pageGroup, pageIdx) => (
+              {extendedTestimonials.map((t, idx) => (
                 <div
-                  key={pageIdx}
-                  className={`w-full shrink-0 grid gap-6 sm:gap-7 ${
-                    itemsPerPage === 1
-                      ? 'grid-cols-1'
-                      : itemsPerPage === 2
-                      ? 'grid-cols-2'
-                      : 'grid-cols-3'
-                  }`}
+                  key={`${t.id}-${idx}`}
+                  className="w-full min-w-full sm:w-1/2 sm:min-w-[50%] lg:w-1/3 lg:min-w-[33.333333%] shrink-0 px-3 pt-8"
                 >
-                  {pageGroup.map((t) => (
-                    <div key={t.id} className="pt-8">
-                      <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 shadow-sm border border-amber-200/40 relative flex flex-col justify-between h-full min-h-[300px] sm:min-h-[330px]">
-                        
-                        {/* Overlapping Circular Student Avatar */}
-                        <div className="absolute -top-9 sm:-top-11 left-6 sm:left-7">
-                          <StudentAvatar
-                            name={t.name}
-                            src={t.studentImageUrl}
-                            fallback={t.avatarPlaceholder}
-                          />
-                        </div>
-
-                        {/* Top Row: Student Name aligned to the right */}
-                        <div className="pl-24 sm:pl-28 min-h-[44px] flex items-center justify-end">
-                          <h3 className="font-bold text-base sm:text-lg text-[#101F38] text-right tracking-tight">
-                            {t.name}
-                          </h3>
-                        </div>
-
-                        {/* Card Body: Blue Double Quote & Review Message */}
-                        <div className="flex-1 flex flex-col justify-start">
-                          {/* Official Blue Double Quote Icon */}
-                          <div className="text-kc-primary mt-2 mb-3">
-                            <svg
-                              className="w-8 h-8 fill-kc-primary text-kc-primary"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                          </div>
-
-                          {/* Student Testimonial Text */}
-                          <p className="text-slate-800 text-sm sm:text-[15px] leading-relaxed line-clamp-6">
-                            {t.quote}
-                          </p>
-                        </div>
-
-                      </div>
+                  <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 shadow-sm border border-amber-200/40 relative flex flex-col justify-between h-full min-h-[300px] sm:min-h-[330px]">
+                    
+                    {/* Overlapping Circular Student Avatar */}
+                    <div className="absolute -top-9 sm:-top-11 left-6 sm:left-7">
+                      <StudentAvatar
+                        name={t.name}
+                        src={t.studentImageUrl}
+                        fallback={t.avatarPlaceholder}
+                      />
                     </div>
-                  ))}
+
+                    {/* Top Row: Student Name aligned to the right */}
+                    <div className="pl-24 sm:pl-28 min-h-[44px] flex items-center justify-end">
+                      <h3 className="font-bold text-base sm:text-lg text-[#101F38] text-right tracking-tight">
+                        {t.name}
+                      </h3>
+                    </div>
+
+                    {/* Card Body: Blue Double Quote & Review Message */}
+                    <div className="flex-1 flex flex-col justify-start">
+                      {/* Official Blue Double Quote Icon */}
+                      <div className="text-kc-primary mt-2 mb-3">
+                        <svg
+                          className="w-8 h-8 fill-kc-primary text-kc-primary"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                        </svg>
+                      </div>
+
+                      {/* Student Testimonial Text */}
+                      <p className="text-slate-800 text-sm sm:text-[15px] leading-relaxed line-clamp-6">
+                        {t.quote}
+                      </p>
+                    </div>
+
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Carousel Navigation Controls: Left & Right Arrows + Dots */}
+          {/* Navigation Controls: Left & Right Arrows + Active Pagination Dots */}
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
               onClick={handlePrev}
               className="p-2.5 rounded-full bg-white border border-amber-200/80 shadow-sm text-slate-700 hover:text-kc-primary hover:border-kc-primary active:scale-95 transition-all"
-              aria-label="Previous reviews screen"
+              aria-label="Previous review"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
             {/* Pagination Indicator Dots */}
             <div className="flex items-center gap-2">
-              {pages.map((_, idx) => (
+              {testimonials.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentPage(idx)}
+                  onClick={() => {
+                    setIsTransitioning(true);
+                    setCurrentIndex(count + idx);
+                  }}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
-                    currentPage === idx
+                    activeDot === idx
                       ? 'w-7 bg-kc-primary'
                       : 'w-2.5 bg-amber-300/80 hover:bg-amber-400'
                   }`}
-                  aria-label={`Go to reviews screen ${idx + 1}`}
+                  aria-label={`Go to review ${idx + 1}`}
                 />
               ))}
             </div>
@@ -254,7 +276,7 @@ export default function TestimonialsSection() {
             <button
               onClick={handleNext}
               className="p-2.5 rounded-full bg-white border border-amber-200/80 shadow-sm text-slate-700 hover:text-kc-primary hover:border-kc-primary active:scale-95 transition-all"
-              aria-label="Next reviews screen"
+              aria-label="Next review"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
