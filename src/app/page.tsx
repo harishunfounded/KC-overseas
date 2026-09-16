@@ -80,27 +80,27 @@ export default function Home() {
         />
       </SectionReveal>
 
-      {/* 10. Student Testimonials & Success Stories */}
-      <SectionReveal>
-        <TestimonialsSection />
-      </SectionReveal>
-
-      {/* 11. Upcoming IELTS / PTE / GRE Batches */}
+      {/* 10. Upcoming Test Prep Batches */}
       <SectionReveal>
         <UpcomingBatches />
       </SectionReveal>
 
-      {/* 12. Namakkal Branch Office Details & Embedded Map */}
+      {/* 11. Check what Our Students Say */}
       <SectionReveal>
-        <BranchDetailsMap />
+        <TestimonialsSection />
       </SectionReveal>
 
-      {/* 13. Full Final Enquiry Form Capture Point */}
+      {/* 12. Begin Your Overseas Education Journey */}
       <SectionReveal>
         <FullEnquirySection />
       </SectionReveal>
 
-      {/* 14. Frequently Asked Questions (SEO & Trust-building Accordion) */}
+      {/* 13. Local Office & Contact Details */}
+      <SectionReveal>
+        <BranchDetailsMap />
+      </SectionReveal>
+
+      {/* 14. Frequently Asked Questions */}
       <SectionReveal>
         <FAQSection />
       </SectionReveal>
