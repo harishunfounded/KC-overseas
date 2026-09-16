@@ -138,12 +138,45 @@ export async function POST(req: NextRequest) {
       createdAt: timestamp,
     };
 
-    // 2. Immediate Fail-Safe Local Persistence (JSON & CSV)
+    // 2. Immediate Fail-Safe Local Persistence (JSON & CSV fallback)
     saveLeadToJson(leadRecord);
     saveLeadToCsv(leadRecord);
     console.log(`[LEAD_SAVED_LOCAL] New enquiry from ${leadRecord.name} (${leadRecord.phone})`);
 
-    // 3. Email Dispatch via Nodemailer (with graceful error handling)
+    // 3. Permanent Webhook Dispatch (Google Sheets Webhook / Automation)
+    const webhookUrl = process.env.LEAD_WEBHOOK_URL;
+    let webhookSent = false;
+    let webhookErrorMsg: string | null = null;
+
+    if (webhookUrl) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
+
+        const webhookRes = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(leadRecord),
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+
+        if (webhookRes.ok) {
+          webhookSent = true;
+          console.log(`[LEAD_WEBHOOK_SUCCESS] Lead successfully posted to persistent webhook.`);
+        } else {
+          webhookErrorMsg = `Webhook HTTP ${webhookRes.status}`;
+          console.warn(`[LEAD_WEBHOOK_WARNING] HTTP status ${webhookRes.status} from webhook.`);
+        }
+      } catch (webhookErr: any) {
+        webhookErrorMsg = webhookErr.message || 'Webhook request failed';
+        console.error('[LEAD_WEBHOOK_ERROR]', webhookErr.message);
+      }
+    } else {
+      console.warn('[LEAD_WEBHOOK_SKIPPED] LEAD_WEBHOOK_URL not configured. Relying on local/ephemeral disk and SMTP.');
+    }
+
+    // 4. Email Dispatch via Nodemailer (with graceful error handling)
     const emailTo = process.env.EMAIL_TO || 'namakkal@studies-overseas.com';
     const smtpHost = process.env.SMTP_HOST;
     const smtpUser = process.env.SMTP_USER;
@@ -248,6 +281,7 @@ export async function POST(req: NextRequest) {
         success: true,
         message: 'Thank you! Your enquiry has been received. Our KC Namakkal expert will call you shortly.',
         leadId: Buffer.from(timestamp + cleanPhone).toString('base64').substring(0, 10),
+        webhookDispatched: webhookSent,
         emailDispatched: emailSent,
         leadSavedToDisk: true,
         ...(emailErrorMsg ? { note: 'Lead saved to disk, email notification pending SMTP credentials.' } : {}),
