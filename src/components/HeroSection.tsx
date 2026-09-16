@@ -117,11 +117,9 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* High-Impact Value Line - Focused Trust Line */}
-            <p className="text-sm sm:text-base lg:text-[16px] text-slate-100 leading-snug font-medium max-w-2xl animate-hero-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              <span className="text-white font-bold">60+ Branches</span>
-              <span className="text-amber-300 mx-2 font-bold">•</span>
-              <span className="text-white font-bold">Free Profile Evaluation</span>
+            {/* High-Impact Value Paragraph - Focused on 60+ Branches & Free Profile Evaluation */}
+            <p className="text-xs sm:text-sm lg:text-[14.5px] text-slate-100 leading-relaxed font-normal max-w-2xl animate-hero-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+              With <strong className="text-white font-semibold">60+ branches</strong> across India and overseas, get a <strong className="text-white font-semibold">free profile evaluation</strong> from certified study abroad experts to shortlist top universities, admission pathways, and scholarships.
             </p>
 
             {/* Quick Destination Pill Tags (Top Hubs) */}
