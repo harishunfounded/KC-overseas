@@ -3,15 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import {
   GraduationCap,
-  Award,
-  ShieldCheck,
-  Building2,
-  Users,
-  CheckCircle2,
   Sparkles,
   Globe,
-  Calendar,
-  MapPin,
+  CheckCircle2,
   SearchCheck,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
@@ -58,18 +52,16 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative isolate pt-2 sm:pt-4 pb-8 sm:pb-12 border-b border-slate-900 overflow-hidden text-white bg-slate-950"
+      className="relative isolate pt-1 sm:pt-2 pb-3 sm:pb-4 border-b border-slate-900 overflow-hidden text-white bg-slate-950"
     >
-      {/* 1. Full-Bleed Background Video & Static Poster Fallback (UNTOUCHED) */}
+      {/* 1. Full-Bleed Background Video & Static Poster Fallback */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-slate-950">
-        {/* Static Background Frame */}
         <div
           className="absolute inset-0 bg-slate-950 bg-cover bg-center"
           style={siteConfig.heroVideo.poster ? { backgroundImage: `url(${siteConfig.heroVideo.poster})` } : undefined}
           aria-hidden="true"
         />
 
-        {/* Video Element: Full-bleed, autoPlay, muted, loop, playsInline, single raw 4K source */}
         {!reduceMotion && (
           <video
             autoPlay
@@ -91,15 +83,17 @@ export default function HeroSection() {
         )}
       </div>
 
-      {/* 2. Fluid Widescreen Container - Eliminates Side Gaps */}
+      {/* 2. Fluid Container - Fits entirely inside viewport without scrolling */}
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-6 lg:gap-8 xl:gap-10 items-start">
+        
+        {/* Main 2-Column Row: Left (Headline + Lifted CTA Box), Right (Bento Card) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 xl:gap-10 items-center">
           
-          {/* Top of Left Column on Desktop / First on Mobile: Headline & Destination Chips */}
-          <div className="lg:col-span-6 xl:col-span-6 space-y-2.5 sm:space-y-4 text-left relative z-20 order-1">
+          {/* Left Column: Admissions Pill, H1, and Lifted CTA Box */}
+          <div className="flex flex-col space-y-2 sm:space-y-2.5 text-left relative z-20 w-full">
             
-            {/* Live Intake & Reputation Pill */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-lg text-[10.5px] sm:text-xs animate-hero-1">
+            {/* Admissions Open Badge */}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-md text-[10.5px] sm:text-xs w-fit animate-hero-1">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -111,72 +105,43 @@ export default function HeroSection() {
               </span>
             </div>
 
-            {/* Main Headline with Radiant Gradient Accent & Contrast Shadows */}
-            <h1 className="text-[1.65rem] sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-6xl font-black text-white tracking-tight leading-[1.16] sm:leading-[1.12] animate-hero-1 drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)]">
+            {/* Main Headline */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[32px] xl:text-[38px] font-black text-white tracking-tight leading-[1.14] animate-hero-1 drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)]">
               Tamil Nadu&apos;s Most Trusted{' '}
               <span className="bg-gradient-to-r from-white via-sky-100 to-amber-300 bg-clip-text text-transparent">
                 Study Abroad Consultant
               </span>
             </h1>
 
-            {/* High-Impact Value Line */}
-            <p className="text-xs sm:text-base lg:text-lg xl:text-xl text-slate-100 leading-relaxed font-normal max-w-2xl animate-hero-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              Direct partner to <strong className="text-white font-semibold underline decoration-amber-400/60 decoration-2 underline-offset-4">1,200+ prestigious universities</strong> across 10 top global destinations. Only overseas consultancy with 60+ branches. Free profile evaluation, personalized study abroad counselling & 99% visa success rate.
-            </p>
-
-            {/* Quick Destination Pill Tags */}
-            <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 pt-0.5 animate-hero-2">
-              <span className="text-[10px] sm:text-xs font-bold text-amber-300/90 uppercase tracking-wider mr-0.5 sm:mr-1">
-                Top Hubs:
-              </span>
-              {[
-                { name: 'UK', flag: '🇬🇧' },
-                { name: 'USA', flag: '🇺🇸' },
-                { name: 'Canada', flag: '🇨🇦' },
-                { name: 'Germany', flag: '🇩🇪' },
-                { name: 'Australia', flag: '🇦🇺' },
-                { name: 'Ireland', flag: '🇮🇪' },
-              ].map((dest) => (
-                <a
-                  key={dest.name}
-                  href="#destinations"
-                  className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-slate-900/70 hover:bg-kc-primary/80 backdrop-blur-md border border-white/15 hover:border-white/40 text-[10px] sm:text-xs font-semibold text-slate-200 hover:text-white transition-all duration-200 hover:scale-105 shadow-sm"
-                >
-                  <span>{dest.flag}</span>
-                  <span>{dest.name}</span>
-                </a>
-              ))}
-            </div>
-
-          </div>
-
-          {/* Consultation Console: Second on Mobile for immediate high conversion, bottom of Left Column on Desktop */}
-          <div className="lg:col-span-6 xl:col-span-6 animate-hero-3 relative z-20 order-2 lg:order-3 w-full">
-            <div className="relative overflow-hidden bg-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 border border-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
-              <div className="relative z-10">
-                <div className="flex items-center justify-between gap-2 sm:gap-3 mb-2.5 sm:mb-3.5 pb-2 sm:pb-2.5 border-b border-slate-100">
-                  <div>
-                    <h2 className="text-xs sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
-                      <span>Book Free 1-on-1 Counselling</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
-                        100% Free
-                      </span>
-                    </h2>
-                    <p className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 font-medium">
-                      Shortlisted universities & scholarship evaluation from certified overseas education consultants in 15 mins
-                    </p>
+            {/* Lifted Consultation CTA Box (Directly under H1) */}
+            <div className="animate-hero-2 relative z-20 w-full pt-0.5 sm:pt-1">
+              <div className="relative overflow-hidden bg-white/95 backdrop-blur-xl rounded-2xl p-3 sm:p-4 xl:p-5 border border-white/60 shadow-[0_15px_35px_rgba(0,0,0,0.3)] ring-1 ring-black/5">
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between gap-2 mb-2 pb-1.5 sm:pb-2 border-b border-slate-100">
+                    <div>
+                      <h2 className="text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
+                        <span>Book Free 1-on-1 Counselling</span>
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                          100% Free
+                        </span>
+                      </h2>
+                      <p className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 font-medium leading-tight">
+                        Shortlisted universities & scholarship evaluation from certified overseas education consultants in 15 mins
+                      </p>
+                    </div>
                   </div>
+                  <EnquiryForm mode="quick" variant="hero" source="hero_quick" />
                 </div>
-                <EnquiryForm mode="quick" variant="hero" source="hero_quick" />
               </div>
             </div>
+
           </div>
 
-          {/* Bento Grid Card: Right Column on Desktop, Third on Mobile as Social Proof */}
-          <div className="lg:col-span-6 xl:col-span-6 lg:row-span-2 animate-hero-3 relative flex flex-col items-center justify-center z-10 order-3 lg:order-2 w-full py-1 sm:py-2">
-            {/* Verified Track Record Status Pill - hidden on mobile to eliminate repetitive pills */}
-            <div className="hidden sm:block mb-3 sm:mb-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-[11px] sm:text-xs font-semibold text-emerald-300 shadow-lg">
+          {/* Right Column: Bento Grid Card */}
+          <div className="animate-hero-2 relative flex flex-col items-center justify-center z-10 w-full py-0.5 sm:py-1">
+            {/* Verified Track Record Status Pill */}
+            <div className="hidden sm:block mb-1.5 sm:mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-[10.5px] sm:text-[11px] font-semibold text-emerald-300 shadow-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Verified Global Track Record ✨</span>
               </div>
@@ -189,15 +154,13 @@ export default function HeroSection() {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Subtle ambient backdrop blur glow */}
               <div
-                className="absolute -inset-3 sm:-inset-5 bg-gradient-to-tr from-blue-600/30 via-sky-500/20 to-amber-500/25 rounded-[32px] sm:rounded-[36px] blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute -inset-3 bg-gradient-to-tr from-blue-600/30 via-sky-500/20 to-amber-500/25 rounded-[28px] blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 aria-hidden="true"
               />
 
-              {/* Card Body with Bento Grid Artwork & Live Animations */}
               <div
-                className="relative w-full max-w-[360px] sm:max-w-[370px] lg:max-w-[365px] rounded-[22px] sm:rounded-[28px] overflow-hidden border border-white/25 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-white/10 z-20 bg-slate-950 will-change-transform"
+                className="relative w-full max-w-[340px] sm:max-w-[350px] lg:max-w-[360px] rounded-[22px] sm:rounded-[24px] overflow-hidden border border-white/25 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-white/10 z-20 bg-slate-950 will-change-transform"
                 style={{
                   transform:
                     isHovered && !reduceMotion
@@ -215,59 +178,61 @@ export default function HeroSection() {
 
         </div>
 
-        {/* 3. Full-Bleed Grounding Trust Ribbon - Eliminates Gaps & Bridges Columns */}
-        <div className="mt-4 sm:mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 animate-hero-3 relative z-20">
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 border border-amber-400/30">
-              <Sparkles className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+        {/* 3. Bottom 5 Grids - Fits completely in the hero section above the fold */}
+        <div className="mt-2.5 sm:mt-3.5 pt-2 sm:pt-2.5 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5 animate-hero-3 relative z-20">
+          
+          <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 border border-amber-400/30">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">Zero Service Charge</div>
-              <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">With tie up university</div>
+              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">Zero Service Charge</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 leading-none">With tie up university</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0 border border-emerald-400/30">
-              <GraduationCap className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0 border border-emerald-400/30">
+              <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">₹25Cr+ Scholarships</div>
-              <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">Merit & Grants</div>
+              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">₹25Cr+ Scholarships</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 leading-none">Merit & Grants</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-sky-400/20 text-sky-300 flex items-center justify-center shrink-0 border border-sky-400/30">
-              <Globe className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-sky-400/20 text-sky-300 flex items-center justify-center shrink-0 border border-sky-400/30">
+              <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">10 Top Hubs</div>
-              <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">UK, USA, Canada, Germany...</div>
+              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">10 Top Hubs</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 leading-none">UK, USA, Canada, Germany...</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-purple-400/20 text-purple-300 flex items-center justify-center shrink-0 border border-purple-400/30">
-              <CheckCircle2 className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-purple-400/20 text-purple-300 flex items-center justify-center shrink-0 border border-purple-400/30">
+              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">Express Offers</div>
-              <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5">Within 48–72 Hours</div>
+              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">Express Offers</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 leading-none">Within 48–72 Hours</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all col-span-2 sm:col-span-1">
-            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-rose-400/20 text-rose-300 flex items-center justify-center shrink-0 border border-rose-400/30">
-              <SearchCheck className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-xl bg-slate-900/70 backdrop-blur-md border border-white/15 hover:border-white/30 transition-all col-span-2 sm:col-span-1">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-rose-400/20 text-rose-300 flex items-center justify-center shrink-0 border border-rose-400/30">
+              <SearchCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white leading-tight">Public Universities</div>
-              <div className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 leading-snug">
-                Search & selection option: Germany, Austria, Japan, South Korea, Italy <span className="text-amber-300 font-semibold">• Paid service</span>
+              <div className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">Public Universities</div>
+              <div className="text-[8.5px] sm:text-[9.5px] text-slate-300 mt-0.5 leading-tight">
+                Search & selection: Germany, Austria... <span className="text-amber-300 font-semibold">• Paid</span>
               </div>
             </div>
           </div>
+
         </div>
 
       </div>
