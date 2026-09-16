@@ -167,26 +167,26 @@ export default function HeroSection() {
                     <button
                       type="button"
                       onClick={() => setIsBrochureOpen(true)}
-                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-blue-200/90 bg-blue-50 hover:bg-kc-primary text-kc-primary hover:text-white text-[11px] font-extrabold transition-all shrink-0 shadow-xs hover:shadow-md group cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-kc-primary hover:bg-kc-primary-hover text-white text-[11px] font-extrabold transition-all shrink-0 shadow-xs hover:shadow-md group cursor-pointer"
                       title="Download KC Overseas Study Abroad Brochure (PDF)"
                     >
-                      <Download className="w-3.5 h-3.5 text-kc-primary group-hover:text-white group-hover:translate-y-0.5 transition-all" />
+                      <Download className="w-3.5 h-3.5 text-white group-hover:translate-y-0.5 transition-all" />
                       <span className="hidden sm:inline">Download Brochure</span>
                       <span className="sm:hidden">Brochure PDF</span>
                     </button>
                   </div>
                   <EnquiryForm mode="quick" variant="hero" source="hero_quick" />
 
-                  {/* Secondary Full-Width CTA Button below primary form */}
+                  {/* Secondary Full-Width Blue CTA Button below primary form */}
                   <div className="mt-2.5 pt-2 border-t border-slate-100">
                     <button
                       type="button"
                       onClick={() => setIsBrochureOpen(true)}
-                      className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-blue-300/80 hover:border-kc-primary bg-gradient-to-r from-blue-50 via-sky-50/70 to-indigo-50/80 hover:from-blue-100 hover:to-indigo-100 text-kc-primary hover:text-blue-950 font-black text-xs sm:text-[13px] tracking-wide transition-all shadow-xs hover:shadow-md group cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl bg-kc-primary hover:bg-kc-primary-hover active:bg-[#134499] text-white font-black text-xs sm:text-[13px] tracking-wide shadow-md hover:shadow-lg hover:shadow-blue-500/25 transition-all group cursor-pointer"
                     >
-                      <Download className="w-4 h-4 text-kc-primary group-hover:translate-y-0.5 transition-transform shrink-0" />
+                      <Download className="w-4 h-4 text-white group-hover:translate-y-0.5 transition-transform shrink-0" />
                       <span>Download Free Study Abroad Brochure (PDF)</span>
-                      <span className="text-[9.5px] font-bold px-1.5 py-0.5 rounded-md bg-white border border-blue-200 text-blue-700 uppercase tracking-wide shrink-0 shadow-2xs">
+                      <span className="text-[9.5px] font-bold px-1.5 py-0.5 rounded-md bg-white/20 text-white border border-white/30 uppercase tracking-wide shrink-0">
                         8 Pages
                       </span>
                     </button>
