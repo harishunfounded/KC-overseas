@@ -7,16 +7,20 @@ import {
   Globe,
   CheckCircle2,
   SearchCheck,
+  Download,
+  FileText,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import EnquiryForm from './EnquiryForm';
 import CardBentoContent from './CardBentoContent';
+import BrochureModal from './BrochureModal';
 
 export default function HeroSection() {
   const [reduceMotion, setReduceMotion] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (reduceMotion) return;
@@ -155,11 +159,39 @@ export default function HeroSection() {
                         </span>
                       </h2>
                       <p className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 font-medium leading-tight">
-                        Shortlisted universities & scholarship evaluation from certified overseas education consultants in 15 mins
+                        Shortlisted universities &amp; scholarship evaluation from certified overseas education consultants in 15 mins
                       </p>
                     </div>
+
+                    {/* Secondary Download Brochure Button (Ghost / Outlined) */}
+                    <button
+                      type="button"
+                      onClick={() => setIsBrochureOpen(true)}
+                      className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 text-slate-700 hover:text-kc-primary text-[10px] sm:text-[11px] font-bold transition-all shrink-0 shadow-2xs group cursor-pointer"
+                      title="Download KC Overseas Study Abroad Brochure (PDF)"
+                    >
+                      <Download className="w-3 h-3 text-slate-500 group-hover:text-kc-primary transition-colors" />
+                      <span className="hidden xs:inline">Brochure</span>
+                      <span className="xs:hidden">PDF</span>
+                    </button>
                   </div>
                   <EnquiryForm mode="quick" variant="hero" source="hero_quick" />
+
+                  {/* Secondary Text Link below primary form */}
+                  <div className="mt-2 pt-1.5 border-t border-slate-100 text-center">
+                    <button
+                      type="button"
+                      onClick={() => setIsBrochureOpen(true)}
+                      className="inline-flex items-center gap-1.5 text-[10.5px] sm:text-[11px] font-semibold text-slate-500 hover:text-kc-primary transition-colors cursor-pointer group"
+                    >
+                      <FileText className="w-3 h-3 text-slate-400 group-hover:text-kc-primary transition-colors" />
+                      <span>Prefer to read first?</span>
+                      <span className="text-kc-primary font-bold group-hover:underline inline-flex items-center gap-0.5">
+                        Download Brochure (PDF)
+                        <Download className="w-3 h-3" />
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -271,6 +303,12 @@ export default function HeroSection() {
         </div>
 
       </div>
+
+      {/* Lightweight Brochure Download Modal */}
+      <BrochureModal
+        isOpen={isBrochureOpen}
+        onClose={() => setIsBrochureOpen(false)}
+      />
     </section>
   );
 }
