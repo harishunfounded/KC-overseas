@@ -176,8 +176,17 @@ export async function POST(req: NextRequest) {
       console.warn('[LEAD_WEBHOOK_SKIPPED] LEAD_WEBHOOK_URL not configured. Relying on local/ephemeral disk and SMTP.');
     }
 
-    // 4. Email Dispatch via Nodemailer (with graceful error handling)
-    const emailTo = process.env.EMAIL_TO || 'namakkal@studies-overseas.com';
+    // 4. Email Dispatch via Nodemailer (Multi-recipient support)
+    const rawEmailTo = process.env.EMAIL_TO || 'namakkal@studies-overseas.com';
+    const recipients = rawEmailTo
+      .split(',')
+      .map((addr) => addr.trim())
+      .filter((addr) => addr.length > 0);
+
+    const useBcc = process.env.EMAIL_USE_BCC === 'true';
+    const primaryTo = useBcc ? recipients[0] : recipients.join(', ');
+    const bccRecipients = useBcc && recipients.length > 1 ? recipients.slice(1).join(', ') : undefined;
+
     const smtpHost = process.env.SMTP_HOST;
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
@@ -187,7 +196,7 @@ export async function POST(req: NextRequest) {
     let emailSent = false;
     let emailErrorMsg: string | null = null;
 
-    if (smtpHost && smtpUser && smtpPass) {
+    if (smtpHost && smtpUser && smtpPass && recipients.length > 0) {
       try {
         const transporter = nodemailer.createTransport({
           host: smtpHost,
@@ -262,12 +271,14 @@ export async function POST(req: NextRequest) {
 
         await transporter.sendMail({
           from: process.env.SMTP_FROM || `"KC Namakkal Leads" <${smtpUser}>`,
-          to: emailTo,
+          to: primaryTo,
+          ...(bccRecipients ? { bcc: bccRecipients } : {}),
           subject: `🔥 [Google Ads Lead] ${leadRecord.name} - ${leadRecord.preferredCountry} (${leadRecord.phone})`,
           html: htmlContent,
         });
 
         emailSent = true;
+        console.log(`[LEAD_EMAIL_SUCCESS] Notification dispatched to: ${recipients.join(', ')}`);
       } catch (err: any) {
         console.error('[SMTP_EMAIL_SEND_FAILED]', err.message);
         emailErrorMsg = err.message;
