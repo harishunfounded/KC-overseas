@@ -110,7 +110,7 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-[22px] xs:text-[25px] sm:text-[30px] md:text-4xl lg:text-[34px] xl:text-[40px] font-black text-white tracking-tight leading-[1.15] sm:leading-[1.14] animate-hero-1 drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)]">
+            <h1 className="text-[26px] xs:text-[29px] sm:text-[34px] md:text-[40px] lg:text-[42px] xl:text-[48px] 2xl:text-[54px] font-black text-white tracking-tight leading-[1.12] sm:leading-[1.1] animate-hero-1 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               <span className="block">Tamil Nadu&apos;s Most Trusted</span>
               <span className="block bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-300 bg-clip-text text-transparent mt-0.5 sm:mt-1">
                 Study Abroad Consultant
