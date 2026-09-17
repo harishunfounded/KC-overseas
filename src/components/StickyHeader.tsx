@@ -45,7 +45,7 @@ export default function StickyHeader() {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 h-12 sm:h-14 flex items-center justify-between">
         
         {/* Brand Logo & Identification */}
-        <a href="#hero" className="flex items-center gap-2 group shrink-0" aria-label="KC Overseas Education Home">
+        <a href="/#hero" className="flex items-center gap-2 group shrink-0" aria-label="KC Overseas Education Home">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-kc-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-200">
             <GraduationCap className="w-5 h-5" />
           </div>
@@ -91,7 +91,7 @@ export default function StickyHeader() {
 
           {/* Desktop Counselling CTA */}
           <a
-            href="#enquiry-section"
+            href="/#enquiry-section"
             className="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-full bg-kc-accent text-white text-sm font-bold shadow-cta-glow hover:bg-kc-accent-hover cta-tactile ml-1"
           >
             Book Free Counselling

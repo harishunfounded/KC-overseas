@@ -40,3 +40,6 @@ data/leads.csv
 .vercel
 .env*
 .vscode/
+
+.vercel
+.env*

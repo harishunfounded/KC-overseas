@@ -56,7 +56,7 @@ export default function Footer() {
               {siteConfig.destinations.slice(0, 7).map((d) => (
                 <li key={d.id}>
                   <a
-                    href="#destinations"
+                    href="/#destinations"
                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center gap-1.5 group/link"
                   >
                     <ChevronRight className="w-3 h-3 text-kc-primary group-hover/link:text-white transition-colors" />
@@ -76,7 +76,7 @@ export default function Footer() {
               {siteConfig.services.slice(0, 7).map((s) => (
                 <li key={s.id}>
                   <a
-                    href="#services"
+                    href="/#services"
                     className="hover:text-white hover:translate-x-1 transition-all duration-200 flex items-center gap-1.5 group/link"
                   >
                     <ChevronRight className="w-3 h-3 text-kc-accent group-hover/link:text-white transition-colors" />

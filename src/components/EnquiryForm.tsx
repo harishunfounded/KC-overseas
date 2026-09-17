@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Send, CheckCircle2, ShieldAlert, Sparkles, ArrowRight } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
@@ -26,6 +27,7 @@ export default function EnquiryForm({
   onSuccessCallback,
   className = '',
 }: EnquiryFormProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -100,6 +102,19 @@ export default function EnquiryForm({
             event_callback: () => console.log('Google Ads conversion logged.'),
           });
         }
+
+        // Trigger Meta Pixel Lead event
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead');
+        }
+
+        // Direct client to the dedicated Thank You page
+        const queryParams = new URLSearchParams();
+        if (formData.name) queryParams.set('name', formData.name.trim());
+        if (formData.phone) queryParams.set('phone', formData.phone.trim());
+        if (formData.preferredCountry) queryParams.set('country', formData.preferredCountry);
+
+        router.push(`/thank-you?${queryParams.toString()}`);
       } else {
         setApiError(data.message || 'Something went wrong. Please call us directly.');
       }
