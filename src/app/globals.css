@@ -166,6 +166,123 @@
   box-shadow: 0 0 0 4px rgba(30, 100, 220, 0.12) !important;
 }
 
+/* Target Study Destinations - Flag Glow Bloom Cards (Pure CSS, Zero GSAP) */
+.country-glow-card {
+  --glow-color: 59, 130, 246;
+  --flag-gradient: none;
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(11, 21, 38, 0.05), 0 1px 2px -1px rgba(11, 21, 38, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
+  text-align: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.country-glow-card:hover,
+.country-glow-card:active,
+.country-glow-card.is-touched {
+  transform: translateY(-4px);
+  border-color: rgba(var(--glow-color), 0.8) !important;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.22), 0 0 24px -2px rgba(var(--glow-color), 0.45) !important;
+}
+
+.country-glow-card .flag-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--flag-gradient);
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.country-glow-card:hover .flag-bg,
+.country-glow-card:active .flag-bg,
+.country-glow-card.is-touched .flag-bg {
+  opacity: 0.96;
+  transform: scale(1.02);
+}
+
+.country-glow-card .card-title {
+  color: #1a2b4c;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.country-glow-card:hover .card-title,
+.country-glow-card:active .card-title,
+.country-glow-card.is-touched .card-title {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.country-glow-card .card-desc {
+  color: #5a6a85;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.country-glow-card:hover .card-desc,
+.country-glow-card:active .card-desc,
+.country-glow-card.is-touched .card-desc {
+  color: rgba(255, 255, 255, 0.94) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.country-glow-card .card-badge {
+  background-color: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.country-glow-card:hover .card-badge,
+.country-glow-card:active .card-badge,
+.country-glow-card.is-touched .card-badge {
+  background-color: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(4px);
+}
+
+.country-glow-card .card-explore {
+  color: #1e64dc;
+  border-color: #f1f5f9;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.country-glow-card:hover .card-explore,
+.country-glow-card:active .card-explore,
+.country-glow-card.is-touched .card-explore {
+  color: #fde047 !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.country-glow-card .card-flag {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom left;
+}
+
+.country-glow-card:hover .card-flag,
+.country-glow-card:active .card-flag,
+.country-glow-card.is-touched .card-flag {
+  transform: scale(1.22) rotate(5deg);
+}
+
+.country-glow-card .explore-icon {
+  transition: transform 0.25s ease;
+}
+
+.country-glow-card:hover .explore-icon,
+.country-glow-card:active .explore-icon,
+.country-glow-card.is-touched .explore-icon {
+  transform: translate(2px, -2px);
+}
+
 /* Respect prefers-reduced-motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   html {
