@@ -91,7 +91,7 @@ export default function HeroSection() {
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         
         {/* Main 2-Column Row: Left (Headline + Lifted CTA Box), Right (Bento Card) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-6 lg:gap-8 xl:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-3.5 sm:gap-6 lg:gap-10 xl:gap-14 items-center">
           
           {/* Left Column: Admissions Pill, H1, and Lifted CTA Box */}
           <div className="flex flex-col space-y-2 sm:space-y-2.5 text-left relative z-20 w-full">
@@ -110,9 +110,9 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-[26px] xs:text-[29px] sm:text-[34px] md:text-[40px] lg:text-[42px] xl:text-[48px] 2xl:text-[54px] font-black text-white tracking-tight leading-[1.12] sm:leading-[1.1] animate-hero-1 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            <h1 className="text-[28px] xs:text-[34px] sm:text-[40px] md:text-[46px] lg:text-[46px] xl:text-[54px] 2xl:text-[62px] font-black text-white tracking-tight leading-[1.08] sm:leading-[1.06] animate-hero-1 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
               <span className="block">Tamil Nadu&apos;s Most Trusted</span>
-              <span className="block bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-300 bg-clip-text text-transparent mt-0.5 sm:mt-1">
+              <span className="block bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-300 bg-clip-text text-transparent mt-1">
                 Study Abroad Consultant
               </span>
             </h1>
@@ -198,7 +198,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Bento Grid Card */}
-          <div className="animate-hero-2 relative flex flex-col items-center justify-center z-10 w-full py-0.5 sm:py-1">
+          <div className="animate-hero-2 relative flex flex-col items-center justify-center z-10 w-full lg:w-[360px] shrink-0 py-0.5 sm:py-1">
             {/* Verified Track Record Status Pill */}
             <div className="hidden sm:block mb-1.5 sm:mb-2">
               <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-900/80 border border-white/20 backdrop-blur-md text-[10.5px] sm:text-[11px] font-semibold text-emerald-300 shadow-md">
