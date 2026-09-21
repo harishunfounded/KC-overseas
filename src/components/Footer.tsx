@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import {
-  GraduationCap,
   MapPin,
   Phone,
   Mail,
@@ -23,19 +23,15 @@ export default function Footer() {
           
           {/* Col 1: Brand & About */}
           <div className="space-y-3.5">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-kc-primary flex items-center justify-center text-white font-bold">
-                <GraduationCap className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="font-extrabold text-white text-base tracking-tight block">
-                  KC OVERSEAS
-                </span>
-                <span className="text-[10px] text-sky-400 font-semibold uppercase">
-                  Tamil Nadu
-                </span>
-              </div>
-            </div>
+            <a href="/#hero" className="inline-block group" aria-label="KC Overseas Education Home">
+              <Image
+                src="/kc-overseas-namakkal-logo.png"
+                alt="KC Overseas Education Namakkal"
+                width={56}
+                height={56}
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-contain shadow-md group-hover:scale-105 transition-transform duration-200"
+              />
+            </a>
             
             <p className="text-slate-400 leading-relaxed text-xs">
               Pioneering overseas education consultancy with 25+ years of experience, 1,200+ partner universities, and 7,30,000+ students guided.

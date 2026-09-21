@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.kcoverseasnkl.in/assets/images/kc-logo.png',
+        url: 'https://www.kcoverseasnkl.in/og-image.png',
         width: 1200,
         height: 630,
         alt: 'KC Overseas Education - Study Abroad Consultant in Tamil Nadu',
@@ -57,8 +57,20 @@ export const metadata: Metadata = {
     title: 'KC Overseas Education | Study Abroad Consultant in Tamil Nadu',
     description:
       'Trusted study abroad consultant in Tamil Nadu with 25+ years legacy, 1,200+ partner universities, and 99% visa success rate.',
-    images: ['https://www.kcoverseasnkl.in/assets/images/kc-logo.png'],
+    images: ['https://www.kcoverseasnkl.in/og-image.png'],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -83,7 +95,8 @@ export default function RootLayout({
     telephone: siteConfig.contact.phone1,
     email: siteConfig.contact.email,
     priceRange: 'Free Consultation',
-    image: 'https://www.kcoverseasnkl.in/assets/images/kc-logo.png',
+    image: 'https://www.kcoverseasnkl.in/kc-overseas-namakkal-logo.png',
+    logo: 'https://www.kcoverseasnkl.in/kc-overseas-namakkal-logo.png',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '158/182, Pranav Complex, Above Thangamayil Jewellery, Salem Road',

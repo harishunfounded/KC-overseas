@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Phone, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
+import { Phone } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
@@ -45,18 +46,15 @@ export default function StickyHeader() {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 h-12 sm:h-14 flex items-center justify-between">
         
         {/* Brand Logo & Identification */}
-        <a href="/#hero" className="flex items-center gap-2 group shrink-0" aria-label="KC Overseas Education Home">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-kc-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-200">
-            <GraduationCap className="w-5 h-5" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-extrabold text-kc-heading text-sm sm:text-base tracking-tight flex items-center gap-1 group-hover:text-kc-primary transition-colors">
-              KC OVERSEAS
-            </span>
-            <span className="text-[10px] sm:text-xs font-semibold text-kc-primary tracking-wide uppercase">
-              Education
-            </span>
-          </div>
+        <a href="/#hero" className="flex items-center group shrink-0" aria-label="KC Overseas Education Home">
+          <Image
+            src="/kc-overseas-namakkal-logo.png"
+            alt="KC Overseas Education Namakkal"
+            width={48}
+            height={48}
+            priority
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg object-contain shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-200"
+          />
         </a>
 
         {/* Action Buttons (Call Now & WhatsApp) */}
