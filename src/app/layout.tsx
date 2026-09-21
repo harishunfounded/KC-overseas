@@ -31,18 +31,33 @@ export const metadata: Metadata = {
     'Overseas education loan assistance',
   ],
   authors: [{ name: 'KC Overseas Education' }],
-  metadataBase: new URL('https://www.studies-overseas.com'),
+  metadataBase: new URL('https://www.kcoverseasnkl.in'),
   alternates: {
-    canonical: 'https://www.studies-overseas.com',
+    canonical: 'https://www.kcoverseasnkl.in',
   },
   openGraph: {
     title: 'KC Overseas Education | Study Abroad Consultant in Tamil Nadu',
     description:
       'Trusted study abroad consultant in Tamil Nadu with 25+ years legacy, 1,200+ partner universities, 99% visa success rate, and personalized overseas education guidance.',
-    url: 'https://www.studies-overseas.com',
+    url: 'https://www.kcoverseasnkl.in',
     siteName: 'KC Overseas Education',
     locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.kcoverseasnkl.in/assets/images/kc-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'KC Overseas Education - Study Abroad Consultant in Tamil Nadu',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KC Overseas Education | Study Abroad Consultant in Tamil Nadu',
+    description:
+      'Trusted study abroad consultant in Tamil Nadu with 25+ years legacy, 1,200+ partner universities, and 99% visa success rate.',
+    images: ['https://www.kcoverseasnkl.in/assets/images/kc-logo.png'],
   },
   robots: {
     index: true,
@@ -59,16 +74,16 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['EducationalOrganization', 'LocalBusiness'],
-    '@id': 'https://www.studies-overseas.com/branch/namakkal#organization',
+    '@id': 'https://www.kcoverseasnkl.in/#organization',
     name: 'KC Overseas Education - Namakkal Branch',
     alternateName: 'KC Overseas Namakkal',
     description:
       'Trusted study abroad consultant in Tamil Nadu offering free profile evaluation, university shortlisting, IELTS/PTE training, education loan guidance, and 99% visa success processing.',
-    url: 'https://www.studies-overseas.com/branch/namakkal',
+    url: 'https://www.kcoverseasnkl.in',
     telephone: siteConfig.contact.phone1,
     email: siteConfig.contact.email,
     priceRange: 'Free Consultation',
-    image: 'https://www.studies-overseas.com/assets/images/kc-logo.png',
+    image: 'https://www.kcoverseasnkl.in/assets/images/kc-logo.png',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '158/182, Pranav Complex, Above Thangamayil Jewellery, Salem Road',
