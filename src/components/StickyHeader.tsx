@@ -48,12 +48,12 @@ export default function StickyHeader() {
         {/* Brand Logo & Identification */}
         <a href="/#hero" className="flex items-center group shrink-0" aria-label="KC Overseas Education Home">
           <Image
-            src="/kc-overseas-namakkal-logo.png"
-            alt="KC Overseas Education Namakkal"
-            width={48}
-            height={48}
+            src="/kc-overseas-logo.png"
+            alt="KC Overseas Education"
+            width={180}
+            height={40}
             priority
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg object-contain shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-200"
+            className="h-[28px] xs:h-[30px] sm:h-[36px] md:h-[38px] w-auto object-contain transition-transform duration-200 group-hover:opacity-90"
           />
         </a>
 

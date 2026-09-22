@@ -23,13 +23,13 @@ export default function Footer() {
           
           {/* Col 1: Brand & About */}
           <div className="space-y-3.5">
-            <a href="/#hero" className="inline-block group" aria-label="KC Overseas Education Home">
+            <a href="/#hero" className="inline-block group bg-white px-3 py-2 rounded-xl shadow-sm hover:bg-slate-50 transition-colors" aria-label="KC Overseas Education Home">
               <Image
-                src="/kc-overseas-namakkal-logo.png"
-                alt="KC Overseas Education Namakkal"
-                width={56}
-                height={56}
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-contain shadow-md group-hover:scale-105 transition-transform duration-200"
+                src="/kc-overseas-logo.png"
+                alt="KC Overseas Education"
+                width={160}
+                height={36}
+                className="h-7 sm:h-8 w-auto object-contain"
               />
             </a>
             
