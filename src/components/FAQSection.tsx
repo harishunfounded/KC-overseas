@@ -50,7 +50,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Do you provide certified test preparation coaching for IELTS, PTE, and GRE?',
     answer:
-      'Yes, our study abroad consultants provide comprehensive training led by British Council and IDP certified master mentors. We offer flexible weekday and weekend batches, interactive AI computer lab practice, regular full-length mock tests, and personalized score enhancement strategies.',
+      'Yes, our study abroad consultants provide comprehensive training led by British Council certified master mentors. We offer flexible weekday and weekend batches, interactive AI computer lab practice, regular full-length mock tests, and personalized score enhancement strategies.',
   },
 ];
 

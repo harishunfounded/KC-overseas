@@ -117,7 +117,7 @@ export default function CardBentoContent({
           <div className="text-[8.5px] sm:text-[9px] text-slate-400">Documented track record</div>
         </div>
 
-        {/* Cell 5: 55+ Offices */}
+        {/* Cell 5: 60+ Branches */}
         <div className="relative rounded-xl p-2 sm:p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[8.5px] font-extrabold bg-indigo-400/15 text-indigo-300 border border-indigo-400/25">
@@ -126,17 +126,17 @@ export default function CardBentoContent({
           </div>
           <div className="text-lg sm:text-2xl font-black text-white tracking-tight flex items-baseline">
             {animate ? (
-              <CountUp from={0} to={55} duration={1.6} />
+              <CountUp from={0} to={60} duration={1.6} />
             ) : (
-              <span>55</span>
+              <span>60</span>
             )}
             <span className="text-indigo-400 ml-0.5">+</span>
           </div>
-          <div className="text-[9.5px] sm:text-[10.5px] font-bold text-slate-200">Offices in India</div>
+          <div className="text-[9.5px] sm:text-[10.5px] font-bold text-slate-200">Branches in India</div>
           <div className="text-[8.5px] sm:text-[9px] text-slate-400">Pan-India network & TN</div>
         </div>
 
-        {/* Cell 6: British Council & IDP */}
+        {/* Cell 6: British Council */}
         <div className="relative rounded-xl p-2 sm:p-2.5 bg-slate-900/75 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-slate-800/80 hover:border-white/25 hover:-translate-y-0.5 transition-all duration-200 cursor-default shadow-sm">
           <div className="flex items-center justify-between mb-1">
             <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[8.5px] font-extrabold bg-purple-400/15 text-purple-300 border border-purple-400/25">
@@ -147,7 +147,7 @@ export default function CardBentoContent({
             British Council
           </div>
           <div className="text-[9.5px] sm:text-[10.5px] font-bold text-slate-200">Certified Trainers</div>
-          <div className="text-[8.5px] sm:text-[9px] text-slate-400">& IDP official partners</div>
+          <div className="text-[8.5px] sm:text-[9px] text-slate-400">Official test partner</div>
         </div>
       </div>
 

@@ -39,7 +39,7 @@ export default function Footer() {
 
             <div className="pt-1 flex items-center gap-2 text-[11px] text-slate-400">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Official British Council & IDP Test Partner</span>
+              <span>Official British Council Test Partner</span>
             </div>
           </div>
 
@@ -117,6 +117,13 @@ export default function Footer() {
                   className="hover:text-white font-bold text-emerald-400"
                 >
                   WhatsApp: {siteConfig.contact.whatsappNumber}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">
+                  {siteConfig.contact.email}
                 </a>
               </div>
 

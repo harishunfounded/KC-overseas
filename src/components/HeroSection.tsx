@@ -111,9 +111,9 @@ export default function HeroSection() {
 
             {/* Main Headline */}
             <h1 className="text-[28px] xs:text-[34px] sm:text-[40px] md:text-[46px] lg:text-[46px] xl:text-[54px] 2xl:text-[62px] font-black text-white tracking-tight leading-[1.08] sm:leading-[1.06] animate-hero-1 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-              <span className="block">Tamil Nadu&apos;s Most Trusted</span>
+              <span className="block">India&apos;s Most Trusted</span>
               <span className="block bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-300 bg-clip-text text-transparent mt-1">
-                Study Abroad Consultant
+                Study Abroad Consultancy
               </span>
             </h1>
 

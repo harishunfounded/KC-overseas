@@ -177,7 +177,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 4. Email Dispatch via Nodemailer (Multi-recipient support)
-    const rawEmailTo = process.env.EMAIL_TO || 'namakkal@studies-overseas.com';
+    const rawEmailTo = process.env.EMAIL_TO || 'namakkal@kcoverseas.com';
     const recipients = rawEmailTo
       .split(',')
       .map((addr) => addr.trim())

@@ -22,7 +22,7 @@ const processSteps: AccordionGalleryItem[] = [
   {
     step: 'Step 03',
     label: 'Certified Test Preparation',
-    description: 'British Council & IDP coaching for IELTS, PTE & GRE',
+    description: 'British Council certified coaching for IELTS, PTE & GRE',
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80',
     alt: 'Certified IELTS and PTE coaching by study abroad consultants',
     link: '#batches',

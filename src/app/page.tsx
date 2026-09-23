@@ -74,7 +74,7 @@ export default function Home() {
         <CTASection
           id="cta-strip-2"
           title="Are You Looking for Language Training?"
-          subtitle="Personalized coaching and mock tests from British Council & IDP certified mentors to help you achieve your target scores."
+          subtitle="Personalized coaching and mock tests from British Council certified mentors to help you achieve your target scores."
           badge="Official Test Partner • 25+ Years of Trust"
           variant="sand"
         />

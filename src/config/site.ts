@@ -69,7 +69,7 @@ export const siteConfig = {
     whatsappClean: '916382188816',
     whatsappChatUrl:
       'https://wa.me/916382188816?text=Hello%20KC%20Overseas%20Education%2C%20I%20am%20reaching%20out%20through%20your%20website.%20I%20would%20like%20to%20get%20professional%20counselling%20for%20studying%20abroad%2C%20university%20admissions%2C%20and%20scholarships.%20Please%20guide%20me.',
-    email: 'namakkal@studies-overseas.com',
+    email: 'namakkal@kcoverseas.com',
     workingHours: 'Monday to Saturday: 10:00 AM – 7:30 PM (Sunday Closed)',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3910.749502937762!2d78.16434857488884!3d11.222718950853504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babce281313768f%3A0x8677c756f7ef0d19!2sThangamayil%20Jewellery%20Limited%20-%20Namakkal!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
     mapDirectionsUrl: 'https://maps.google.com/?q=Pranav+Complex,+Above+Thangamayil+Jewellery,+Salem+Road,+Namakkal+637001',
@@ -81,8 +81,8 @@ export const siteConfig = {
     { label: 'Partner Universities', value: '1,200+', subtext: 'Direct global representation' },
     { label: 'Students Placed', value: '7,30,000+', subtext: 'Across 47+ countries' },
     { label: 'Visa Success Rate', value: '99%', subtext: 'Documented track record' },
-    { label: 'Offices in India', value: '55+', subtext: 'Pan-India network' },
-    { label: 'Certified Trainers', value: 'British Council & IDP', subtext: 'Official test partners' },
+    { label: 'Branches in India', value: '60+', subtext: 'Pan-India network' },
+    { label: 'Certified Trainers', value: 'British Council', subtext: 'Official test partner' },
   ],
 
   // 10 Target Study Destinations (Clean flag + name + 1-line key fact)
